@@ -1,0 +1,38 @@
+import React, {RefObject} from 'react';
+import Post from "./Post/Post";
+import styles from './MyPosts.module.css';
+import {PostType} from "../../../../redux/state";
+
+type PropsType = {
+    posts: Array<PostType>;
+    addPost:(postText: string) => void;
+}
+
+const MyPosts: React.FC<PropsType> = (props) => {
+
+    let newPostElement = React.createRef<HTMLTextAreaElement>();
+    let onButtonClickHandler = () => {
+        if(newPostElement.current){
+            props.addPost(newPostElement.current.value);
+            newPostElement.current.value='';
+        }
+    }
+
+    return (
+        <div className={styles.postsBlock}>
+            My Post
+            <div>
+                <div>
+                    <textarea ref={newPostElement}></textarea>
+                </div>
+                <button onClick={onButtonClickHandler}>Add Post</button>
+            </div>
+            <div className={styles.posts}>
+                {props.posts.map(post => <Post key={post.id} likesCounter={post.likesCounter}
+                                               postText={post.postText}/>)}
+            </div>
+        </div>
+    );
+};
+
+export default MyPosts;
