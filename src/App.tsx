@@ -10,11 +10,14 @@ import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
 import Developers from "./components/Main/Developers";
 import News from "./components/Main/News";
-import {StateType} from "./redux/state";
+import {addMessage, StateType, updateNewMessageText} from "./redux/state";
 
 type PropsType = {
     state: StateType
-    addPost:(postText: string) => void;
+    addPost: () => void;
+    updateNewPostText: (newPostText: string) => void;
+    addMessage: () => void;
+    updateNewMessageText: (newMessageText: string) => void;
 }
 
 const App: React.FC<PropsType> = (props) => {
@@ -25,10 +28,18 @@ const App: React.FC<PropsType> = (props) => {
             <NavBar/>
             <div className='app-wrapper-content'>
                 <Route path='/profile'
-                       render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost}/>
+                       render={() => <Profile
+                           profilePage={props.state.profilePage}
+                           addPost={props.addPost}
+                           updateNewPostText={props.updateNewPostText}
+                       />
                        }/>
                 <Route path='/dialogs'
-                       render={() => <Dialog dialogsPage={props.state.dialogsPage}/>
+                       render={() => <Dialog
+                           dialogsPage={props.state.dialogsPage}
+                           addMessage={addMessage}
+                           updateNewMessageText={updateNewMessageText}
+                       />
                        }/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>

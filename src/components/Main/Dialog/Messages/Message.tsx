@@ -1,16 +1,13 @@
 import React from 'react';
 
 type PropsType = {
-    messageBody: string
+    messageBody: string;
 }
-const Message = (props: PropsType) => {
-
-    let newMessageElement = React.createRef<HTMLTextAreaElement>();
+const Message: React.FC<PropsType> = (props) => {
 
     return (
         <div>
-            <div>{props.messageBody}</div>
-            <textarea ref={newMessageElement}></textarea>
+            {props.messageBody}
         </div>
     );
 };

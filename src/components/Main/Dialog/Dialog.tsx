@@ -2,20 +2,33 @@ import React from 'react';
 import styles from './Dialog.module.css'
 import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
-import {DialogPageType} from "../../../redux/state";
+import {addMessage, DialogPageType, updateNewMessageText} from "../../../redux/state";
+import DialogTextArea from "./DialogTextArea/DialogTextArea";
 
 type PropsType = {
-    dialogsPage: DialogPageType
+    dialogsPage: DialogPageType;
+    addMessage: () => void;
+    updateNewMessageText: (newMessageText: string) => void;
 }
 
 const Dialog: React.FC<PropsType> = (props) => {
+
+    let dialogList = props.dialogsPage.dialogItems.map(d => <DialogItems key={d.id} name={d.name} id={d.id}/>)
+
+    let messageList = props.dialogsPage.messages.map(m =>  <Message key={m.id} messageBody={m.messageBody}/>)
+
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-                {props.dialogsPage.dialogItems.map(d => <DialogItems key={d.id} name={d.name} id={d.id}/>)}
+                {dialogList}
             </div>
             <div className={styles.messages}>
-                {props.dialogsPage.messages.map(m => <Message key={m.id} messageBody={m.messageBody}/>)}
+                {messageList}
+                <DialogTextArea
+                    newMessageText={props.dialogsPage.newMessageText}
+                    addMessage={addMessage}
+                    updateNewMessageText={updateNewMessageText}
+                />
             </div>
         </div>
     );

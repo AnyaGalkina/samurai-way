@@ -1,11 +1,13 @@
-import React, {RefObject} from 'react';
+import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import styles from './MyPosts.module.css';
 import {PostType} from "../../../../redux/state";
 
 type PropsType = {
     posts: Array<PostType>;
-    addPost:(postText: string) => void;
+    newPostText: string;
+    addPost:() => void;
+    updateNewPostText: (newPostText: string) => void;
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
@@ -13,9 +15,14 @@ const MyPosts: React.FC<PropsType> = (props) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
     let onButtonClickHandler = () => {
         if(newPostElement.current){
-            props.addPost(newPostElement.current.value);
-            newPostElement.current.value='';
+            props.addPost();
+            // props.updateNewPostText('');
+            // newPostElement.current.value='';
         }
+    }
+
+    let onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
+        props.updateNewPostText(event.currentTarget.value)
     }
 
     return (
@@ -23,7 +30,7 @@ const MyPosts: React.FC<PropsType> = (props) => {
             My Post
             <div>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea ref={newPostElement} value={props.newPostText} onChange={onChangeHandler}></textarea>
                 </div>
                 <button onClick={onButtonClickHandler}>Add Post</button>
             </div>
