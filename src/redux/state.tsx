@@ -1,4 +1,4 @@
-import {renderEntireTree} from "../render";
+let renderEntireTree = () => {};
 
 export type PostType = {
     id: number;
@@ -56,26 +56,30 @@ export const state: StateType = {
     }
 };
 
+export const subscribe = (observer: () => void)  => {
+    renderEntireTree = observer;
+}
+
 export const addPost = (): void => {
     let newPost: PostType = {id: 3, likesCounter: 0, postText: state.profilePage.newPostText}
     state.profilePage.posts.push(newPost);
     updateNewPostText('');
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
 export const updateNewPostText = (newPostText: string): void => {
     state.profilePage.newPostText = newPostText;
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
 export const addMessage = () => {
     let newMessage = {id: 10, messageBody: state.dialogsPage.newMessageText};
     state.dialogsPage.messages.push(newMessage);
     updateNewMessageText('');
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
 export const updateNewMessageText = (newMessageText: string): void => {
     state.dialogsPage.newMessageText = newMessageText;
-    renderEntireTree(state);
+    renderEntireTree();
 }
