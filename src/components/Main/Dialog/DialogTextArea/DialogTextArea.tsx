@@ -10,7 +10,7 @@ type PropsType = {
 
 const DialogTextArea: React.FC<PropsType> = (props) => {
 
-    let newMessageElement = React.createRef<HTMLTextAreaElement>();
+    // let newMessageElement = React.createRef<HTMLTextAreaElement>();
 
     let onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
         props.dispatch(updateNewMessageTextAC(event.currentTarget.value));
@@ -24,7 +24,11 @@ const DialogTextArea: React.FC<PropsType> = (props) => {
 
     return (
         <div>
-            <textarea ref={newMessageElement} value={props.newMessageText} onChange={onChangeHandler}></textarea>
+            <textarea
+                // ref={newMessageElement}
+                value={props.newMessageText}
+                onChange={onChangeHandler}>
+            </textarea>
             <div>
                 <button onClick={onButtonClickHandler}>Add message</button>
             </div>
