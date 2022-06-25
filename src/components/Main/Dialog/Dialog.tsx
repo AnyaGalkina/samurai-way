@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Dialog.module.css'
 import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
-import {addMessage, DialogPageType, updateNewMessageText} from "../../../redux/state";
+import { DialogPageType} from "../../../redux/state";
 import DialogTextArea from "./DialogTextArea/DialogTextArea";
 
 type PropsType = {
@@ -26,8 +26,8 @@ const Dialog: React.FC<PropsType> = (props) => {
                 {messageList}
                 <DialogTextArea
                     newMessageText={props.dialogsPage.newMessageText}
-                    addMessage={addMessage}
-                    updateNewMessageText={updateNewMessageText}
+                    addMessage={props.addMessage}
+                    updateNewMessageText={props.updateNewMessageText}
                 />
             </div>
         </div>
