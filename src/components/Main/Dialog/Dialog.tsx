@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './Dialog.module.css'
 import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
-import { DialogPageType} from "../../../redux/state";
+import {ActionType, DialogPageType} from "../../../redux/state";
 import DialogTextArea from "./DialogTextArea/DialogTextArea";
 
 type PropsType = {
     dialogsPage: DialogPageType;
-    addMessage: () => void;
-    updateNewMessageText: (newMessageText: string) => void;
+    dispatch:(action: ActionType) => void
+    // addMessage: () => void;
+    // updateNewMessageText: (newMessageText: string) => void;
 }
 
 const Dialog: React.FC<PropsType> = (props) => {
@@ -26,8 +27,9 @@ const Dialog: React.FC<PropsType> = (props) => {
                 {messageList}
                 <DialogTextArea
                     newMessageText={props.dialogsPage.newMessageText}
-                    addMessage={props.addMessage}
-                    updateNewMessageText={props.updateNewMessageText}
+                    dispatch={props.dispatch}
+                    // addMessage={props.addMessage}
+                    // updateNewMessageText={props.updateNewMessageText}
                 />
             </div>
         </div>

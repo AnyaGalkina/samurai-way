@@ -11,12 +11,13 @@ import Music from "./components/Main/Music";
 import Developers from "./components/Main/Developers";
 import News from "./components/Main/News";
 // import {addMessage, StateType, updateNewMessageText} from "./redux/state";
-import {StoreType} from "./redux/state";
+import {ActionType, StateType, StoreType} from "./redux/state";
 
 
 type PropsType = {
-    store: StoreType;
-    // state: StateType
+    // store: StoreType;
+    state: StateType;
+    dispatch:(action: ActionType) => void
     // addPost: () => void;
     // updateNewPostText: (newPostText: string) => void;
     // addMessage: () => void;
@@ -25,7 +26,7 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
 
-    let state = props.store.getState();
+    // let state = props.store.getState();
 
     return (
         <div className="app-wrapper">
@@ -35,16 +36,16 @@ const App: React.FC<PropsType> = (props) => {
             <div className='app-wrapper-content'>
                 <Route path='/profile'
                        render={() => <Profile
-                           profilePage={state.profilePage}
-                           addPost={props.store.addPost.bind(props.store)}
-                           updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                           profilePage={props.state.profilePage}
+                           dispatch={props.dispatch}
+                           // addPost={props.store.addPost.bind(props.store)}
+                           // updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                        />
                        }/>
                 <Route path='/dialogs'
                        render={() => <Dialog
-                           dialogsPage={state.dialogsPage}
-                           addMessage={props.store.addMessage.bind(props.store)}
-                           updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                           dialogsPage={props.state.dialogsPage}
+                           dispatch={props.dispatch}
                        />
                        }/>
                 <Route path='/news' render={() => <News/>}/>
