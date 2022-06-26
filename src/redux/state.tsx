@@ -1,9 +1,6 @@
-// let renderEntireTree = () => {};
+import profileReducer, {addPostAC, updateNewPostTextAC} from "./profile-reducer";
+import dialogsReducer, {addMessageAC, updateNewMessageTextAC} from "./dialogs-reducer";
 
-export const ADD_POST = "ADD_POST";
-export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
-export const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
-export const ADD_MESSAGE = "ADD_MESSAGE";
 
 export
 type PostType = {
@@ -48,20 +45,11 @@ export type StoreType = {
     // updateNewMessageText: (newMessageText: string) => void;
     getState: () => StateType;
 }
-export type ActionType = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> | ReturnType<typeof addMessageAC> | ReturnType<typeof updateNewMessageTextAC>;
-
-export const updateNewMessageTextAC = (messageText: string) => {
-    return ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: messageText} as const);
-};
-export const addMessageAC = () => {
-    return ({type: ADD_MESSAGE} as const);
-};
-export const updateNewPostTextAC = (postText: string) => {
-    return ({type: UPDATE_NEW_POST_TEXT, postText: postText} as const)
-};
-export const addPostAC = () => {
-    return ({type: ADD_POST} as const);
-}
+export type ActionType =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof updateNewPostTextAC>
+    | ReturnType<typeof addMessageAC>
+    | ReturnType<typeof updateNewMessageTextAC>;
 
 
 export let store: StoreType = {
@@ -120,99 +108,11 @@ export let store: StoreType = {
     // },
 
     dispatch(action) {
-        // debugger;
-
-        switch (action.type) {
-            // @ts-ignore
-
-            case ADD_POST:
-                let newPost: PostType = {id: 3, likesCounter: 0, postText: this._state.profilePage.newPostText}
-                this._state.profilePage.posts.push(newPost);
-                this._state.profilePage.newPostText = "";
-                this._callSubscriber(this._state);
-            // @ts-ignore
-
-            case ADD_MESSAGE:
-                let newMessage = {id: 10, messageBody: this._state.dialogsPage.newMessageText};
-                this._state.dialogsPage.messages.push(newMessage);
-                this._state.dialogsPage.newMessageText = "";
-                this._callSubscriber(this._state);
-            // @ts-ignore
-
-            case UPDATE_NEW_POST_TEXT:
-                // @ts-ignore
-                if (action.postText) {
-                    // @ts-ignore
-                    this._state.profilePage.newPostText = action.postText;
-                    this._callSubscriber(this._state);
-                }
-            // @ts-ignore
-            case UPDATE_NEW_MESSAGE_TEXT:
-                // @ts-ignore
-                if (action.messageText) {
-                    // @ts-ignore
-                    this._state.dialogsPage.newMessageText = action.messageText;
-                    this._callSubscriber(this._state);
-                }
-            default:
-                break;
-        }
-    },
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber(this._state);
+        },
     getState() {
         return this._state
     }
 }
-//window ?
-
-// export const state: StateType = {
-//     dialogsPage: {
-//         messages: [
-//             {id: 1, messageBody: 'Hi! Have a good day!'},
-//             {id: 2, messageBody: 'Good luck!'},
-//             {id: 3, messageBody: 'Good luck!'},
-//             {id: 4, messageBody: 'Be happy!'}
-//         ],
-//         dialogItems: [
-//             {id: 1, name: 'Andrey'},
-//             {id: 2, name: 'Lena'},
-//             {id: 3, name: 'Sveta'},
-//             {id: 4, name: 'Olga'},
-//         ],
-//         newMessageText: '',
-//     },
-//     profilePage: {
-//         posts: [
-//             {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
-//             {id: 2, likesCounter: 70, postText: "Good luck!"},
-//         ],
-//         newPostText: '',
-//     }
-// };
-
-// export const subscribe = (observer: () => void)  => {
-//     renderEntireTree = observer;
-// }
-//
-// export const addPost = (): void => {
-//     let newPost: PostType = {id: 3, likesCounter: 0, postText: state.profilePage.newPostText}
-//     state.profilePage.posts.push(newPost);
-//     updateNewPostText('');
-//     renderEntireTree();
-// }
-//
-// export const updateNewPostText = (newPostText: string): void => {
-//     state.profilePage.newPostText = newPostText;
-//     renderEntireTree();
-// }
-//
-// export const addMessage = () => {
-//     let newMessage = {id: 10, messageBody: state.dialogsPage.newMessageText};
-//     state.dialogsPage.messages.push(newMessage);
-//     updateNewMessageText('');
-//     renderEntireTree();
-// }
-//
-// export const updateNewMessageText = (newMessageText: string): void => {
-//     state.dialogsPage.newMessageText = newMessageText;
-//     renderEntireTree();
-// }
