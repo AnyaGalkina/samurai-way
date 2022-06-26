@@ -1,10 +1,10 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from "react";
 import {ActionType} from "../../../../redux/state";
 import {addMessageAC, updateNewMessageTextAC} from "../../../../redux/dialogs-reducer";
 
 type PropsType = {
     newMessageText: string;
-    dispatch:(action: ActionType) => void
+    dispatch: (action: ActionType) => void
     // addMessage: () => void;
     // updateNewMessageText: (newMessageText: string) => void;
 }
@@ -13,12 +13,12 @@ const DialogTextArea: React.FC<PropsType> = (props) => {
 
     // let newMessageElement = React.createRef<HTMLTextAreaElement>();
 
-    let onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
         props.dispatch(updateNewMessageTextAC(event.currentTarget.value));
         // props.updateNewMessageText(event.currentTarget.value);
     }
 
-    let onButtonClickHandler = () => {
+    const onButtonClickHandler = () => {
         // props.addMessage();
         props.dispatch(addMessageAC());
     }

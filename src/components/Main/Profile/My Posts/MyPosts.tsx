@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import Post from "./Post/Post";
 import styles from './MyPosts.module.css';
 import {ActionType, PostType} from "../../../../redux/state";
@@ -15,8 +15,7 @@ type PropsType = {
 
 const MyPosts: React.FC<PropsType> = (props) => {
 
-    // let newPostElement = React.createRef<HTMLTextAreaElement>();
-    let onButtonClickHandler = () => {
+    const onButtonClickHandler = () => {
         // if(newPostElement.current){
             props.dispatch(addPostAC());
             // props.addPost();
@@ -25,10 +24,11 @@ const MyPosts: React.FC<PropsType> = (props) => {
         // }
     }
 
-    let onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
+    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
         props.dispatch(updateNewPostTextAC(event.currentTarget.value));
         // props.updateNewPostText(event.currentTarget.value);
     }
+
 
     return (
         <div className={styles.postsBlock}>
