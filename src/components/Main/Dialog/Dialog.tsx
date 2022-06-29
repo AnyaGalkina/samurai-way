@@ -2,8 +2,9 @@ import React from 'react';
 import styles from './Dialog.module.css'
 import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
-import {ActionType, DialogPageType} from "../../../redux/state";
+import {ActionType} from "../../../redux/redux-store";
 import DialogTextArea from "./DialogTextArea/DialogTextArea";
+import {DialogPageType} from "../../../redux/dialogs-reducer";
 
 type PropsType = {
     dialogsPage: DialogPageType;

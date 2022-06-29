@@ -1,5 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent} from "react";
-import {ActionType} from "../../../../redux/state";
+import {ActionType} from "../../../../redux/redux-store";
 import {addMessageAC, updateNewMessageTextAC} from "../../../../redux/dialogs-reducer";
 
 type PropsType = {
@@ -10,8 +10,6 @@ type PropsType = {
 }
 
 const DialogTextArea: React.FC<PropsType> = (props) => {
-
-    // let newMessageElement = React.createRef<HTMLTextAreaElement>();
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
         props.dispatch(updateNewMessageTextAC(event.currentTarget.value));
@@ -26,7 +24,6 @@ const DialogTextArea: React.FC<PropsType> = (props) => {
     return (
         <div>
             <textarea
-                // ref={newMessageElement}
                 value={props.newMessageText}
                 onChange={onChangeHandler}>
             </textarea>
