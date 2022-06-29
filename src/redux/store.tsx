@@ -1,34 +1,8 @@
-import profileReducer, {addPostAC, updateNewPostTextAC} from "./profile-reducer";
-import dialogsReducer, {addMessageAC, updateNewMessageTextAC} from "./dialogs-reducer";
+import profileReducer, {addPostAC, ProfilePageType, updateNewPostTextAC} from "./profile-reducer";
+import dialogsReducer, {addMessageAC, DialogPageType, updateNewMessageTextAC} from "./dialogs-reducer";
+import {ActionType} from "./redux-store";
 
 
-export
-type PostType = {
-    id: number;
-    likesCounter: number;
-    postText: string
-}
-
-export type MessageType = {
-    id: number;
-    messageBody: string
-}
-
-export type DialogItemType = {
-    id: number;
-    name: string
-}
-
-export type DialogPageType = {
-    messages: Array<MessageType>;
-    dialogItems: Array<DialogItemType>;
-    newMessageText: string;
-}
-
-export type ProfilePageType = {
-    posts: Array<PostType>;
-    newPostText: string
-}
 export type StateType = {
     dialogsPage: DialogPageType;
     profilePage: ProfilePageType;
@@ -39,17 +13,8 @@ export type StoreType = {
     _callSubscriber: (state: StateType) => void;
     subscribe: (observer: (state: StateType) => void) => void;
     dispatch: (action: ActionType) => void;
-    // addPost: () => void;
-    // addMessage: () => void;
-    // updateNewPostText: (newPostText: string) => void;
-    // updateNewMessageText: (newMessageText: string) => void;
     getState: () => StateType;
 }
-export type ActionType =
-    ReturnType<typeof addPostAC>
-    | ReturnType<typeof updateNewPostTextAC>
-    | ReturnType<typeof addMessageAC>
-    | ReturnType<typeof updateNewMessageTextAC>;
 
 
 export let store: StoreType = {
