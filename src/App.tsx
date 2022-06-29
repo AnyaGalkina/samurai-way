@@ -10,13 +10,11 @@ import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
 import Developers from "./components/Main/Developers";
 import News from "./components/Main/News";
-// import {addMessage, StateType, updateNewMessageText} from "./redux/state";
-import {ActionType, StateType, StoreType} from "./redux/state";
+import {ActionType,AppState} from "./redux/redux-store";
 
 
 type PropsType = {
-    // store: StoreType;
-    state: StateType;
+    state: AppState;
     dispatch:(action: ActionType) => void
     // addPost: () => void;
     // updateNewPostText: (newPostText: string) => void;
@@ -26,7 +24,6 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
 
-    // let state = props.store.getState();
 
     return (
         <div className="app-wrapper">
@@ -44,7 +41,7 @@ const App: React.FC<PropsType> = (props) => {
                        }/>
                 <Route path='/dialogs'
                        render={() => <Dialog
-                           dialogsPage={props.state.dialogsPage}
+                           dialogsPage={props.state.dialogPage}
                            dispatch={props.dispatch}
                        />
                        }/>
