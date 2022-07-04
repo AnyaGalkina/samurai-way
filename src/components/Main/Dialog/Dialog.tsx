@@ -3,14 +3,12 @@ import styles from './Dialog.module.css'
 import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
 import {ActionType} from "../../../redux/redux-store";
-import DialogTextArea from "./DialogTextArea/DialogTextArea";
 import {DialogPageType} from "../../../redux/dialogs-reducer";
+import DialogTextAreaContainer from "./DialogTextArea/DialogTextAreaContainer";
 
 type PropsType = {
     dialogsPage: DialogPageType;
     dispatch:(action: ActionType) => void
-    // addMessage: () => void;
-    // updateNewMessageText: (newMessageText: string) => void;
 }
 
 const Dialog: React.FC<PropsType> = (props) => {
@@ -26,11 +24,9 @@ const Dialog: React.FC<PropsType> = (props) => {
             </div>
             <div className={styles.messages}>
                 {messageList}
-                <DialogTextArea
-                    newMessageText={props.dialogsPage.newMessageText}
+                <DialogTextAreaContainer
+                    dialogsPage={props.dialogsPage}
                     dispatch={props.dispatch}
-                    // addMessage={props.addMessage}
-                    // updateNewMessageText={props.updateNewMessageText}
                 />
             </div>
         </div>
