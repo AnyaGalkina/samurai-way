@@ -22,17 +22,22 @@ let initialState: ProfilePageType = {
     newPostText: "",
 }
 
-const profileReducer = (state =  initialState, action: ActionType) => {
+const profileReducer = (state = initialState, action: ActionType) => {
 
     switch (action.type) {
         case ADD_POST:
             let newPost: PostType = {id: 3, likesCounter: 0, postText: state.newPostText}
-            state.posts.push(newPost);
-            state.newPostText = "";
-            return state;
+            // state.posts.push(newPost);
+            // state.newPostText = "";
+            return {...state, posts: [...state.posts, newPost], newPostText: ""};
         case UPDATE_NEW_POST_TEXT:
+            // if (action.postText) {
+            //     state.newPostText = action.postText;
+            // }
+            // return  state;
+            //
             if (action.postText) {
-                state.newPostText = action.postText;
+                return {...state, newPostText: action.postText}
             }
             return state;
         default:
