@@ -1,34 +1,25 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
+import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import styles from './MyPosts.module.css';
-import {ActionType} from "../../../../redux/redux-store";
-import {addPostAC, PostType, updateNewPostTextAC} from "../../../../redux/profile-reducer";
+import {PostType} from "../../../../redux/profile-reducer";
 
 
 type PropsType = {
     posts: Array<PostType>;
     newPostText: string;
-    dispatch:(action: ActionType) => void
-    // addPost:() => void;
-    // updateNewPostText: (newPostText: string) => void;
+    addPost:() => void;
+    updateNewPostText: (newPostText: string) => void;
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
 
     const onButtonClickHandler = () => {
-        // if(newPostElement.current){
-            props.dispatch(addPostAC());
-            // props.addPost();
-            // props.updateNewPostText('');
-            // newPostElement.current.value='';
-        // }
+            props.addPost();
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement> ) => {
-        props.dispatch(updateNewPostTextAC(event.currentTarget.value));
-        // props.updateNewPostText(event.currentTarget.value);
+        props.updateNewPostText(event.currentTarget.value);
     }
-
 
     return (
         <div className={styles.postsBlock}>
@@ -36,7 +27,6 @@ const MyPosts: React.FC<PropsType> = (props) => {
             <div>
                 <div>
                     <textarea
-                        // ref={newPostElement}
                         value={props.newPostText}
                         onChange={onChangeHandler}>
                     </textarea>
