@@ -1,17 +1,10 @@
 import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import styles from './MyPosts.module.css';
-import {PostType} from "../../../../redux/profile-reducer";
+import {MyPostsPropsType} from "./MyPostsContainer";
 
 
-type PropsType = {
-    posts: Array<PostType>;
-    newPostText: string;
-    addPost:() => void;
-    updateNewPostText: (newPostText: string) => void;
-}
-
-const MyPosts: React.FC<PropsType> = (props) => {
+const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
     const onButtonClickHandler = () => {
             props.addPost();

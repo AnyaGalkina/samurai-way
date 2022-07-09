@@ -1,38 +1,39 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
-import Post from "./Post/Post";
-import styles from './MyPosts.module.css';
-import {ActionType, AppState} from "../../../../redux/redux-store";
-import {addPostAC, PostType, ProfilePageType, updateNewPostTextAC} from "../../../../redux/profile-reducer";
+import React from "react";
+import {AppStateType} from "../../../../redux/redux-store";
+import {addPostAC, PostType, updateNewPostTextAC} from "../../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
-
-type PropsType = {
-    profilePage: ProfilePageType;
-    dispatch:(action: ActionType) => void
-    // addPost:() => void;
-    // updateNewPostText: (newPostText: string) => void;
+type MapStateToPropsType = {
+    posts: Array<PostType>;
+    newPostText: string
 }
 
-const MyPostsContainer: React.FC<PropsType> = (props) => {
+type MapDispatchToPropsType = {
+    updateNewPostText: (newPostText: string) => void;
+    addPost: () => void;
+}
 
-    const addPost = () => {
-        props.dispatch(addPostAC());
+export type MyPostsPropsType = MapStateToPropsType & MapDispatchToPropsType;
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+    return {
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
     }
+}
 
-
-    const updateNewPostText = (newPostText: string)  => {
-        props.dispatch(updateNewPostTextAC(newPostText));
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
+    return {
+        addPost: () => {
+            dispatch(addPostAC());
+        },
+        updateNewPostText: (newPostText: string) => {
+            dispatch(updateNewPostTextAC(newPostText));
+        }
     }
+}
 
-
-    return (
-        <MyPosts
-            posts={props.profilePage.posts}
-            newPostText={props.profilePage.newPostText}
-            addPost={addPost}
-            updateNewPostText={updateNewPostText}
-        />
-    );
-};
-
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 export default MyPostsContainer;

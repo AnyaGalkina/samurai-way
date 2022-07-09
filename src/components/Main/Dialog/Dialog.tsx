@@ -2,16 +2,11 @@ import React from 'react';
 import styles from './Dialog.module.css'
 import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
-import {ActionType} from "../../../redux/redux-store";
-import {DialogPageType} from "../../../redux/dialogs-reducer";
 import DialogTextAreaContainer from "./DialogTextArea/DialogTextAreaContainer";
+import {DialogPropsType} from "./DialogContainer";
 
-type PropsType = {
-    dialogsPage: DialogPageType;
-    dispatch:(action: ActionType) => void
-}
 
-const Dialog: React.FC<PropsType> = (props) => {
+const Dialog: React.FC<DialogPropsType> = (props) => {
 
     let dialogList = props.dialogsPage.dialogItems.map(d => <DialogItems key={d.id} name={d.name} id={d.id}/>)
 
@@ -24,10 +19,7 @@ const Dialog: React.FC<PropsType> = (props) => {
             </div>
             <div className={styles.messages}>
                 {messageList}
-                <DialogTextAreaContainer
-                    dialogsPage={props.dialogsPage}
-                    dispatch={props.dispatch}
-                />
+                <DialogTextAreaContainer/>
             </div>
         </div>
     );

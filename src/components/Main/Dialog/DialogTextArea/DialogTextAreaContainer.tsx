@@ -1,26 +1,25 @@
 import React from "react";
-import {ActionType} from "../../../../redux/redux-store";
-import {addMessageAC, DialogPageType, updateNewMessageTextAC} from "../../../../redux/dialogs-reducer";
+import { AppStateType} from "../../../../redux/redux-store";
+import {addMessageAC,  updateNewMessageTextAC} from "../../../../redux/dialogs-reducer";
 import DialogTextArea from "./DialogTextArea";
+import {connect} from "react-redux";
 
-type PropsType = {
-    dialogsPage: DialogPageType;
-    dispatch: (action: ActionType) => void
+const mapStateToProps = (state: AppStateType) => {
+    return {
+        newMessageText: state.dialogPage.newMessageText,
+    }
 }
 
-const DialogTextAreaContainer: React.FC<PropsType> = (props) => {
-
-    const updateNewMessageText = (newMessage: string) => {
-        props.dispatch(updateNewMessageTextAC(newMessage));
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        updateNewMessageText: (newMessage: string) => {
+            dispatch(updateNewMessageTextAC(newMessage));
+        },
+        addMessage: () => {
+            dispatch(addMessageAC());
+        }
     }
+}
 
-    const addMessage= () => {
-        props.dispatch(addMessageAC());
-    }
-
-    return (
-        <DialogTextArea newMessageText={props.dialogsPage.newMessageText} addMessage={addMessage} updateNewMessageText={updateNewMessageText}/>
-    );
-};
-
+const DialogTextAreaContainer = connect(mapStateToProps, mapDispatchToProps)(DialogTextArea);
 export default DialogTextAreaContainer;

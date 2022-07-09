@@ -3,27 +3,16 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
-import Profile from "./components/Main/Profile/Profile";
-import Dialog from "./components/Main/Dialog/Dialog";
 import {Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
-import Developers from "./components/Main/Developers";
+import Developers from "./components/Main/Users/Developers";
 import News from "./components/Main/News";
-import {ActionType, AppState} from "./redux/redux-store";
+import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
+import {ProfileContainer} from "./components/Main/Profile/ProfileContainer";
 
 
-type PropsType = {
-    state: AppState;
-    dispatch: (action: ActionType) => void
-    // addPost: () => void;
-    // updateNewPostText: (newPostText: string) => void;
-    // addMessage: () => void;
-    // updateNewMessageText: (newMessageText: string) => void;
-}
-
-const App: React.FC<PropsType> = (props) => {
-
+const App: React.FC = () => {
 
     return (
         <div className="app-wrapper">
@@ -33,16 +22,10 @@ const App: React.FC<PropsType> = (props) => {
             <div className="app-wrapper-content">
                 <Switch>
                     <Route path="/profile"
-                           render={() => <Profile
-                               profilePage={props.state.profilePage}
-                               dispatch={props.dispatch}
-                           />
+                           render={() => <ProfileContainer/>
                            }/>
                     <Route path="/dialogs"
-                           render={() => <Dialog
-                               dialogsPage={props.state.dialogPage}
-                               dispatch={props.dispatch}
-                           />
+                           render={() => <DialogContainer/>
                            }/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
