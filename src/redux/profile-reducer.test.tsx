@@ -1,17 +1,6 @@
-import profileReducer, {ADD_POST, PostType, ProfilePageType, UPDATE_NEW_POST_TEXT} from "./profile-reducer";
+import profileReducer, {ADD_POST, InitialStateType, UPDATE_NEW_POST_TEXT} from "./profile-reducer";
 
-let state: ProfilePageType;
-//
-// beforeEach(() => {
-//     state = {
-//         posts: [
-//             {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
-//             {id: 2, likesCounter: 70, postText: "Good luck!"},
-//         ],
-//         newPostText: "",
-//     }
-// });
-
+let state: InitialStateType;
 
 test("new post text should be updated", () => {
 

@@ -9,33 +9,23 @@ export type PostType = {
     postText: string
 }
 
-export type ProfilePageType = {
-    posts: Array<PostType>;
-    newPostText: string
-}
-
-let initialState: ProfilePageType = {
+let initialState = {
     posts: [
         {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
         {id: 2, likesCounter: 70, postText: "Good luck!"},
-    ],
+    ] as Array<PostType>,
     newPostText: "",
 }
 
-const profileReducer = (state = initialState, action: ActionType) => {
+export type InitialStateType = typeof initialState;
+
+const profileReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
 
     switch (action.type) {
         case ADD_POST:
             let newPost: PostType = {id: 3, likesCounter: 0, postText: state.newPostText}
-            // state.posts.push(newPost);
-            // state.newPostText = "";
             return {...state, posts: [...state.posts, newPost], newPostText: ""};
         case UPDATE_NEW_POST_TEXT:
-            // if (action.postText) {
-            //     state.newPostText = action.postText;
-            // }
-            // return  state;
-            //
             if (action.postText) {
                 return {...state, newPostText: action.postText}
             }

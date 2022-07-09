@@ -9,7 +9,7 @@ export type ActionType =
     | ReturnType<typeof updateNewMessageTextAC>;
 
 type RootReducersType = typeof rootReducers;
-export type AppState = ReturnType<RootReducersType>;
+export type AppStateType = ReturnType<RootReducersType>;
 
 let rootReducers = combineReducers({
     dialogPage: dialogsReducer,

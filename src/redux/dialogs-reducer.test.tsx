@@ -1,8 +1,10 @@
-import dialogsReducer, {ADD_MESSAGE, DialogPageType, UPDATE_NEW_MESSAGE_TEXT} from "./dialogs-reducer";
+import dialogsReducer, {ADD_MESSAGE, InitialStateType, UPDATE_NEW_MESSAGE_TEXT} from "./dialogs-reducer";
 
-test("new massage text should be updated", ()=> {
+let state: InitialStateType;
 
-    let state: DialogPageType  = {
+test("new massage text should be updated", () => {
+
+    state = {
         messages: [
             {id: 1, messageBody: "Hi! Have a good day!"},
             {id: 2, messageBody: "Good luck!"},
@@ -26,7 +28,7 @@ test("new massage text should be updated", ()=> {
 
 test("new massage should be added", () => {
 
-    let state: DialogPageType  = {
+    state = {
         messages: [
             {id: 1, messageBody: "Hi! Have a good day!"},
             {id: 2, messageBody: "Good luck!"},
