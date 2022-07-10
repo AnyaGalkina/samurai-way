@@ -6,10 +6,10 @@ import NavBar from "./components/NavBar/NavBar";
 import {Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
-import Developers from "./components/Main/Users/Developers";
 import News from "./components/Main/News";
 import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
 import {ProfileContainer} from "./components/Main/Profile/ProfileContainer";
+import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
 
 
 const App: React.FC = () => {
@@ -30,7 +30,7 @@ const App: React.FC = () => {
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route exact path="/settings" render={() => <Settings/>}/>
-                    <Route path="/developers" render={() => <Developers/>}/>
+                    <Route path="/developers" render={() => <DevelopersContainer />}/>
                     <Route path="/*" render={() => <div>404</div>}/>
                 </Switch>
             </div>
