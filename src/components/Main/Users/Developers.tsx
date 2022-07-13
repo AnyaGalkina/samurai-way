@@ -2,45 +2,29 @@ import React from "react";
 import {DevelopersPropsType} from "./DevelopersContainer";
 import Avatar from "../Avatar/Avatar";
 import defaultUserAvatar from "../../../assets/images/defaultUserPhoto.jpg";
+import axios from "axios";
 
 const Developers: React.FC<DevelopersPropsType> = (props) => {
+    let getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
 
-    if (props.users.length === 0) {
-        props.setUsers(
-            [{
-                id: 1,
-                photoUrl: defaultUserAvatar,
-                followed: false,
-                fullName: "Frank",
-                status: "That's my status",
-                location: {city: "Phuket", country: "Thailand"}
-            },
-            {
-                id: 2,
-                photoUrl: defaultUserAvatar,
-                followed: true,
-                fullName: "Joe",
-                status: "That's my status",
-                location: {city: "Phuket", country: "Thailand"}
-            },
-            {
-                id: 3,
-                photoUrl: defaultUserAvatar,
-                followed: true,
-                fullName: "Oliver",
-                status: "That's my status",
-                location: {city: "Phuket", country: "Thailand"}
-            }]
-        )
+                .then(response => {
+                    debugger
+                    props.setUsers(response.data.items)
+                })
+        }
     }
 
     return (
         <div>
+            <button onClick={() => getUsers()}>Get users</button>
+
             {props.users.map(u =>
                 <div key={u.id}>
                     <span>
                         <div>
-                            <Avatar src={u.photoUrl}/>
+                            <Avatar src={u.photos.small ? u.photos.small : defaultUserAvatar}/>
                         </div>
                         <div>
                             {u.followed ?
@@ -56,13 +40,13 @@ const Developers: React.FC<DevelopersPropsType> = (props) => {
                     </span>
                     <span>
                         <span>
-                            <div>{u.fullName}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
-                        <span>
-                            <div>{u.location.city}</div>
-                            <div>{u.location.country}</div>
-                        </span>
+                        {/*<span>*/}
+                        {/*    <div>{u.location.city}</div>*/}
+                        {/*    <div>{u.location.country}</div>*/}
+                        {/*</span>*/}
                     </span>
                 </div>
             )}

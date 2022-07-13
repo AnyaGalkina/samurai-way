@@ -1,18 +1,20 @@
 import React from "react";
-import Developers from "./Developers";
+import Developers from "./DevelopersClass";
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
 import {followAC, InitialStateType, setUsersAC, unfollowAC, UserType} from "../../../redux/users-reducer";
 import {AppStateType} from "../../../redux/redux-store";
 
-type MapStateToPropsType = {
+export type MapStateToPropsType = {
     users: Array<UserType>
 }
-type MapDispatchToPropsType = {
+
+export type MapDispatchToPropsType = {
     follow: (userId: number) => void,
     unfollow: (userId: number) => void,
     setUsers: (users: Array<UserType>) => void
 }
+
 export type DevelopersPropsType = MapStateToPropsType & MapDispatchToPropsType;
 
 
@@ -24,10 +26,16 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 
 const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
     return {
-        follow: (userId) => {dispatch(followAC(userId))},
-        unfollow: (userId) => {dispatch(unfollowAC(userId))},
-        setUsers: (users) => {dispatch(setUsersAC(users))}
+        follow: (userId) => {
+            dispatch(followAC(userId))
+        },
+        unfollow: (userId) => {
+            dispatch(unfollowAC(userId))
+        },
+        setUsers: (users) => {
+            dispatch(setUsersAC(users))
+        }
     }
 }
 
-export const DevelopersContainer =  connect(mapStateToProps, mapDispatchToProps)(Developers);
+export const DevelopersContainer = connect(mapStateToProps, mapDispatchToProps)(Developers);
