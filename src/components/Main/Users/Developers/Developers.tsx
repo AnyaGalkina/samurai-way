@@ -2,7 +2,8 @@ import React from "react";
 import Avatar from "../../../common/Avatar/Avatar";
 import defaultUserAvatar from "../../../../assets/images/defaultUserPhoto.jpg";
 import styles from "./Developers.module.css";
-import {UserType} from "../../../../redux/users-reducer";
+import {NavLink} from "react-router-dom";
+import {UserType} from "../../../../redux/types";
 
 type PropsType = {
     users: Array<UserType>;
@@ -41,7 +42,9 @@ const Developers: React.FC<PropsType> = (props) => {
                 <div key={u.id}>
                     <span>
                         <div>
-                            <Avatar src={u.photos.small ? u.photos.small : defaultUserAvatar}/>
+                            <NavLink to={"/profile"+u.id}>
+                                <Avatar src={u.photos.small ? u.photos.small : defaultUserAvatar}/>
+                            </NavLink>
                         </div>
                         <div>
                             {u.followed ?

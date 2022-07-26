@@ -8,7 +8,7 @@ import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
 import News from "./components/Main/News";
 import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
-import {ProfileContainer} from "./components/Main/Profile/ProfileContainer";
+import {ProfileContainerWithConnect} from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
 
 
@@ -21,8 +21,8 @@ const App: React.FC = () => {
             <NavBar/>
             <div className="app-wrapper-content">
                 <Switch>
-                    <Route path="/profile"
-                           render={() => <ProfileContainer/>
+                    <Route path="/profile/:userId?"
+                           render={() => <ProfileContainerWithConnect />
                            }/>
                     <Route path="/dialogs"
                            render={() => <DialogContainer/>
