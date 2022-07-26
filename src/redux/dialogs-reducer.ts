@@ -46,10 +46,10 @@ const dialogsReducer = (state: InitialStateType  = initialState, action: ActionT
     }
 }
 
-export const updateNewMessageTextAC = (messageText: string) => {
+export const updateNewMessageText = (messageText: string) => {
     return ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: messageText} as const);
 };
-export const addMessageAC = () => {
+export const addMessage = () => {
     return ({type: ADD_MESSAGE} as const);
 };
 

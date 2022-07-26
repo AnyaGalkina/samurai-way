@@ -1,6 +1,6 @@
 import React from "react";
 import { AppStateType} from "../../../../redux/redux-store";
-import {addMessageAC,  updateNewMessageTextAC} from "../../../../redux/dialogs-reducer";
+import {addMessage,  updateNewMessageText} from "../../../../redux/dialogs-reducer";
 import DialogTextArea from "./DialogTextArea";
 import {connect} from "react-redux";
 
@@ -13,10 +13,10 @@ const mapStateToProps = (state: AppStateType) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         updateNewMessageText: (newMessage: string) => {
-            dispatch(updateNewMessageTextAC(newMessage));
+            dispatch(updateNewMessageText(newMessage));
         },
         addMessage: () => {
-            dispatch(addMessageAC());
+            dispatch(addMessage());
         }
     }
 }
