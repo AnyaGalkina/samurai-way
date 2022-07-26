@@ -1,13 +1,27 @@
 import {combineReducers, createStore} from "redux";
-import dialogsReducer, {addMessageAC, updateNewMessageTextAC} from "./dialogs-reducer";
-import profileReducer, {addPostAC, updateNewPostTextAC} from "./profile-reducer";
-import usersReducer from "./users-reducer";
+import dialogsReducer, {addMessage, updateNewMessageText} from "./dialogs-reducer";
+import profileReducer, {addPost, setUserProfile, updateNewPostText} from "./profile-reducer";
+import usersReducer, {
+    follow,
+    setCurrentPage,
+    setToggleIsFetching,
+    setTotalUsersCount,
+    setUsers,
+    unfollow
+} from "./users-reducer";
 
 export type ActionType =
-    ReturnType<typeof addPostAC>
-    | ReturnType<typeof updateNewPostTextAC>
-    | ReturnType<typeof addMessageAC>
-    | ReturnType<typeof updateNewMessageTextAC>;
+    ReturnType<typeof addPost>
+    | ReturnType<typeof updateNewPostText>
+    | ReturnType<typeof addMessage>
+    | ReturnType<typeof updateNewMessageText>
+    | ReturnType<typeof follow>
+    | ReturnType<typeof setToggleIsFetching>
+    | ReturnType<typeof unfollow>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setTotalUsersCount>
+    | ReturnType<typeof setUserProfile>;
 
 type RootReducersType = typeof rootReducers;
 export type AppStateType = ReturnType<RootReducersType>;
@@ -19,6 +33,6 @@ let rootReducers = combineReducers({
 })
 
 
- let store = createStore(rootReducers);
+let store = createStore(rootReducers);
 
 export default store;

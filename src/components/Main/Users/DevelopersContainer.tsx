@@ -1,5 +1,4 @@
 import React from "react";
-import {Dispatch} from "redux";
 import {connect} from "react-redux";
 import {
     follow,
@@ -8,12 +7,12 @@ import {
     setTotalUsersCount,
     setUsers,
     unfollow,
-    UserType
 } from "../../../redux/users-reducer";
 import {AppStateType} from "../../../redux/redux-store";
 import axios from "axios";
 import Developers from "./Developers/Developers";
 import Preloader from "../../common/Preloader/Preloader";
+import {UserType} from "../../../redux/types";
 
 
 class UsersContainer extends React.Component<MapStateToPropsType & MapDispatchToPropsType> {
@@ -89,28 +88,5 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         isFetching: state.usersPage.isFetching
     }
 }
-
-// const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         setTotalUsersCount: (totalUsersCount) => {
-//             dispatch(setTotalCountAC(totalUsersCount))
-//         },
-//         setToggleIsFetching: (isFetching) => {
-//             dispatch(setToggleIsFetchingAC(isFetching))
-//         },
-//     }
-// }
 
 export const DevelopersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setToggleIsFetching})(UsersContainer);

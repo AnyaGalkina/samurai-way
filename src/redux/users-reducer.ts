@@ -1,3 +1,6 @@
+import {ActionType} from "./redux-store";
+import {UserType} from "./types";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -6,39 +9,7 @@ const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_TOGGLE_IS_FETCHING = "SET_TOGGLE_IS_FETCHING";
 
 
-// type LocationType = {
-//     city: string;
-//     country: string
-// }
-
-type PhotosType = {
-    small: string | null;
-    large: string | null
-}
-
-export type UserType = {
-    id: number;
-    name: string;
-    uniqueUrlName: null | string;
-    status: string | null;
-    followed: boolean;
-    photos: PhotosType;
-}
-
 export type InitialStateType = typeof initialState;
-type ActionType =
-    FollowType
-    | SetToggleIsFetchingType
-    | UnfollowType
-    | SetUsersType
-    | SetCurrentPageType
-    | SetTotalUsersCountType;
-type FollowType = ReturnType<typeof follow>;
-type UnfollowType = ReturnType<typeof unfollow>;
-type SetUsersType = ReturnType<typeof setUsers>;
-type SetCurrentPageType = ReturnType<typeof setCurrentPage>;
-type SetTotalUsersCountType = ReturnType<typeof setTotalUsersCount>;
-type SetToggleIsFetchingType = ReturnType<typeof setToggleIsFetching>;
 
 let initialState = {
     users: [] as Array<UserType>,
