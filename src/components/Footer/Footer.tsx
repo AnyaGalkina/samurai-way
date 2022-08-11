@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
+
 
 const Footer = () => {
     return (
-        <footer>
+        <footer
+            // className={styles.footer}
+        >
             Footer
         </footer>
     );

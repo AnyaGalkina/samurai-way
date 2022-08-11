@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import {Route, Switch} from "react-router-dom";
@@ -10,6 +9,7 @@ import News from "./components/Main/News";
 import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
 import {ProfileContainerWithConnect} from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 const App: React.FC = () => {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
     return (
         <div className="app-wrapper">
             Hello, samurai! Let's go!
-            <Header/>
+            <HeaderContainer />
             <NavBar/>
             <div className="app-wrapper-content">
                 <Switch>
