@@ -9,34 +9,40 @@ import {
     unfollow,
 } from "../../../redux/users-reducer";
 import {AppStateType} from "../../../redux/redux-store";
-import axios from "axios";
 import Developers from "./Developers/Developers";
 import Preloader from "../../common/Preloader/Preloader";
 import {UserType} from "../../../redux/types";
+import {usersAPI} from "../../../api/api";
 
 
 class UsersContainer extends React.Component<MapStateToPropsType & MapDispatchToPropsType> {
 
     componentDidMount() {
         this.props.setToggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setToggleIsFetching(false);
-                console.log(response.data.items);
-                console.log(response.data.totalCount);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
-            })
 
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            //@ts-ignore
+            .then((response) => {
+                debugger
+                this.props.setToggleIsFetching(false);
+                console.log(response.items);
+                console.log(response.totalCount);
+                this.props.setUsers(response.items);
+                this.props.setTotalUsersCount(response.totalCount);
+            })
     }
 
     onPageChanged = (pageNumber: number) => {
         this.props.setToggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        usersAPI.getUsers(pageNumber,this.props.pageSize)
+        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+        //     withCredentials: true,
+        // })
+            //@ts-ignore
             .then(response => {
                 this.props.setToggleIsFetching(false);
-                this.props.setUsers(response.data.items);
+                this.props.setUsers(response.items);
             })
     }
 
@@ -89,4 +95,11 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const DevelopersContainer = connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setToggleIsFetching})(UsersContainer);
+export const DevelopersContainer = connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    setToggleIsFetching
+})(UsersContainer);

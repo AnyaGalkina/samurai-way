@@ -4,6 +4,8 @@ import defaultUserAvatar from "../../../../assets/images/defaultUserPhoto.jpg";
 import styles from "./Developers.module.css";
 import {NavLink} from "react-router-dom";
 import {UserType} from "../../../../redux/types";
+import axios from "axios";
+import {usersAPI} from "../../../../api/api";
 
 type PropsType = {
     users: Array<UserType>;
@@ -42,18 +44,29 @@ const Developers: React.FC<PropsType> = (props) => {
                 <div key={u.id}>
                     <span>
                         <div>
-                            <NavLink to={"/profile"+u.id}>
+                            <NavLink to={"/profile" + u.id}>
                                 <Avatar src={u.photos.small ? u.photos.small : defaultUserAvatar}/>
                             </NavLink>
                         </div>
                         <div>
-                            {u.followed ?
-                                <button onClick={() => {
-                                    props.unfollow(u.id)
+                            {u.followed
+                                ? <button onClick={() => {
+                                    usersAPI.unfollow(u.id)
+                                        .then(response => {
+                                            if (response.resultCode === 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                        })
+
                                 }}>unfollow</button>
                                 :
                                 <button onClick={() => {
-                                    props.follow(u.id)
+                                    usersAPI.follow(u.id)
+                                        .then((response) => {
+                                            if (response.resultCode === 0) {
+                                                props.follow(u.id)
+                                            }
+                                        })
                                 }}>follow</button>
                             }
                         </div>
