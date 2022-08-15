@@ -1,11 +1,13 @@
 import usersReducer, {
-    follow,
+    followSuccess,
     InitialStateType,
     setCurrentPage,
     setToggleIsFetching,
-    setTotalUsersCount, setUsers,
-    unfollow
+    setTotalUsersCount,
+    setUsers, toggleFollowingProgress,
+    unfollowSuccess
 } from "./users-reducer";
+import news from "../components/Main/News";
 
 let initialState: InitialStateType;
 
@@ -49,13 +51,14 @@ beforeEach(() => {
         pageSize: 10,
         totalUsersCount: 100,
         currentPage: 1,
-        isFetching: false
+        isFetching: false,
+        followingInProgress: []
     }
 });
 
 test("exact user should be folloed", () => {
 
-    let newState = usersReducer(initialState, follow(22));
+    let newState = usersReducer(initialState, followSuccess(22));
 
     expect(newState.users[1].followed).toBeTruthy();
     expect(newState.users[2].followed).toBeFalsy();
@@ -63,7 +66,7 @@ test("exact user should be folloed", () => {
 
 test("exact user should be unfolloed", () => {
 
-    let newState = usersReducer(initialState, unfollow(11));
+    let newState = usersReducer(initialState, unfollowSuccess(11));
 
     expect(newState.users[0].followed).toBeFalsy();
 });
@@ -106,8 +109,42 @@ test("current page should be updated", () => {
 })
 test("toggleIsFetching should be true", () => {
 
-    let newState = usersReducer(initialState,  setToggleIsFetching(true));
+    let newState = usersReducer(initialState, setToggleIsFetching(true));
 
     expect(newState.isFetching).toBeTruthy();
 })
 
+test("add user id to array toggle following Progress", () => {
+    let newState = usersReducer(initialState, toggleFollowingProgress(true, 42));
+
+    expect(newState.followingInProgress[0]).toBe(42);
+})
+
+
+test("delete user id to array toggle following Progress", () => {
+    let prevState = initialState = {
+        users: [
+            {
+                id: 11,
+                name: "First User",
+                uniqueUrlName: "",
+                status: "",
+                followed: true,
+                photos: {
+                    small: null,
+                    large: null,
+                },
+            },
+        ],
+        pageSize: 10,
+        totalUsersCount: 100,
+        currentPage: 1,
+        isFetching: true,
+        followingInProgress: [42]
+    }
+
+
+    let newState = usersReducer(prevState, toggleFollowingProgress(false, 42));
+
+    expect(newState.followingInProgress.length).toBe(0);
+})

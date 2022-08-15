@@ -23,7 +23,6 @@ let initialState = {
 }
 
 const userReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
-    debugger
     switch (action.type) {
         case FOLLOW:
             return {...state, users: state.users.map(u => u.id === action.payload.userId ? {...u, followed: true} : u)};
@@ -40,7 +39,7 @@ const userReducer = (state: InitialStateType = initialState, action: ActionType)
         case TOGGLE_FOLLOWING_PROGRESS:
             return {
                 ...state,
-                followingInProgress: state.isFetching
+                followingInProgress: action.payload.isFetching
                     ? [...state.followingInProgress, action.payload.userId]
                     : [...state.followingInProgress.filter(id => id != action.payload.userId)]
             }
@@ -50,11 +49,9 @@ const userReducer = (state: InitialStateType = initialState, action: ActionType)
 }
 
 export const followSuccess = (userId: number) => {
-    debugger
     return {type: FOLLOW, payload: {userId}} as const
 };
 export const unfollowSuccess = (userId: number) => {
-    debugger
     return {type: UNFOLLOW, payload: {userId}} as const
 };
 export const setUsers = (users: Array<UserType>) => {
@@ -70,13 +67,11 @@ export const setToggleIsFetching = (isFetching: boolean) => {
     return {type: TOGGLE_IS_FETCHING, payload: {isFetching}} as const
 };
 export const toggleFollowingProgress = (isFetching: boolean, userId: number) => {
-    debugger
     return {type: TOGGLE_FOLLOWING_PROGRESS, payload: {isFetching, userId}} as const
 }
 
 export const getUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: any) => {
-        debugger
         dispatch(setToggleIsFetching(true));
         dispatch(setCurrentPage(currentPage));
 

@@ -32,7 +32,6 @@ const Developers: React.FC<PropsType> = (props) => {
                             key={p}
                             className={`${props.currentPage === p ? styles.selectedPage : styles.page}`}
                             onClick={() => {
-                                debugger
                                 props.onPageChanged(p)
                             }}
                         >{p}</span>)
