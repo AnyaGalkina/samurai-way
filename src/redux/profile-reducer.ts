@@ -1,5 +1,6 @@
 import {ActionType} from "./redux-store";
 import {ProfileType} from "./types";
+import {profileAPI} from "../api/api";
 
 export const ADD_POST = "ADD_POST";
 export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
@@ -29,7 +30,6 @@ let initialState = {
 // export type InitialStateType = typeof initialState;
 
 const profileReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
-
     switch (action.type) {
         case ADD_POST:
             let newPost: PostType = {id: 3, likesCounter: 0, postText: state.newPostText}
@@ -56,6 +56,13 @@ export const setUserProfile = (userProfile: ProfileType ) => {
     return ({type: SET_USER_PROFILE, userProfile} as const);
 }
 
-
+export const getUserProfile = (userId: number) => {
+    return (dispatch: any) => {
+        profileAPI.getProfile(userId)
+            .then((response) => {
+                dispatch(setUserProfile(response));
+            })
+    }
+}
 
 export default profileReducer;
