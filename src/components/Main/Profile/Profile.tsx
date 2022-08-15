@@ -5,11 +5,13 @@ import MyPostsContainer from "./My Posts/MyPostsContainer";
 import {InitialStateType} from "../../../redux/profile-reducer";
 
 type PropsType = {
-    profilePage: InitialStateType,
+    profilePage: InitialStateType;
+    isAuth: boolean;
 }
 
 
 const Profile: React.FC<PropsType> = (props) => {
+
     return (
         <div className={styles.descriptionBlock}>
             <ProfileInfo profile={props.profilePage.profile}/>
