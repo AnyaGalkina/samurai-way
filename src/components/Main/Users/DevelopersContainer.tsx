@@ -5,6 +5,8 @@ import {AppStateType} from "../../../redux/redux-store";
 import Developers from "./Developers/Developers";
 import Preloader from "../../common/Preloader/Preloader";
 import {UserType} from "../../../redux/types";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class UsersContainer extends React.Component<MapStateToPropsType & MapDispatchToPropsType> {
@@ -63,8 +65,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const DevelopersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    getUsers
-})(UsersContainer);
+export const DevelopersContainer = compose(
+    connect(mapStateToProps, {follow, unfollow, getUsers}),
+    withAuthRedirect)
+(UsersContainer);

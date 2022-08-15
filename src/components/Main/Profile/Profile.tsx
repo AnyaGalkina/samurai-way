@@ -15,8 +15,7 @@ const Profile: React.FC<PropsType> = (props) => {
     return (
         <div className={styles.descriptionBlock}>
             <ProfileInfo profile={props.profilePage.profile}/>
-            <MyPostsContainer
-            />
+            <MyPostsContainer/>
         </div>
     );
 };

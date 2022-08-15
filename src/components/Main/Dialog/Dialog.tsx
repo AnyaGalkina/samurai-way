@@ -4,7 +4,6 @@ import DialogItems from "./DialogItems/DialogItems";
 import Message from "./Messages/Message";
 import DialogTextAreaContainer from "./DialogTextArea/DialogTextAreaContainer";
 import {DialogPropsType} from "./DialogContainer";
-import {Redirect} from "react-router-dom";
 
 
 const Dialog: React.FC<DialogPropsType> = (props) => {
