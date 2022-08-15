@@ -1,11 +1,8 @@
 import React from "react";
 import Header from "./Header";
-import axios from "axios";
 import {connect} from "react-redux";
-import {setToggleIsFetchingAuth, setAuthUserData,} from "../../redux/auth-reducer";
 import {AppStateType} from "../../redux/redux-store";
-import {ProfileType} from "../../redux/types";
-import {setUserProfile} from "../../redux/profile-reducer";
+import {getAuthUserData} from "../../redux/auth-reducer";
 
 type MapStateToPropsType = {
     isAuth: boolean,
@@ -15,34 +12,14 @@ type MapStateToPropsType = {
 }
 
 type MapDispatchToPropsType = {
-    setAuthUserData: (userId: number, email: string, login: string) => void;
-    setToggleIsFetchingAuth: (isFetching: boolean) => void;
-    // setUserProfile: (userProfile: ProfileType ) => void;
+    getAuthUserData: () => any
 }
 
-type OwnProps =  MapStateToPropsType & MapDispatchToPropsType;
-
-
+type OwnProps = MapStateToPropsType & MapDispatchToPropsType;
 
 class HeaderContainer extends React.Component<OwnProps> {
     componentDidMount() {
-        this.props.setToggleIsFetchingAuth(true);
-        axios.get("https://social-network.samuraijs.com/api/1.0//auth/me", {
-            withCredentials: true
-        })
-            .then((response) => {
-                let {id, email, login} = response.data.data;
-                this.props.setToggleIsFetchingAuth(false)
-                if(response.data.resultCode === 0) {
-                    this.props.setAuthUserData(id, email, login);
-                }
-            })
-        // if(this.props.id) {
-        //     axios.get("https://social-network.samuraijs.com/api/1.0/profile/"+ this.props.id)
-        //         .then((response) => {
-        //             this.props.setUserProfile(response.data)
-        //         })
-        // }
+        this.props.getAuthUserData();
     }
 
     render() {
@@ -59,7 +36,4 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-
-export default  connect(mapStateToProps, {setAuthUserData, setToggleIsFetchingAuth,
-    // setUserProfile
-})(HeaderContainer)
+export default connect(mapStateToProps, {getAuthUserData})(HeaderContainer)

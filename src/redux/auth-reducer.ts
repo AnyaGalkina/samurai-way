@@ -1,4 +1,5 @@
 import {ActionType} from "./redux-store";
+import {authAPI} from "../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
 const SET_TOGGLE_IS_FETCHING = "SET_TOGGLE_IS_FETCHING/auth-reducer.ts";
@@ -25,7 +26,7 @@ const authReducer = (state: InitialStateType = initialState, action: ActionType)
         case SET_USER_DATA:
             return {...state, ...action.payload, isAuth: true};
         case SET_TOGGLE_IS_FETCHING:
-            return {...state, isFetching: action.isFetching };
+            return {...state, isFetching: action.isFetching};
         default:
             return state;
     }
@@ -38,5 +39,21 @@ export const setAuthUserData = (userId: number, email: string, login: string) =>
 export const setToggleIsFetchingAuth = (isFetching: boolean) => {
     return {type: SET_TOGGLE_IS_FETCHING, isFetching} as const
 };
+
+
+export const getAuthUserData = () => {
+   return (dispatch: any) => {
+        dispatch(setToggleIsFetchingAuth(true));
+        authAPI.getMe()
+            .then((response) => {
+                let {id, email, login} = response.data;
+                dispatch(setToggleIsFetchingAuth(false))
+                if (response.resultCode === 0) {
+                    dispatch(setAuthUserData(id, email, login));
+                }
+            })
+    }
+}
+
 
 export default authReducer;
