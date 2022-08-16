@@ -23,20 +23,16 @@ const App: React.FC = () => {
             <div className="app-wrapper-content">
                 <Switch>
                     <Route path="/profile/:userId?"
-                           //@ts-ignore
                            render={() => <ProfileContainer />
                            }/>
                     <Route path="/dialogs"
-                        //@ts-ignore
                            render={() => <DialogContainer />
                            }/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route exact path="/settings" render={() => <Settings/>}/>
                     <Route exact path="/login" render={() => <Login/>}/>
-                    <Route path="/developers" render={() =>
-                        //@ts-ignore
-                        <DevelopersContainer />}/>
+                    <Route path="/developers" render={() => <DevelopersContainer />}/>
                     <Route path="/*" render={() => <div>404</div>}/>
                 </Switch>
             </div>

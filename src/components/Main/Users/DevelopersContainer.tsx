@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ComponentType} from "react";
 import {connect} from "react-redux";
 import {follow, getUsers, unfollow,} from "../../../redux/users-reducer";
 import {AppStateType} from "../../../redux/redux-store";
@@ -65,7 +65,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const DevelopersContainer = compose(
+export const DevelopersContainer = compose<ComponentType>(
     connect(mapStateToProps, {follow, unfollow, getUsers}),
-    withAuthRedirect)
-(UsersContainer);
+    withAuthRedirect
+)(UsersContainer);
