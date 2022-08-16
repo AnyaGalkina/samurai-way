@@ -12,9 +12,10 @@ test("new post text should be updated", () => {
             {id: 2, likesCounter: 70, postText: "Good luck!"},
         ],
         newPostText: "",
+        // userStatus: "abc"
     }
 
-    let newState = profileReducer(state, {type: UPDATE_NEW_POST_TEXT, postText: "new text"});
+    let newState = profileReducer(state, {type: UPDATE_NEW_POST_TEXT, payload:{newPostText: "new text"}});
 
     expect(newState.newPostText).toBe("new text");
     expect(newState.posts.length).toBe(2);
@@ -74,7 +75,7 @@ test("profile should be set", () => {
 
     let newState = profileReducer(state, setUserProfile(newUserProfile));
 
-    expect(newState.profile?.aboutMe).toBe( "I'm a cool guy");
+    expect(newState.profile?.aboutMe).toBe("I'm a cool guy");
     expect(newState.profile?.contacts.vk).toBe("https://vk.com");
     expect(newState.profile?.contacts.twitter).toBe(null);
     expect(newState.profile?.userId).toBe(25);

@@ -22,7 +22,7 @@ export type ProfileType = {
     fullName: string;
     contacts: ProfileContactsType;
     photos: PhotosType;
-    userStatus?: string |null;
+    userStatus?: string;
     updateUserStatus?: boolean;
 };
 

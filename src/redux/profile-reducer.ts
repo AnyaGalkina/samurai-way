@@ -5,6 +5,7 @@ import {profileAPI} from "../api/api";
 export const ADD_POST = "ADD_POST";
 export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
 export const SET_USER_PROFILE = "SET_USER_PROFILE";
+export const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
 
 export type PostType = {
     id: number;
@@ -25,6 +26,7 @@ let initialState = {
         {id: 2, likesCounter: 70, postText: "Good luck!"},
     ],
     newPostText: "",
+    userStatus: ""
 }
 
 // export type InitialStateType = typeof initialState;
@@ -35,26 +37,31 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionTy
             let newPost: PostType = {id: 3, likesCounter: 0, postText: state.newPostText}
             return {...state, posts: [...state.posts, newPost], newPostText: ""};
         case UPDATE_NEW_POST_TEXT:
-            if (action.postText) {
-                return {...state, newPostText: action.postText}
+            if (action.payload.newPostText) {
+                return {...state, newPostText: action.payload.newPostText}
             }
             return state;
         case SET_USER_PROFILE:
-            return {...state, profile: action.userProfile}
+        case UPDATE_USER_STATUS:
+            return {...state, ...action.payload}
+        // return {...state, profile: action.payload.profile};
         default:
             return state;
     }
 }
 
-export const updateNewPostText = (postText: string) => {
-    return ({type: UPDATE_NEW_POST_TEXT, postText: postText} as const)
+export const updateNewPostText = (newPostText: string) => {
+    return ({type: UPDATE_NEW_POST_TEXT, payload: {newPostText}} as const)
 };
 export const addPost = () => {
     return ({type: ADD_POST} as const);
 }
-export const setUserProfile = (userProfile: ProfileType ) => {
-    return ({type: SET_USER_PROFILE, userProfile} as const);
-}
+export const setUserProfile = (profile: ProfileType) => {
+    return ({type: SET_USER_PROFILE, payload: {profile}} as const);
+};
+export const updateUserStatus = (userStatus: string) => {
+    return ({type: UPDATE_USER_STATUS, payload: {userStatus}} as const)
+};
 
 export const getUserProfile = (userId: number) => {
     return (dispatch: any) => {
@@ -64,5 +71,11 @@ export const getUserProfile = (userId: number) => {
             })
     }
 }
+
+// export const getUserStatus = () => {
+//     return(dispatch: any) => {
+//
+//     }
+// }
 
 export default profileReducer;

@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import dialogsReducer, {addMessage, updateNewMessageText} from "./dialogs-reducer";
-import profileReducer, {addPost, setUserProfile, updateNewPostText} from "./profile-reducer";
+import profileReducer, {addPost, setUserProfile, updateNewPostText, updateUserStatus} from "./profile-reducer";
 import usersReducer, {
     followSuccess,
     setCurrentPage,
@@ -27,6 +27,7 @@ export type ActionType =
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setAuthUserData>
     | ReturnType<typeof setToggleIsFetchingAuth>
+    | ReturnType<typeof updateUserStatus>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;
