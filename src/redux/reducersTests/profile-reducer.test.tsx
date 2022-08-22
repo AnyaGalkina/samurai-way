@@ -1,5 +1,5 @@
-import profileReducer, {ADD_POST, InitialStateType, setUserProfile, UPDATE_NEW_POST_TEXT} from "./profile-reducer";
-import {ProfileType} from "./types";
+import profileReducer, {ADD_POST, InitialStateType, setUserProfile, UPDATE_NEW_POST_TEXT} from "../profile-reducer";
+import {ProfileType} from "../types";
 
 let state: InitialStateType;
 
@@ -12,7 +12,7 @@ test("new post text should be updated", () => {
             {id: 2, likesCounter: 70, postText: "Good luck!"},
         ],
         newPostText: "",
-        // userStatus: "abc"
+        userStatus: "abc"
     }
 
     let newState = profileReducer(state, {type: UPDATE_NEW_POST_TEXT, payload:{newPostText: "new text"}});
@@ -30,6 +30,7 @@ test("post should be added", () => {
             {id: 2, likesCounter: 70, postText: "Good luck!"},
         ],
         newPostText: "new text",
+        userStatus: ''
     }
 
     let newState = profileReducer(state, {type: ADD_POST});
@@ -48,6 +49,7 @@ test("profile should be set", () => {
             {id: 2, likesCounter: 70, postText: "Good luck!"},
         ],
         newPostText: "",
+        userStatus:''
     }
 
     let newUserProfile: ProfileType = {

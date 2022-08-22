@@ -6,15 +6,17 @@ import {InitialStateType} from "../../../redux/profile-reducer";
 
 type PropsType = {
     profilePage: InitialStateType;
-    isAuth: boolean;
+    // isAuth: boolean;
+    status: string;
+    updateUserStatus: ( status: string ) => any;
 }
 
 
-const Profile: React.FC<PropsType> = (props) => {
-
+const Profile: React.FC<PropsType> = ({ profilePage, status,   updateUserStatus, ...restProps }) => {
+debugger
     return (
         <div className={styles.descriptionBlock}>
-            <ProfileInfo profile={props.profilePage.profile}/>
+            <ProfileInfo profile={profilePage.profile} status={status} updateUserStatus={updateUserStatus }/>
             <MyPostsContainer/>
         </div>
     );

@@ -6,8 +6,8 @@ import usersReducer, {
     setTotalUsersCount,
     setUsers, toggleFollowingProgress,
     unfollowSuccess
-} from "./users-reducer";
-import news from "../components/Main/News";
+} from "../users-reducer";
+import news from "../../components/Main/News";
 
 let initialState: InitialStateType;
 

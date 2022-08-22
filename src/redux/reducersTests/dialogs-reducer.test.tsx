@@ -1,4 +1,4 @@
-import dialogsReducer, {ADD_MESSAGE, InitialStateType, UPDATE_NEW_MESSAGE_TEXT} from "./dialogs-reducer";
+import dialogsReducer, {ADD_MESSAGE, InitialStateType, UPDATE_NEW_MESSAGE_TEXT} from "../dialogs-reducer";
 
 let state: InitialStateType;
 

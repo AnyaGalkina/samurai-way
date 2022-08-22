@@ -1,4 +1,4 @@
-import {InitialStateType} from "./auth-reducer";
+import {InitialStateType} from "../auth-reducer";
 
 let initialState: InitialStateType;
 beforeEach(() => {

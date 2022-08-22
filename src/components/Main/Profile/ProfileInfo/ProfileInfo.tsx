@@ -6,14 +6,17 @@ import noSign from "../../../../assets/images/noSign.png";
 import Avatar from "../../../common/Avatar/Avatar";
 import {ProfileType} from "../../../../redux/types";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import {stat} from "fs";
 
 
 type PropsType = {
-    profile: ProfileType | null
+    profile: ProfileType | null;
+    status: string | undefined;
+    updateUserStatus: ( status: string ) => any;
 }
 
-const ProfileInfo: React.FC<PropsType> = (props) => {
-    if (!props.profile) {
+const ProfileInfo: React.FC<PropsType> = ({profile, status, updateUserStatus}) => {
+    if (!profile) {
         return <Preloader/>
     }
 
@@ -25,16 +28,16 @@ const ProfileInfo: React.FC<PropsType> = (props) => {
             {/*        alt="mainPhoto"></img>*/}
             {/*</div>*/}
             <div>
-                <img src={props.profile.photos.large ? props.profile.photos.large : defaultUserAvatar} alt={"avatar"}/>
-                <ProfileStatus status={props.profile.userStatus}/>
+                <img src={profile.photos.large ? profile.photos.large : defaultUserAvatar} alt={"avatar"}/>
+                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
                 <h3>About Me:</h3>
-                <p>{props.profile.aboutMe}</p>
+                <p>{profile.aboutMe}</p>
 
                 <h3>Looking for a job description:</h3>
-                <p>{props.profile.lookingForAJobDescription}</p>
+                <p>{profile.lookingForAJobDescription}</p>
 
                 <h3>Contacts:</h3>
-                <h3>Looking for a job: <span> <Avatar src={props.profile.lookingForAJob ? yesSign : noSign}/> </span>
+                <h3>Looking for a job: <span> <Avatar src={profile.lookingForAJob ? yesSign : noSign}/> </span>
                 </h3>
 
             </div>

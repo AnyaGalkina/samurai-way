@@ -1,20 +1,18 @@
 import React, {ChangeEvent, useState} from "react";
 
 type PropsType = {
-    status?: string | undefined;
-
+    status: string | undefined;
+    updateUserStatus: ( status: string ) => any;
 }
 
-const ProfileStatus: React.FC<PropsType> = ({status}) => {
-    const [editMode, setEditMode] = useState(false);
-    const [statusText, setStatusText] = useState("");
+const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus}) => {
+    console.log(status)
 
-    const changeEditMode = () => {
-        setEditMode(!editMode)
-    }
+    const [editMode, setEditMode] = useState(false);
+    const [statusText, setStatusText] = useState(status === undefined ? "" : status );
 
     const handleOnClickStatusChange = () => {
-        changeEditMode();
+        setEditMode(true);
     }
 
     const handleOnChangeStatus = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,8 +20,9 @@ const ProfileStatus: React.FC<PropsType> = ({status}) => {
     }
 
     const handleOnBlurSetStatus = () => {
-        // dispatch
-        changeEditMode();
+        // debugger
+        updateUserStatus(statusText);
+        setEditMode(false);
     }
 
     return (
@@ -32,12 +31,13 @@ const ProfileStatus: React.FC<PropsType> = ({status}) => {
                 <div>
                     <input
                         autoFocus
+                        value={statusText}
                         onChange={handleOnChangeStatus}
                         onBlur={handleOnBlurSetStatus}></input>
                 </div>
                 :
                 <div>
-                    <span onDoubleClick={handleOnClickStatusChange}>{status}</span>
+                    <span  placeholder={"add status"} onClick={handleOnClickStatusChange}>{status || "------"}</span>
                 </div>
             }
         </>
