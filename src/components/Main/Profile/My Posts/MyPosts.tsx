@@ -1,8 +1,8 @@
-import React, {} from 'react';
+import React, {} from "react";
 import Post from "./Post/Post";
-import styles from './MyPosts.module.css';
+import styles from "./MyPosts.module.css";
 import {MyPostsPropsType} from "./MyPostsContainer";
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {AddMyPostFormDataType, ReduxAddMyPostForm} from "./AddMyPostForm/AddMyPostForm";
 
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
@@ -15,11 +15,15 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
         <div className={styles.postsBlock}>
             My Post
             <div>
-                <ReduxAddMyPostForm onSubmit={onHandleSubmit} />
+                <ReduxAddMyPostForm onSubmit={onHandleSubmit}/>
             </div>
             <div className={styles.posts}>
-                {props.posts.map(post => <Post key={post.id} likesCounter={post.likesCounter}
-                                               postText={post.postText}/>)}
+                {props.posts.map(post =>
+                    <Post
+                        key={post.id}
+                        likesCounter={post.likesCounter}
+                        postText={post.postText}
+                    />)}
             </div>
         </div>
     );
@@ -27,19 +31,3 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
 
 export default MyPosts;
 
-export type AddMyPostFormDataType = {
-    myPostText: string
-}
-
-export const  AddMyPostForm: React.FC<InjectedFormProps<AddMyPostFormDataType>> = (props) => {
-    return(
-        <form onSubmit={props.handleSubmit}>
-            <Field component={"textarea"} name={"myPostText"}/>
-            <div>
-                <button>Add Post</button>
-            </div>
-        </form>
-    )
-}
-
-export const ReduxAddMyPostForm = reduxForm<AddMyPostFormDataType>({form: "myPost"})(AddMyPostForm)
