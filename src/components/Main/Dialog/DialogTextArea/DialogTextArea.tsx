@@ -1,32 +1,29 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
-type PropsType = {
-    newMessageText: string;
-    addMessage: () => void;
-    updateNewMessageText: (newMessageText: string) => void;
+
+export type NewMessageFormType = {
+    dialogTextArea: string;
 }
 
-const DialogTextArea: React.FC<PropsType> = (props) => {
-
-    const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewMessageText(event.currentTarget.value);
-    }
-
-    const onButtonClickHandler = () => {
-        props.addMessage();
-    }
+const DialogTextArea: React.FC<InjectedFormProps<NewMessageFormType>> = (props) => {
 
     return (
         <div>
-            <textarea
-                value={props.newMessageText}
-                onChange={onChangeHandler}>
-            </textarea>
-            <div>
-                <button onClick={onButtonClickHandler}>Add message</button>
-            </div>
+            <form onSubmit={props.handleSubmit}>
+                <Field
+                    name={"dialogTextArea"}
+                    component={"textarea"}
+                    placeholder={"Enter your message text"}
+                />
+                <div>
+                    <button>Add message</button>
+                </div>
+            </form>
         </div>
     );
 };
 
 export default DialogTextArea;
+
+export const ReduxAddMessageForm = reduxForm<NewMessageFormType>({form: "message"})(DialogTextArea)

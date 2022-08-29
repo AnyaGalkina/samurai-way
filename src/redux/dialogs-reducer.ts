@@ -1,5 +1,6 @@
 import {ActionType } from "./redux-store";
 
+
 export const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
 export const ADD_MESSAGE = "ADD_MESSAGE";
 
@@ -26,7 +27,6 @@ let initialState = {
             {id: 3, name: "Sveta"},
             {id: 4, name: "Olga"},
         ] as Array<DialogItemType>,
-        newMessageText: "",
     };
 
 export type InitialStateType = typeof initialState;
@@ -34,23 +34,15 @@ export type InitialStateType = typeof initialState;
 const dialogsReducer = (state: InitialStateType  = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMessage = {id: 10, messageBody: state.newMessageText};
-            return { ...state, messages:[...state.messages, newMessage], newMessageText:''};
-        case UPDATE_NEW_MESSAGE_TEXT:
-            if (action.messageText) {
-                return {...state, newMessageText: action.messageText};
-            }
-            return state;
+            let newMessage = {id: 10, messageBody: action.payload.newMessageText};
+            return { ...state, messages:[...state.messages, newMessage]};
         default:
             return state;
     }
 }
 
-export const updateNewMessageText = (messageText: string) => {
-    return ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: messageText} as const);
-};
-export const addMessage = () => {
-    return ({type: ADD_MESSAGE} as const);
+export const addMessage = (newMessageText: string) => {
+    return ({type: ADD_MESSAGE, payload: {newMessageText}} as const);
 };
 
 
