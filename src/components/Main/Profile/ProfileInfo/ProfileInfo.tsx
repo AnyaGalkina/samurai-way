@@ -6,7 +6,6 @@ import noSign from "../../../../assets/images/noSign.png";
 import Avatar from "../../../common/Avatar/Avatar";
 import {ProfileType} from "../../../../redux/types";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
-import {stat} from "fs";
 
 
 type PropsType = {

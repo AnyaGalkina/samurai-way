@@ -3,23 +3,6 @@ import {ProfileType} from "../types";
 
 let state: InitialStateType;
 
-test("new post text should be updated", () => {
-
-    state = {
-        profile: null,
-        posts: [
-            {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
-            {id: 2, likesCounter: 70, postText: "Good luck!"},
-        ],
-        newPostText: "",
-        userStatus: "abc"
-    }
-
-    let newState = profileReducer(state, {type: UPDATE_NEW_POST_TEXT, payload:{newPostText: "new text"}});
-
-    expect(newState.newPostText).toBe("new text");
-    expect(newState.posts.length).toBe(2);
-})
 
 test("post should be added", () => {
 
@@ -29,15 +12,13 @@ test("post should be added", () => {
             {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
             {id: 2, likesCounter: 70, postText: "Good luck!"},
         ],
-        newPostText: "new text",
         userStatus: ''
     }
 
-    let newState = profileReducer(state, {type: ADD_POST});
+    let newState = profileReducer(state, {type: ADD_POST, payload: {postText:"new text" }});
 
     expect(newState.posts.length).toBe(3);
     expect(newState.posts[2].postText).toBe("new text");
-    expect(newState.newPostText).toBe("");
 })
 
 test("profile should be set", () => {
@@ -48,7 +29,6 @@ test("profile should be set", () => {
             {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
             {id: 2, likesCounter: 70, postText: "Good luck!"},
         ],
-        newPostText: "",
         userStatus:''
     }
 

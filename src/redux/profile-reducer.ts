@@ -16,7 +16,6 @@ export type PostType = {
 export type InitialStateType = {
     profile: null | ProfileType,
     posts: Array<PostType>,
-    newPostText: string,
     userStatus: string
 }
 
@@ -26,23 +25,14 @@ let initialState = {
         {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
         {id: 2, likesCounter: 70, postText: "Good luck!"},
     ],
-    newPostText: "",
     userStatus: ""
 }
 
-// export type InitialStateType = typeof initialState;
-
 const profileReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
-    // debugger
     switch (action.type) {
         case ADD_POST:
-            let newPost: PostType = {id: 3, likesCounter: 0, postText: state.newPostText}
-            return {...state, posts: [...state.posts, newPost], newPostText: ""};
-        case UPDATE_NEW_POST_TEXT:
-            if (action.payload.newPostText) {
-                return {...state, newPostText: action.payload.newPostText}
-            }
-            return state;
+            let newPost: PostType = {id: 3, likesCounter: 0, postText: action.payload.postText}
+            return {...state, posts: [...state.posts, newPost]};
         case SET_USER_PROFILE:
         case UPDATE_USER_STATUS:
             return {...state, ...action.payload}
@@ -52,17 +42,13 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionTy
     }
 }
 
-export const updateNewPostText = (newPostText: string) => {
-    return ({type: UPDATE_NEW_POST_TEXT, payload: {newPostText}} as const)
-};
-export const addPost = () => {
-    return ({type: ADD_POST} as const);
+export const addPost = (postText: string) => {
+    return ({type: ADD_POST, payload: {postText}} as const);
 }
 export const setUserProfile = (profile: ProfileType) => {
     return ({type: SET_USER_PROFILE, payload: {profile}} as const);
 };
 export const setUserStatus = (userStatus: string) => {
-    // debugger
     return ({type: UPDATE_USER_STATUS, payload: {userStatus}} as const)
 };
 
@@ -91,7 +77,6 @@ export const updateUserStatus = (status: string) => {
     return (dispatch: any) => {
         profileAPI.updateStatus(status)
             .then(response => {
-                // debugger
                 if (response.resultCode === 0) {
                     dispatch(setUserStatus(status))
                 }
