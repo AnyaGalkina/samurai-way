@@ -1,10 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import dialogsReducer, {addMessage, updateNewMessageText} from "./dialogs-reducer";
+import dialogsReducer, {addMessage} from "./dialogs-reducer";
 import profileReducer, {
     addPost,
     setUserProfile,
     setUserStatus,
-    updateNewPostText,
 } from "./profile-reducer";
 import usersReducer, {
     followSuccess,
@@ -17,12 +16,11 @@ import usersReducer, {
 } from "./users-reducer";
 import authReducer, {setAuthUserData, setToggleIsFetchingAuth} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
+import {reducer as formReducer} from "redux-form";
 
 export type ActionType =
     ReturnType<typeof addPost>
-    | ReturnType<typeof updateNewPostText>
     | ReturnType<typeof addMessage>
-    | ReturnType<typeof updateNewMessageText>
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof setToggleIsFetching>
     | ReturnType<typeof unfollowSuccess>
@@ -42,7 +40,8 @@ let rootReducers = combineReducers({
     dialogPage: dialogsReducer,
     profilePage: profileReducer,
     usersPage: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    form: formReducer
 })
 
 
