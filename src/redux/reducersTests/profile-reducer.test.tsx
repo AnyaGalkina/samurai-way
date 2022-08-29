@@ -1,8 +1,22 @@
-import profileReducer, {ADD_POST, InitialStateType, setUserProfile, UPDATE_NEW_POST_TEXT} from "../profile-reducer";
+import profileReducer, {ADD_POST, InitialStateType, setUserProfile, setUserStatus} from "../profile-reducer";
 import {ProfileType} from "../types";
 
 let state: InitialStateType;
 
+test("status should be updated", () => {
+    state = {
+        profile: null,
+        posts: [
+            {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
+            {id: 2, likesCounter: 70, postText: "Good luck!"},
+        ],
+        userStatus: '123'
+    }
+
+    const newState = profileReducer(state, setUserStatus("new status"))
+
+    expect(newState.userStatus).toBe("new status")
+})
 
 test("post should be added", () => {
 
