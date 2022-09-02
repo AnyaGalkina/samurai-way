@@ -23,8 +23,8 @@ const App: React.FC = () => {
             <div className="app-wrapper-content">
                 <Switch>
                     <Route path="/profile/:userId?"
-                           render={() => <ProfileContainer />
-                           }/>
+                           render={() => <ProfileContainer />}
+                           />
                     <Route path="/dialogs"
                            render={() => <DialogContainer />
                            }/>
