@@ -13,7 +13,6 @@ type PropsType = {
 
 
 const Profile: React.FC<PropsType> = ({ profilePage, status,   updateUserStatus, ...restProps }) => {
-debugger
     return (
         <div className={styles.descriptionBlock}>
             <ProfileInfo profile={profilePage.profile} status={status} updateUserStatus={updateUserStatus }/>

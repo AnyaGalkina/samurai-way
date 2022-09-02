@@ -32,7 +32,6 @@ let initialState = {
 export type InitialStateType = typeof initialState;
 
 const dialogsReducer = (state: InitialStateType  = initialState, action: ActionType): InitialStateType => {
-    debugger
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {id: 10, messageBody: action.payload.messageBody};

@@ -6,7 +6,6 @@ type PropsType = {
 }
 
 const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus}) => {
-    console.log(status)
 
     const [editMode, setEditMode] = useState(false);
     const [statusText, setStatusText] = useState(status === undefined ? "" : status );

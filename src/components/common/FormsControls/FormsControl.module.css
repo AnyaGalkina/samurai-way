@@ -5,3 +5,10 @@
 .error span {
     color: darkred;
 }
+
+.formSummaryError {
+    border: solid 2px darkred;
+    padding: 15px;
+    color: rosybrown;
+    width: 200px;
+}
