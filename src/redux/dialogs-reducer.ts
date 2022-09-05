@@ -42,7 +42,6 @@ const dialogsReducer = (state: InitialStateType  = initialState, action: ActionT
 }
 
 export const addMessage = (messageBody: string) => {
-    debugger
     return ({type: ADD_MESSAGE, payload: {messageBody}} as const);
 };
 
