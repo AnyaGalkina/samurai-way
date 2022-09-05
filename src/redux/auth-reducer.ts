@@ -45,7 +45,7 @@ export const setToggleIsFetchingAuth = (isFetching: boolean) => {
 export const getAuthUserData = () => {
     return (dispatch: any) => {
         dispatch(setToggleIsFetchingAuth(true));
-        authAPI.getMe()
+        return authAPI.getMe()
             .then((response) => {
                 let {id, email, login} = response.data;
                 if (response.resultCode === 0) {
@@ -63,14 +63,14 @@ export const login = (email: string, password: string, rememberMe: boolean) => (
             dispatch(setToggleIsFetchingAuth(false))
             if (response.resultCode === 0) {
                 dispatch(getAuthUserData());
-            }else{
-                let errorMessage =  response.messages.length > 0 ? response.messages[0] : "some error";
-                dispatch(stopSubmit("login", {_error:  errorMessage }));
+            } else {
+                let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
+                dispatch(stopSubmit("login", {_error: errorMessage}));
             }
         })
 }
 
-export const logout =  () => (dispatch: any) => {
+export const logout = () => (dispatch: any) => {
     authAPI.logout()
         .then((response) => {
             if (response.resultCode === 0) {
