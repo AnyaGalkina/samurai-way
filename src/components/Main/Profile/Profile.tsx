@@ -6,7 +6,6 @@ import {InitialStateType} from "../../../redux/profile-reducer";
 
 type PropsType = {
     profilePage: InitialStateType;
-    // isAuth: boolean;
     status: string;
     updateUserStatus: ( status: string ) => any;
 }

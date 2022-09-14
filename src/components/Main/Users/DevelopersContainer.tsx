@@ -23,7 +23,6 @@ class UsersContainer extends React.Component<MapStateToPropsType & MapDispatchTo
     }
 
     onPageChanged = (pageNumber: number) => {
-        debugger
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
 

@@ -9,9 +9,9 @@ export type AddMyPostFormDataType = {
 
 const maxLength50 = maxLengthCreator(50);
 
-export const  AddMyPostForm: React.FC<InjectedFormProps<AddMyPostFormDataType>> = (props) => {
+export const  AddMyPostForm: React.FC<InjectedFormProps<AddMyPostFormDataType>> = ({handleSubmit}) => {
     return(
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <Field component={Textarea} name={"myPostText"}
                    validate={[maxLength50]}
             />

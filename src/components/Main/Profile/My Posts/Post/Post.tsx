@@ -7,12 +7,12 @@ type PropsType = {
     postText: string
 }
 
-const Post: React.FC<PropsType> = (props) => {
+const Post: React.FC<PropsType> = ({postText, likesCounter}) => {
     return (
             <div className={styles.item}>
                 <Avatar src={"https://hw-media.herworld.com/public/girl-with-backpack.jpg"} />
-                <div>{props.postText}</div>
-                <div><span>♥ {props.likesCounter}</span></div>
+                <div>{postText}</div>
+                <div><span>♥ {likesCounter}</span></div>
                 <div>
                     <button>♥</button>
                 </div>
