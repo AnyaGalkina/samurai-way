@@ -1,11 +1,11 @@
-import React, {} from "react";
+import React, {memo} from "react";
 import Post from "./Post/Post";
 import styles from "./MyPosts.module.css";
 import {MyPostsPropsType} from "./MyPostsContainer";
 import {AddMyPostFormDataType, ReduxAddMyPostForm} from "./AddMyPostForm/AddMyPostForm";
 
 
-const MyPosts: React.FC<MyPostsPropsType> = (props) => {
+const MyPosts: React.FC<MyPostsPropsType> = memo((props) => {
 
     const onHandleSubmit = (formData: AddMyPostFormDataType) => {
         props.addPost(formData.myPostText);
@@ -27,7 +27,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
             </div>
         </div>
     );
-};
+});
 
 export default MyPosts;
 

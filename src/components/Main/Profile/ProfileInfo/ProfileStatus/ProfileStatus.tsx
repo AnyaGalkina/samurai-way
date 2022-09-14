@@ -19,7 +19,6 @@ const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus}) => {
     }
 
     const handleOnBlurSetStatus = () => {
-        // debugger
         updateUserStatus(statusText);
         setEditMode(false);
     }

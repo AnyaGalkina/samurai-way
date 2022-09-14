@@ -2,8 +2,8 @@ import {ActionType} from "./redux-store";
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = "SET_USER_DATA";
-const SET_TOGGLE_IS_FETCHING = "SET_TOGGLE_IS_FETCHING/auth-reducer.ts";
+const SET_USER_DATA = "AUTH/SET_USER_DATA";
+const SET_TOGGLE_IS_FETCHING = "AUTH/SET_TOGGLE_IS_FETCHING/auth-reducer.ts";
 
 
 export type InitialStateType = typeof initialState;
@@ -42,41 +42,33 @@ export const setToggleIsFetchingAuth = (isFetching: boolean) => {
 };
 
 
-export const getAuthUserData = () => {
-    return (dispatch: any) => {
-        dispatch(setToggleIsFetchingAuth(true));
-        return authAPI.getMe()
-            .then((response) => {
-                let {id, email, login} = response.data;
-                if (response.resultCode === 0) {
-                    dispatch(setAuthUserData(id, email, login, true));
-                }
-                dispatch(setToggleIsFetchingAuth(false))
-            })
+export const getAuthUserData = () => async (dispatch: any) => {
+    dispatch(setToggleIsFetchingAuth(true));
+    let response = await authAPI.getMe();
+    let {id, email, login} = response.data;
+    if (response.resultCode === 0) {
+        dispatch(setAuthUserData(id, email, login, true));
+    }
+    dispatch(setToggleIsFetchingAuth(false));
+}
+
+export const login = (email: string, password: string, rememberMe: boolean) => async (dispatch: any) => {
+    dispatch(setToggleIsFetchingAuth(true));
+    let response = await authAPI.login(email, password, rememberMe);
+    dispatch(setToggleIsFetchingAuth(false));
+    if (response.resultCode === 0) {
+        dispatch(getAuthUserData());
+    } else {
+        let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
+        dispatch(stopSubmit("login", {_error: errorMessage}));
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: any) => {
-    dispatch(setToggleIsFetchingAuth(true));
-    authAPI.login(email, password, rememberMe)
-        .then((response) => {
-            dispatch(setToggleIsFetchingAuth(false))
-            if (response.resultCode === 0) {
-                dispatch(getAuthUserData());
-            } else {
-                let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
-                dispatch(stopSubmit("login", {_error: errorMessage}));
-            }
-        })
-}
-
-export const logout = () => (dispatch: any) => {
-    authAPI.logout()
-        .then((response) => {
-            if (response.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false));
-            }
-        })
+export const logout = () => async (dispatch: any) => {
+    let response = await authAPI.logout();
+    if (response.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false));
+    }
 }
 
 export default authReducer;

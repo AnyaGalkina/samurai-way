@@ -2,10 +2,9 @@ import {ActionType} from "./redux-store";
 import {ProfileType} from "./types";
 import {profileAPI} from "../api/api";
 
-export const ADD_POST = "ADD_POST";
-export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
-export const SET_USER_PROFILE = "SET_USER_PROFILE";
-export const UPDATE_USER_STATUS = "UPDATE_USER_STATUS";
+export const ADD_POST = "PROFILE/ADD_POST";
+export const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
+export const UPDATE_USER_STATUS = "PROFILE/UPDATE_USER_STATUS";
 
 export type PostType = {
     id: number;
@@ -36,7 +35,6 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionTy
         case SET_USER_PROFILE:
         case UPDATE_USER_STATUS:
             return {...state, ...action.payload}
-        // return {...state, profile: action.payload.profile};
         default:
             return state;
     }

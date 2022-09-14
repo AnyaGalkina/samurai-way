@@ -1,8 +1,8 @@
 import {ActionType } from "./redux-store";
 
 
-export const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
-export const ADD_MESSAGE = "ADD_MESSAGE";
+export const UPDATE_NEW_MESSAGE_TEXT = "DIALOGS/UPDATE_NEW_MESSAGE_TEXT";
+export const ADD_MESSAGE = "DIALOGS/ADD_MESSAGE";
 
 export type MessageType = {
     id: number;

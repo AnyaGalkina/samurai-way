@@ -3,7 +3,7 @@ import {Dispatch} from "redux";
 import {getAuthUserData} from "./auth-reducer";
 
 
-const SET_INITIALIZED_SUCCESS = "SET_INITIALIZED_SUCCESS ";
+const SET_INITIALIZED_SUCCESS = "APP/SET_INITIALIZED_SUCCESS ";
 
 let initialState = {
     initialized: false
