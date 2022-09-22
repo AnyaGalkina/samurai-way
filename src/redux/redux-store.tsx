@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import dialogsReducer, {addMessage} from "./dialogs-reducer";
 import profileReducer, {
     addPost,
@@ -47,7 +47,11 @@ let rootReducers = combineReducers({
     app: appReducer
 })
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducers, /* preloadedState, */ composeEnhancers(
+    applyMiddleware(thunkMiddleware)
+));
 
-let store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
+// let store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
 
 export default store;
