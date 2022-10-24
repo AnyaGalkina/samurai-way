@@ -22,7 +22,9 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const DialogContainer = compose<ComponentType>(
+const DialogContainer = compose<ComponentType>(
     connect(mapStateToProps, {addMessage}),
     withAuthRedirect
 )(Dialog);
+
+export default DialogContainer;

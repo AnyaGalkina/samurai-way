@@ -6,7 +6,7 @@ import {Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
 import News from "./components/Main/News";
-import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
+// import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
 import ProfileContainer from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -16,6 +16,7 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
+import {ROUTES} from "./components/common/enums/routes";
 
 type MapStateToPropsType = {
     initialized: boolean
@@ -25,6 +26,8 @@ type MapDispatchToPropsType = {
 }
 type OwnProps = MapStateToPropsType & MapDispatchToPropsType;
 
+const DialogContainer = React.lazy(() => import("./components/Main/Dialog/DialogContainer"))
+
 class App extends React.Component<OwnProps> {
 // class App extends React.Component<any> {
 
@@ -33,8 +36,8 @@ class App extends React.Component<OwnProps> {
     }
 
     render() {
-        if(!this.props.initialized){
-            return( <Preloader/>)
+        if (!this.props.initialized) {
+            return (<Preloader/>)
         }
 
         return (
@@ -44,17 +47,19 @@ class App extends React.Component<OwnProps> {
                 <NavBar/>
                 <div className="app-wrapper-content">
                     <Switch>
-                        <Route path="/profile/:userId?"
+                        <Route path={ROUTES.PROFILE}
                                render={() => <ProfileContainer/>}
                         />
-                        <Route path="/dialogs"
-                               render={() => <DialogContainer/>}
+                        <Route path={ROUTES.DIALOGS}
+                               render={() => <React.Suspense fallback={<Preloader/>}>
+                                   <DialogContainer/>
+                               </React.Suspense>}
                         />
-                        <Route path="/news" render={() => <News/>}/>
-                        <Route path="/music" render={() => <Music/>}/>
-                        <Route exact path="/settings" render={() => <Settings/>}/>
-                        <Route exact path="/login" render={() => <Login/>}/>
-                        <Route path="/developers" render={() => <DevelopersContainer/>}/>
+                        <Route path={ROUTES.NEWS} render={() => <News/>}/>
+                        <Route path={ROUTES.MUSIC} render={() => <Music/>}/>
+                        <Route exact path={ROUTES.SETTINGS} render={() => <Settings/>}/>
+                        <Route exact path={ROUTES.LOGIN} render={() => <Login/>}/>
+                        <Route path={ROUTES.USERS} render={() => <DevelopersContainer/>}/>
                         <Route path="/*" render={() => <div>404</div>}/>
                     </Switch>
                 </div>
