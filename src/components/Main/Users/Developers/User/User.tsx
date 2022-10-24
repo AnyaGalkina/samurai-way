@@ -17,7 +17,7 @@ const User: React.FC<PropsType> = ({user, unfollow, follow, followingInProgress}
         <div>
             <span>
                 <div>
-                    <NavLink to={"/profile" + user.id}>
+                    <NavLink to={"/profile/" + user.id}>
                         <Avatar src={user.photos.small ? user.photos.small : defaultUserAvatar}/>
                     </NavLink>
                 </div>
