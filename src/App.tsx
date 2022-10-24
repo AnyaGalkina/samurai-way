@@ -6,7 +6,6 @@ import {Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
 import News from "./components/Main/News";
-// import {DialogContainer} from "./components/Main/Dialog/DialogContainer";
 import ProfileContainer from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";

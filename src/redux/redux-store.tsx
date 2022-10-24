@@ -47,10 +47,14 @@ let rootReducers = combineReducers({
     app: appReducer
 })
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducers, /* preloadedState, */ composeEnhancers(
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const store = createStore(rootReducers, /* preloadedState, */ composeEnhancers(
+//     applyMiddleware(thunkMiddleware)
+// ));
+
+const store = createStore(rootReducers, /* preloadedState, */
     applyMiddleware(thunkMiddleware)
-));
+);
 
 // let store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
 
