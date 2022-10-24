@@ -7,7 +7,7 @@ import usersReducer, {
     setUsers, toggleFollowingProgress,
     unfollowSuccess
 } from "../users-reducer";
-import news from "../../components/Main/News";
+
 
 let initialState: InitialStateType;
 
@@ -49,6 +49,7 @@ beforeEach(() => {
             },
         ],
         pageSize: 10,
+        portionSize: 10,
         totalUsersCount: 100,
         currentPage: 1,
         isFetching: false,
@@ -71,7 +72,7 @@ test("exact user should be unfolloed", () => {
     expect(newState.users[0].followed).toBeFalsy();
 });
 
-test("users should be updated ", () => {
+test("users should be updated", () => {
 
     let newUsers = [
         {
@@ -137,6 +138,7 @@ test("delete user id to array toggle following Progress", () => {
             },
         ],
         pageSize: 10,
+        portionSize: 10,
         totalUsersCount: 100,
         currentPage: 1,
         isFetching: true,
