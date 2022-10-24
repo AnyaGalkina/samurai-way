@@ -1,21 +1,21 @@
 import {ActionType} from "./redux-store";
-import {ProfileType} from "./types";
+import {PhotosType, ProfileType} from "./types";
 import {profileAPI} from "../api/api";
-
 export const ADD_POST = "PROFILE/ADD_POST";
 export const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
 export const UPDATE_USER_STATUS = "PROFILE/UPDATE_USER_STATUS";
+export const SAVE_PHOTO_SUCCESS = "PROFILE/SAVE_PHOTO_SUCCESS";
 
 export type PostType = {
     id: number;
     likesCounter: number;
-    postText: string,
+    postText: string;
 }
 
 export type InitialStateType = {
-    profile: null | ProfileType,
-    posts: Array<PostType>,
-    userStatus: string
+    profile: null | ProfileType;
+    posts: Array<PostType>;
+    userStatus: string;
 }
 
 let initialState = {
@@ -32,6 +32,12 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionTy
         case ADD_POST:
             let newPost: PostType = {id: 3, likesCounter: 0, postText: action.payload.postText}
             return {...state, posts: [...state.posts, newPost]};
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+              //@ts-ignore
+                profile: {...state.profile, photos: action.payload.photos}
+            }
         case SET_USER_PROFILE:
         case UPDATE_USER_STATUS:
             return {...state, ...action.payload}
@@ -49,6 +55,9 @@ export const setUserProfile = (profile: ProfileType) => {
 export const setUserStatus = (userStatus: string) => {
     return ({type: UPDATE_USER_STATUS, payload: {userStatus}} as const)
 };
+export const savePhotoSuccess = (photos: PhotosType) => {
+    return ({type: SAVE_PHOTO_SUCCESS, payload: {photos}} as const)
+}
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
     let response = await profileAPI.getProfile(userId);
@@ -64,6 +73,13 @@ export const updateUserStatus = (status: string) => async (dispatch: any) => {
     let response = await profileAPI.updateStatus(status);
     if (response.resultCode === 0) {
         dispatch(setUserStatus(status));
+    }
+}
+
+export const savePhoto = (photo: File) => async (dispatch: any) => {
+    let response = await profileAPI.updatePhoto(photo);
+    if (response.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.photos));
     }
 }
 

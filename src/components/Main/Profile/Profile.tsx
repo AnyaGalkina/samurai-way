@@ -7,14 +7,16 @@ import {InitialStateType} from "../../../redux/profile-reducer";
 type PropsType = {
     profilePage: InitialStateType;
     status: string;
-    updateUserStatus: ( status: string ) => any;
+    isOwner: boolean;
+    updateUserStatus: ( status: string ) => void;
+    savePhoto: (photoFile: File) => void;
 }
 
 
-const Profile: React.FC<PropsType> = ({ profilePage, status,   updateUserStatus, ...restProps }) => {
+const Profile: React.FC<PropsType> = ({savePhoto, isOwner, profilePage, status,   updateUserStatus, ...restProps }) => {
     return (
         <div className={styles.descriptionBlock}>
-            <ProfileInfo profile={profilePage.profile} status={status} updateUserStatus={updateUserStatus }/>
+            <ProfileInfo savePhoto={savePhoto} isOwner={isOwner} profile={profilePage.profile} status={status} updateUserStatus={updateUserStatus }/>
             <MyPostsContainer/>
         </div>
     );

@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import dialogsReducer, {addMessage} from "./dialogs-reducer";
 import profileReducer, {
-    addPost,
+    addPost, savePhotoSuccess,
     setUserProfile,
     setUserStatus,
 } from "./profile-reducer";
@@ -33,6 +33,7 @@ export type ActionType =
     | ReturnType<typeof setToggleIsFetchingAuth>
     | ReturnType<typeof setUserStatus>
     | ReturnType<typeof setInitializedSuccessAC>
+    | ReturnType<typeof savePhotoSuccess>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;
