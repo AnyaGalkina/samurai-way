@@ -1,8 +1,10 @@
 .selectedPage {
     font-weight: bold;
     cursor: pointer;
+    margin: 5px;
 }
 
 .page {
     cursor: pointer;
+    margin: 5px;
 }
