@@ -1,6 +1,6 @@
 import {ActionType} from "./redux-store";
 import {UserType} from "./types";
-import {usersAPI} from "../api/api";
+import {usersAPI} from "../api/user-api";
 
 const FOLLOW = "USERS/FOLLOW";
 const UNFOLLOW = "USERS/UNFOLLOW";
@@ -42,7 +42,7 @@ const userReducer = (state: InitialStateType = initialState, action: ActionType)
                 ...state,
                 followingInProgress: action.payload.isFetching
                     ? [...state.followingInProgress, action.payload.userId]
-                    : [...state.followingInProgress.filter(id => id != action.payload.userId)]
+                    : [...state.followingInProgress.filter(id => id !== action.payload.userId)]
             }
         default:
             return state;
