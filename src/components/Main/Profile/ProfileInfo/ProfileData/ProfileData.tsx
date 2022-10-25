@@ -2,16 +2,25 @@ import React from "react";
 import Avatar from "../../../../common/Avatar/Avatar";
 import yesSign from "../../../../../assets/images/yesSign.png";
 import noSign from "../../../../../assets/images/noSign.png";
-import {ProfileType} from "../../../../../redux/types";
+import {ProfileContactsType, ProfileType} from "../../../../../redux/types";
 import {Contact} from "./Contact/Contact";
 
 type PropsType = {
     profile: ProfileType;
+    isOwner: boolean;
+    setEditMode: (editMode: boolean) => void
 }
 
-export const ProfileData = ({profile}: PropsType) => {
+export const ProfileData = ({profile, isOwner, setEditMode}: PropsType) => {
+
+
+    const onEditClickHandler = () => {
+        setEditMode(true)
+    }
+
     return (
         <div>
+            {isOwner && <button onClick={onEditClickHandler}>edit profile</button>}
             <h2>{profile.fullName}</h2>
 
             <h3>About Me:</h3>
@@ -27,11 +36,10 @@ export const ProfileData = ({profile}: PropsType) => {
             </h3>
 
             <h3>Contacts:</h3>
-            <span>{Object.keys(profile.contacts).map((c , i)=> {
-                <Contact key={i}
-                         contactTitle={c}
-                         contactValue={""}
-                    // contactValue={profile.contacts[c]}
+            <span>{Object.keys(profile.contacts).map((c, i) => {
+                return <Contact key={i}
+                                contactTitle={c}
+                                contactValue={profile.contacts[c as keyof ProfileContactsType]}
                 />
             })}</span>
 

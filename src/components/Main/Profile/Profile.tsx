@@ -13,7 +13,7 @@ type PropsType = {
 }
 
 
-const Profile: React.FC<PropsType> = ({savePhoto, isOwner, profilePage, status,   updateUserStatus, ...restProps }) => {
+export const Profile: React.FC<PropsType> = ({savePhoto, isOwner, profilePage, status,   updateUserStatus, ...restProps }) => {
     return (
         <div className={styles.descriptionBlock}>
             <ProfileInfo savePhoto={savePhoto} isOwner={isOwner} profile={profilePage.profile} status={status} updateUserStatus={updateUserStatus }/>
@@ -21,5 +21,3 @@ const Profile: React.FC<PropsType> = ({savePhoto, isOwner, profilePage, status, 
         </div>
     );
 };
-
-export default Profile;

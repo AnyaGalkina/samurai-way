@@ -1,9 +1,10 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useState} from "react";
 import Preloader from "../../../common/Preloader/Preloader";
 import defaultUserAvatar from "../../../../assets/images/defaultUserPhoto.jpg";
 import {ProfileType} from "../../../../redux/types";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import {ProfileData} from "./ProfileData/ProfileData";
+import {ProfileDataForm} from "./ProfileData/ProfileDataForm/ProfileDataForm";
 // import {useDispatch} from "react-redux";
 // import {savePhoto} from "../../../../redux/profile-reducer";
 
@@ -18,6 +19,8 @@ type PropsType = {
 }
 
 const ProfileInfo: React.FC<PropsType> = ({savePhoto, isOwner, profile, status, updateUserStatus}) => {
+
+    const [editMode, setEditMode] = useState(false);
 
     if (!profile) {
         return <Preloader/>
@@ -37,7 +40,11 @@ const ProfileInfo: React.FC<PropsType> = ({savePhoto, isOwner, profile, status, 
 
                 <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
 
-                <ProfileData profile={profile}/>
+                {editMode
+                    ? <ProfileDataForm profile={profile} setEditMode={setEditMode}/>
+                    : <ProfileData profile={profile} isOwner={isOwner}  setEditMode={setEditMode}/>
+                }
+
             </div>
         </div>
     );

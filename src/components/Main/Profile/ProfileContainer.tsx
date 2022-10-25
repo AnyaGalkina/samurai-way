@@ -1,6 +1,6 @@
 import React, {ComponentType} from "react";
 import {connect} from "react-redux";
-import Profile from "./Profile";
+import {Profile} from "./Profile";
 import {AppStateType} from "../../../redux/redux-store";
 import {
     getUserProfile,
