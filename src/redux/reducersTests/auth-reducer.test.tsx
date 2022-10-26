@@ -12,6 +12,6 @@ beforeEach(() => {
     }
 })
 
-test("",() => {
+test("captcha url is gotten",() => {
 
 })

@@ -1,0 +1,26 @@
+.textareaContainer {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    margin: 10px 0;
+}
+
+.textarea {
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    font-size: 16px;
+}
+
+.limit {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    color: gray;
+    font-size: 13px;
+}
+
+.error{
+    color: red;
+    margin: 10px 0;
+}
