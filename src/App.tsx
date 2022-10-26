@@ -12,22 +12,26 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {initializeApp} from "./redux/app-reducer";
+import {clearGlobalError, initializeApp} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
 import {ROUTES} from "./components/common/enums/routes";
 
+
 type MapStateToPropsType = {
-    initialized: boolean
+    initialized: boolean;
+    globalError: string
 };
 type MapDispatchToPropsType = {
-    initializeApp: () => void
+    initializeApp: () => void;
+    clearGlobalError: () => void
 }
 type OwnProps = MapStateToPropsType & MapDispatchToPropsType;
 
 const DialogContainer = React.lazy(() => import("./components/Main/Dialog/DialogContainer"))
 
 class App extends React.Component<OwnProps> {
+
 // class App extends React.Component<any> {
 
     componentDidMount() {
@@ -41,9 +45,13 @@ class App extends React.Component<OwnProps> {
 
         return (
             <div className="app-wrapper">
-                Hello, samurai! Let's go!
                 <HeaderContainer/>
                 <NavBar/>
+                {this.props.globalError
+                    && <div style={{textAlign:"center", backgroundColor:"red"}}>
+                    <span>{this.props.globalError}</span>
+                    <button onClick={() => {this.props.clearGlobalError();}}>X</button>
+                </div>}
                 <div className="app-wrapper-content">
                     <Switch>
                         <Route exact path={"/"}
@@ -73,7 +81,8 @@ class App extends React.Component<OwnProps> {
 }
 
 const MapStateToProps = (state: AppStateType): MapStateToPropsType => ({
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    globalError: state.app.globalError
 });
 
-export default compose(connect(MapStateToProps, {initializeApp}))(App);
+export default compose(connect(MapStateToProps, {initializeApp, clearGlobalError}))(App);

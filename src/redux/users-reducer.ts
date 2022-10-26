@@ -1,6 +1,7 @@
 import {ActionType} from "./redux-store";
 import {UserType} from "./types";
 import {usersAPI} from "../api/user-api";
+import {setGlobalError} from "./app-reducer";
 
 const FOLLOW = "USERS/FOLLOW";
 const UNFOLLOW = "USERS/UNFOLLOW";
@@ -72,22 +73,34 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number) => 
 };
 
 export const getUsers = (currentPage: number, pageSize: number) => async (dispatch: any) => {
-    dispatch(setToggleIsFetching(true));
-    dispatch(setCurrentPage(currentPage));
 
-    let response = await usersAPI.getUsers(currentPage, pageSize);
-    dispatch(setToggleIsFetching(false));
-    dispatch(setUsers(response.items));
-    dispatch(setTotalUsersCount(response.totalCount));
+    dispatch(setToggleIsFetching(true));
+    try {
+        dispatch(setCurrentPage(currentPage));
+
+        let response = await usersAPI.getUsers(currentPage, pageSize);
+        dispatch(setToggleIsFetching(false));
+        dispatch(setUsers(response.items));
+        dispatch(setTotalUsersCount(response.totalCount));
+    } catch (e: any) {
+        dispatch(setGlobalError("Some error occurred"));
+        dispatch(setToggleIsFetching(false));
+    }
 }
 
-const followUnfollowFlow =  async (dispatch: any, userId: number,  apiMethod: any, actionCreator: any) => {
-    dispatch(toggleFollowingProgress(true, userId));
-    let response = await apiMethod(userId);
-    if (response.resultCode === 0) {
-        dispatch(actionCreator(userId));
+const followUnfollowFlow = async (dispatch: any, userId: number, apiMethod: any, actionCreator: any) => {
+    try {
+        dispatch(toggleFollowingProgress(true, userId));
+        let response = await apiMethod(userId);
+        if (response.resultCode === 0) {
+            dispatch(actionCreator(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+        dispatch(setToggleIsFetching(false));
+    } catch (e: any) {
+        dispatch(setGlobalError("Some error occurred"));
+        dispatch(setToggleIsFetching(false));
     }
-    dispatch(toggleFollowingProgress(false, userId));
 }
 
 export const follow = (userId: number) => async (dispatch: any) => {

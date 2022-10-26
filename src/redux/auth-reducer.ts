@@ -2,6 +2,7 @@ import {ActionType} from "./redux-store";
 import {authAPI} from "../api/auth-api";
 import {stopSubmit} from "redux-form";
 import {securityAPI} from "../api/security-api";
+import {setGlobalError} from "./app-reducer";
 
 const SET_USER_DATA = "AUTH/SET_USER_DATA";
 const GET_CAPTCHA_URL_SUCCESS = "AUTH/GET_CAPTCHA_URL_SUCCESS";
@@ -45,39 +46,55 @@ export const getCaptchaUrlSuccess = (captchaUrl: string) => {
 
 
 export const getAuthUserData = () => async (dispatch: any) => {
-    dispatch(setToggleIsFetchingAuth(true));
-    const response = await authAPI.getMe();
-    let {id, email, login} = response.data;
-    if (response.resultCode === 0) {
-        dispatch(setAuthUserData(id, email, login, true));
+    try {
+        dispatch(setToggleIsFetchingAuth(true));
+        const response = await authAPI.getMe();
+        let {id, email, login} = response.data;
+        if (response.resultCode === 0) {
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+        dispatch(setToggleIsFetchingAuth(false));
+    } catch (e: any) {
+        dispatch(setGlobalError("Some error occurred"));
     }
-    dispatch(setToggleIsFetchingAuth(false));
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captchaUrl?: string) => async (dispatch: any) => {
-    dispatch(setToggleIsFetchingAuth(true));
-    const response = await authAPI.login(email, password, rememberMe, captchaUrl);
-    dispatch(setToggleIsFetchingAuth(false));
-    if (response.resultCode === 0) {
-        dispatch(getAuthUserData());
-    } else {
-        if(response.resultCode === 10){
-            dispatch(getCaptchaUrl());
+    try {
+        dispatch(setToggleIsFetchingAuth(true));
+        const response = await authAPI.login(email, password, rememberMe, captchaUrl);
+        dispatch(setToggleIsFetchingAuth(false));
+        if (response.resultCode === 0) {
+            dispatch(getAuthUserData());
+        } else {
+            if (response.resultCode === 10) {
+                dispatch(getCaptchaUrl());
+            }
+            let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
+            dispatch(stopSubmit("login", {_error: errorMessage}));
         }
-        let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
-        dispatch(stopSubmit("login", {_error: errorMessage}));
+    } catch (e: any) {
+        dispatch(setGlobalError("Some error occurred"));
     }
 }
 
 export const getCaptchaUrl = () => async (dispatch: any) => {
-    const response = await securityAPI.getCaptchaUrl();
+    try {
+        const response = await securityAPI.getCaptchaUrl();
         dispatch(getCaptchaUrlSuccess(response.url));
+    } catch (e: any) {
+        dispatch(setGlobalError("Some error occurred"));
+    }
 }
 
 export const logout = () => async (dispatch: any) => {
-    const response = await authAPI.logout();
-    if (response.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
+    try {
+        const response = await authAPI.logout();
+        if (response.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false));
+        }
+    } catch (e: any) {
+        dispatch(setGlobalError("Some error occurred"));
     }
 }
 

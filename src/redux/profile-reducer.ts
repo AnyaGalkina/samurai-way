@@ -2,6 +2,7 @@ import {ActionType, AppStateType} from "./redux-store";
 import {PhotosType, ProfileType} from "./types";
 import {profileAPI, UpdateProfileType} from "../api/profile-api";
 import {stopSubmit} from "redux-form";
+import {setGlobalError} from "./app-reducer";
 
 export const ADD_POST = "PROFILE/ADD_POST";
 export const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
@@ -70,40 +71,60 @@ export const savePhotoSuccess = (photos: PhotosType) => {
 //Thunks
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
-    let response = await profileAPI.getProfile(userId);
-    dispatch(setUserProfile(response));
+    try {
+        let response = await profileAPI.getProfile(userId);
+        dispatch(setUserProfile(response));
+    } catch (e: any) {
+        dispatch(setGlobalError( "Some error occurred"));
+    }
 }
 
 export const getUserStatus = (userId: number) => async (dispatch: any) => {
-    let response = await profileAPI.getStatus(userId);
-    dispatch(setUserStatus(response));
+    try {
+        let response = await profileAPI.getStatus(userId);
+        dispatch(setUserStatus(response));
+    } catch (e: any) {
+        dispatch(setGlobalError( "Some error occurred"));
+    }
 }
 
 export const updateUserStatus = (status: string) => async (dispatch: any) => {
-    let response = await profileAPI.updateStatus(status);
-    if (response.resultCode === 0) {
-        dispatch(setUserStatus(status));
-    } else {
-        dispatch(response.messages[0]);
+    try {
+        let response = await profileAPI.updateStatus(status);
+        if (response.resultCode === 0) {
+            dispatch(setUserStatus(status));
+        } else {
+            dispatch(response.messages[0]);
+        }
+    } catch (e: any) {
+        dispatch(setGlobalError( "Some error occurred"));
     }
 }
 
 export const savePhoto = (photo: File) => async (dispatch: any) => {
-    let response = await profileAPI.updatePhoto(photo);
-    if (response.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.photos));
+    try {
+        let response = await profileAPI.updatePhoto(photo);
+        if (response.resultCode === 0) {
+            dispatch(savePhotoSuccess(response.data.photos));
+        }
+    } catch (e: any) {
+        dispatch(setGlobalError( "Some error occurred"));
     }
 }
 
 export const updateProfile = (profile: UpdateProfileType) => async (dispatch: any, getState: () => AppStateType) => {
-    let response = await profileAPI.updateProfile(profile);
-    let userId = getState().auth.userId
+    try {
+        let response = await profileAPI.updateProfile(profile);
+        let userId = getState().auth.userId
 
-    if (response.resultCode === 0) {
-        userId && dispatch(getUserProfile(userId));
-    } else {
-        let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
-        dispatch(stopSubmit("login", {_error: errorMessage}));
+        if (response.resultCode === 0) {
+            userId && dispatch(getUserProfile(userId));
+        } else {
+            let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
+            dispatch(stopSubmit("login", {_error: errorMessage}));
+        }
+    } catch (e: any) {
+        dispatch(setGlobalError( "Some error occurred"));
     }
 }
 

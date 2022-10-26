@@ -17,7 +17,7 @@ import usersReducer, {
 import authReducer, {getCaptchaUrlSuccess, setAuthUserData, setToggleIsFetchingAuth} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
-import {appReducer, setInitializedSuccessAC} from "./app-reducer";
+import {appReducer, clearGlobalError, setGlobalError, setInitializedSuccessAC} from "./app-reducer";
 
 export type ActionType =
     ReturnType<typeof addPost>
@@ -35,6 +35,8 @@ export type ActionType =
     | ReturnType<typeof setInitializedSuccessAC>
     | ReturnType<typeof savePhotoSuccess>
     | ReturnType<typeof getCaptchaUrlSuccess>
+    | ReturnType<typeof setGlobalError>
+    | ReturnType<typeof clearGlobalError>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;
