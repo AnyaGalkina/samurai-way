@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
 import News from "./components/Main/News";
@@ -46,6 +46,9 @@ class App extends React.Component<OwnProps> {
                 <NavBar/>
                 <div className="app-wrapper-content">
                     <Switch>
+                        <Route exact path={"/"}
+                               render={() => <Redirect to={ROUTES.PROFILE}/>}
+                        />
                         <Route path={ROUTES.PROFILE}
                                render={() => <ProfileContainer/>}
                         />
@@ -59,7 +62,8 @@ class App extends React.Component<OwnProps> {
                         <Route exact path={ROUTES.SETTINGS} render={() => <Settings/>}/>
                         <Route exact path={ROUTES.LOGIN} render={() => <Login/>}/>
                         <Route path={ROUTES.USERS} render={() => <DevelopersContainer/>}/>
-                        <Route path="/*" render={() => <div>404</div>}/>
+                        <Route path={ROUTES.PAGE_NOT_FOUND} render={() => <div>404</div>}/>
+                        <Route path="/*" render={() => <Redirect to={ROUTES.PAGE_NOT_FOUND}/>}/>
                     </Switch>
                 </div>
                 <Footer/>
