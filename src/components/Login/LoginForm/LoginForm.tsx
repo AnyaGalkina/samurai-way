@@ -25,7 +25,7 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubm
             <div>
                 <Field type={"checkbox"} name={"rememberMe"} component={"input"}/>remember me
             </div>
-            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <img src={captchaUrl} alt={"captcha"}/>}
             {captchaUrl && <Field placeholder={"captchaUrl"} name={"captchaUrl"} component={Input}
                                   validate={[required]}/>}
 
