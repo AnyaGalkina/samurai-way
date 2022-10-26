@@ -5,7 +5,7 @@ import {UserIdReqType} from "./user-api";
 export const instance = axios.create({
         withCredentials: true,
         baseURL: "https://social-network.samuraijs.com/api/1.0",
-        // headers: {"API-KEY": "8cb31c3e-5e62-4d4f-945f-025b0014bebf"}
+        headers: {"API-KEY": "8cb31c3e-5e62-4d4f-945f-025b0014bebf"}
     }
 )
 

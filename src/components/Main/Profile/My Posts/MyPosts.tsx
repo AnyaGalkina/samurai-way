@@ -17,6 +17,8 @@ const MyPosts: React.FC<MyPostsPropsType> = memo((props) => {
                 {props.posts.map(post =>
                     <Post
                         key={post.id}
+                        id={post.id}
+                        isLikeAdded={post.isLikeAdded}
                         likesCounter={post.likesCounter}
                         postText={post.postText}
                     />)}

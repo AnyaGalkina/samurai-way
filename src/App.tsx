@@ -16,6 +16,7 @@ import {clearGlobalError, initializeApp} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
 import {ROUTES} from "./components/common/enums/routes";
+import 'antd/dist/antd.css';
 
 
 type MapStateToPropsType = {

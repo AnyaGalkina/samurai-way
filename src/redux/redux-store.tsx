@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import dialogsReducer, {addMessage} from "./dialogs-reducer";
 import profileReducer, {
-    addPost, savePhotoSuccess,
+    addPost, changeLikesCounter, savePhotoSuccess,
     setUserProfile,
     setUserStatus,
 } from "./profile-reducer";
@@ -37,6 +37,7 @@ export type ActionType =
     | ReturnType<typeof getCaptchaUrlSuccess>
     | ReturnType<typeof setGlobalError>
     | ReturnType<typeof clearGlobalError>
+    | ReturnType<typeof changeLikesCounter>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;

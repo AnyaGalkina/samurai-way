@@ -1,4 +1,10 @@
-import profileReducer, {ADD_POST, InitialStateType, setUserProfile, setUserStatus} from "../profile-reducer";
+import profileReducer, {
+    ADD_POST,
+    changeLikesCounter,
+    InitialStateType,
+    setUserProfile,
+    setUserStatus
+} from "../profile-reducer";
 import {ProfileType} from "../types";
 
 let state: InitialStateType;
@@ -7,10 +13,10 @@ test("status should be updated", () => {
     state = {
         profile: null,
         posts: [
-            {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
-            {id: 2, likesCounter: 70, postText: "Good luck!"},
+            {id: "1", likesCounter: 120, postText: "Hello! Happy to see you!", isLikeAdded: false},
+            {id: "2", likesCounter: 70, postText: "Good luck!", isLikeAdded: false},
         ],
-        userStatus: '123'
+        userStatus: "123"
     }
 
     const newState = profileReducer(state, setUserStatus("new status"))
@@ -23,13 +29,13 @@ test("post should be added", () => {
     state = {
         profile: null,
         posts: [
-            {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
-            {id: 2, likesCounter: 70, postText: "Good luck!"},
+            {id: "1", likesCounter: 120, postText: "Hello! Happy to see you!", isLikeAdded: false},
+            {id: "2", likesCounter: 70, postText: "Good luck!", isLikeAdded: false},
         ],
-        userStatus: ''
+        userStatus: ""
     }
 
-    let newState = profileReducer(state, {type: ADD_POST, payload: {postText:"new text" }});
+    let newState = profileReducer(state, {type: ADD_POST, payload: {postText: "new text"}});
 
     expect(newState.posts.length).toBe(3);
     expect(newState.posts[2].postText).toBe("new text");
@@ -40,10 +46,10 @@ test("profile should be set", () => {
     state = {
         profile: null,
         posts: [
-            {id: 1, likesCounter: 120, postText: "Hello! Happy to see you!"},
-            {id: 2, likesCounter: 70, postText: "Good luck!"},
+            {id: "1", likesCounter: 120, postText: "Hello! Happy to see you!", isLikeAdded: false},
+            {id: "2", likesCounter: 70, postText: "Good luck!", isLikeAdded: false},
         ],
-        userStatus:''
+        userStatus: ""
     }
 
     let newUserProfile: ProfileType = {
@@ -80,4 +86,20 @@ test("profile should be set", () => {
     expect(newState.profile?.lookingForAJobDescription).toBe("I'm looking for a job. I can write code very good.");
     expect(newState.profile?.photos.large).toBe(null);
     expect(newState.profile?.photos.small).toBe("https://social-network.samuraijs.com/");
+})
+
+test("is likesCounter increased", () => {
+
+    state = {
+        profile: null,
+        posts: [
+            {id: "1", likesCounter: 120, postText: "Hello! Happy to see you!", isLikeAdded: false},
+        ],
+        userStatus: ""
+    }
+
+    let newState = profileReducer(state, changeLikesCounter("1", true));
+
+    expect(newState.posts[0].likesCounter).toBe(121);
+    expect(newState.posts[0].isLikeAdded).toBe(true);
 })
