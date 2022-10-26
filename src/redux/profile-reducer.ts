@@ -1,6 +1,7 @@
 import {ActionType, AppStateType} from "./redux-store";
 import {PhotosType, ProfileType} from "./types";
 import {profileAPI, UpdateProfileType} from "../api/profile-api";
+import {stopSubmit} from "redux-form";
 
 export const ADD_POST = "PROFILE/ADD_POST";
 export const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
@@ -82,7 +83,7 @@ export const updateUserStatus = (status: string) => async (dispatch: any) => {
     let response = await profileAPI.updateStatus(status);
     if (response.resultCode === 0) {
         dispatch(setUserStatus(status));
-    }else{
+    } else {
         dispatch(response.messages[0]);
     }
 }
@@ -100,6 +101,9 @@ export const updateProfile = (profile: UpdateProfileType) => async (dispatch: an
 
     if (response.resultCode === 0) {
         userId && dispatch(getUserProfile(userId));
+    } else {
+        let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
+        dispatch(stopSubmit("login", {_error: errorMessage}));
     }
 }
 

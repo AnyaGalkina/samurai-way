@@ -14,7 +14,7 @@ import usersReducer, {
     toggleFollowingProgress,
     unfollowSuccess
 } from "./users-reducer";
-import authReducer, {setAuthUserData, setToggleIsFetchingAuth} from "./auth-reducer";
+import authReducer, {getCaptchaUrlSuccess, setAuthUserData, setToggleIsFetchingAuth} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 import {appReducer, setInitializedSuccessAC} from "./app-reducer";
@@ -34,6 +34,7 @@ export type ActionType =
     | ReturnType<typeof setUserStatus>
     | ReturnType<typeof setInitializedSuccessAC>
     | ReturnType<typeof savePhotoSuccess>
+    | ReturnType<typeof getCaptchaUrlSuccess>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;

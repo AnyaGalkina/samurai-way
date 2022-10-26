@@ -7,7 +7,8 @@ beforeEach(() => {
         email: null,
         login: null,
         isAuth: false,
-        isFetching: false
+        isFetching: false,
+        captchaUrl: null
     }
 })
 

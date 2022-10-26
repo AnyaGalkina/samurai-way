@@ -9,7 +9,9 @@ import styles from "../../common/FormsControls/FormsControl.module.css";
 const maxLength = maxLengthCreator(50);
 const minLength = minLengthCreator(6);
 
-export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit,  error,
+                                                                         //@ts-ignore
+                                                                         captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -23,7 +25,12 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubm
             <div>
                 <Field type={"checkbox"} name={"rememberMe"} component={"input"}/>remember me
             </div>
+            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <Field placeholder={"captchaUrl"} name={"captchaUrl"} component={Input}
+                                  validate={[required]}/>}
+
             {error && <div className={styles.formSummaryError}>ERROR: {error}</div>}
+
             <div>
                 <button>Submit</button>
             </div>
