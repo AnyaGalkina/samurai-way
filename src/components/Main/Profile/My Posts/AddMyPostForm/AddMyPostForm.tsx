@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState} from "react";
 import {useDispatch} from "react-redux";
 import {addPost} from "../../../../../redux/profile-reducer";
 import styles from "./AddMyPost.module.css"
+import {Button} from "antd";
 
 export type AddMyPostFormDataType = {
     myPostText: string
@@ -32,7 +33,14 @@ export const AddMyPostForm = () => {
             </div>
             {limit<0 && <div className={styles.error}><span>Max {maxLength100} symbols</span></div>}
             <div>
-                <button onClick={onAddPostClickHandler} disabled={limit<0}>Add Post</button>
+                <Button
+                    style={{
+                        // backgroundColor: "#149AC9"
+                        backgroundColor: "#1ac2c1",
+                        borderColor: "#1ac2c1",
+                    }}
+                    type="primary"
+                    onClick={onAddPostClickHandler} disabled={limit<0}>Add Post</Button>
             </div>
         </div>
     )

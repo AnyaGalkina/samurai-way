@@ -1,13 +1,11 @@
 .header {
     grid-area: header;
-    background-color: rgb(13, 153, 125);
-}
-
-.header img {
-    width: 40px;
+    background-color: #ecedef;
+    /*background-color: rgb(13, 153, 125);*/
 }
 
 .loginBlock {
+    min-width: 100px;
     float: right;
 }
 

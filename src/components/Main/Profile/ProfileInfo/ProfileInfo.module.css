@@ -1,0 +1,16 @@
+.profileInfoContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.img {
+    border-radius: 80%;
+    border: 0px;
+}
+
+
+.uploadPhoto {
+    position: relative;
+    left: 250px;
+    bottom: 20px;
+}

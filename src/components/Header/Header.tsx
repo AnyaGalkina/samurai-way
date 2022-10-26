@@ -1,32 +1,42 @@
 import React from "react";
 import styles from "./Header.module.css";
 import {NavLink} from "react-router-dom";
-import Avatar from "../common/Avatar/Avatar";
-import defaultUserPhoto from "../../assets/images/defaultUserPhoto.jpg";
+import {LoginOutlined, LogoutOutlined} from "@ant-design/icons";
+import {Button} from "antd";
 
 type PropsType = {
     isAuth: boolean,
     login: string | null,
     logout: () => void;
-    // userPhotoSmall?: string | null
-
 }
 
-const Header: React.FC<PropsType> = (props) => {
+const Header: React.FC<PropsType> = ({logout, login, isAuth}) => {
+
     const onLogoutClikckHandler = () => {
-        props.logout()
+        logout()
     }
 
     return (
         <header className={styles.header}>
-            <img src={""} alt={"logo"}/>
             <div className={styles.loginBlock}>
-                {props.isAuth
+                {isAuth
                     ? <>
-                        <span>{props.login}</span> - <button onClick={onLogoutClikckHandler}>Logout</button>
-                        {/*<Avatar src={props.userPhotoSmall ? props.userPhotoSmall : defaultUserPhoto }/>*/}
+                        <span style={{paddingRight: "17px"}}>{login}</span>
+                        <Button
+                            style={{
+                                // backgroundColor: "#149AC9"
+                                backgroundColor: "#1ac2c1",
+                                borderColor: "#1ac2c1",
+                        }}
+                                type="primary" onClick={onLogoutClikckHandler}>
+                            <LogoutOutlined style={{paddingRight: "7px"}}/>
+                            Logout
+                        </Button>
                     </>
-                    : <NavLink to={"/login"}>Login</NavLink>
+                    : <NavLink to={"/login"}>
+                        <LoginOutlined style={{paddingRight: "7px"}}/>
+                        Login
+                    </NavLink>
                 }
             </div>
         </header>

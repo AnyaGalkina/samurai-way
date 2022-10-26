@@ -5,6 +5,9 @@ import {ProfileType} from "../../../../redux/types";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import {ProfileData} from "./ProfileData/ProfileData";
 import {ProfileDataForm} from "./ProfileData/ProfileDataForm/ProfileDataForm";
+import {CameraFilled} from "@ant-design/icons";
+import styles from "./ProfileInfo.module.css";
+import {Button} from "antd";
 // import {useDispatch} from "react-redux";
 // import {savePhoto} from "../../../../redux/profile-reducer";
 
@@ -33,19 +36,25 @@ const ProfileInfo: React.FC<PropsType> = ({savePhoto, isOwner, profile, status, 
     }
 
     return (
-        <div>
-            <div>
-                <img src={profile.photos.large ? profile.photos.large : defaultUserAvatar} alt={"avatar"}/>
-                {isOwner && <input type={"file"} onChange={onMainPhotoSelectedHandler}/>}
-
-                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
-
-                {editMode
-                    ? <ProfileDataForm profile={profile} setEditMode={setEditMode}/>
-                    : <ProfileData profile={profile} isOwner={isOwner}  setEditMode={setEditMode}/>
+        <div className={styles.profileInfoContainer}>
+            <div className={styles.avatarContainer}>
+                <img className={styles.img}
+                     src={profile.photos.large ? profile.photos.large : defaultUserAvatar}
+                     alt={"avatar"}/>
+                {isOwner &&
+                    <div className={styles.uploadPhoto}>
+                        <label htmlFor="file">
+                            <CameraFilled style={{color: "grey", fontSize: "32px"}}/>
+                        </label>
+                        <input hidden={true} id="file" type={"file"} onChange={onMainPhotoSelectedHandler}/>
+                    </div>
                 }
-
+                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
             </div>
+            {editMode
+                ? <ProfileDataForm profile={profile} setEditMode={setEditMode}/>
+                : <ProfileData profile={profile} isOwner={isOwner} setEditMode={setEditMode}/>
+            }
         </div>
     );
 };

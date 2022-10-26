@@ -4,6 +4,7 @@ import yesSign from "../../../../../assets/images/yesSign.png";
 import noSign from "../../../../../assets/images/noSign.png";
 import {ProfileContactsType, ProfileType} from "../../../../../redux/types";
 import {Contact} from "./Contact/Contact";
+import {Button} from "antd";
 
 type PropsType = {
     profile: ProfileType;
@@ -20,7 +21,16 @@ export const ProfileData = ({profile, isOwner, setEditMode}: PropsType) => {
 
     return (
         <div>
-            {isOwner && <button onClick={onEditClickHandler}>edit profile</button>}
+            {isOwner &&
+                <Button
+                    style={{
+                        // backgroundColor: "#149AC9"
+                        backgroundColor: "#1ac2c1",
+                        borderColor: "#1ac2c1",
+                    }}
+                    type="primary"
+                    onClick={onEditClickHandler}>Edit profile
+                </Button>}
             <h2>{profile.fullName}</h2>
 
             <h3>About Me:</h3>

@@ -4,6 +4,7 @@ import {useFormik} from "formik";
 import {updateProfile} from "../../../../../../redux/profile-reducer";
 import {useDispatch} from "react-redux";
 import {UpdateProfileType} from "../../../../../../api/profile-api";
+import {Button} from "antd";
 
 type PropsType = {
     profile: ProfileType;
@@ -71,7 +72,15 @@ export const ProfileDataForm = ({profile, setEditMode}: PropsType) => {
                 </div>)
             })}</span>
 
-            <button type={"submit"}>Save</button>
+            <Button
+                style={{
+                    // backgroundColor: "#149AC9"
+                    backgroundColor: "#1ac2c1",
+                    borderColor: "#1ac2c1",
+                }}
+                // type="primary"
+                //@ts-ignore
+                type={"submit"}>Save</Button>
         </form>
     );
 };
