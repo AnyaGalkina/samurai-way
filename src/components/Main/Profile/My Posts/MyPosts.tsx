@@ -5,7 +5,7 @@ import {MyPostsPropsType} from "./MyPostsContainer";
 import {AddMyPostForm} from "./AddMyPostForm/AddMyPostForm";
 
 
-const MyPosts: React.FC<MyPostsPropsType> = memo((props) => {
+const MyPosts: React.FC<MyPostsPropsType> = memo(({posts}) => {
 
     return (
         <div className={styles.postsBlock}>
@@ -14,7 +14,7 @@ const MyPosts: React.FC<MyPostsPropsType> = memo((props) => {
                 <AddMyPostForm/>
             </div>
             <div className={styles.posts}>
-                {props.posts.map(post =>
+                {posts.map(post =>
                     <Post
                         key={post.id}
                         id={post.id}

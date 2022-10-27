@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import Avatar from "../../../common/Avatar/Avatar";
+import styles from "./DialogItem.module.css";
 
 type PropsType={
     name: string;

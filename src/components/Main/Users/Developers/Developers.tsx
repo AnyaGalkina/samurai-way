@@ -2,6 +2,7 @@ import React from "react";
 import {UserType} from "../../../../redux/types";
 import Pagination from "../../../common/Pagination/Pagination";
 import User from "./User/User";
+import {Divider} from "antd";
 
 type PropsType = {
     users: Array<UserType>;
@@ -24,14 +25,20 @@ const Developers: React.FC<PropsType> = ({
         <div>
             <Pagination currentPage={currentPage} onPageChanged={onPageChanged}/>
 
-            {users && users.map((u: UserType) =>
-                <User
-                    key={u.id}
-                    user={u}
-                    followingInProgress={followingInProgress}
-                    follow={follow}
-                    unfollow={unfollow}
-                />
+            {users && users.map((u: UserType) => {
+                return(
+                    <>
+                        <User
+                            key={u.id}
+                            user={u}
+                            followingInProgress={followingInProgress}
+                            follow={follow}
+                            unfollow={unfollow}
+                        />
+                        <Divider/>
+                    </>
+                )
+            }
             )}
         </div>
     );

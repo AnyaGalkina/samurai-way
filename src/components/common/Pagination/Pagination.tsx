@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Page} from "./Page/Page";
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/redux-store";
+import {Button} from "antd";
 
 
 type PropsType = {
@@ -36,10 +37,19 @@ const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged}) => {
         pages.push(i);
     }
     console.log(currentPage);
+
     return (
-        <div>
+        <div style={{marginBottom:"50px"}}>
             {portionNumber > 1 &&
-                <button onClick={onLeftClickHandler}>ᐊ</button>
+                <Button
+                    style={{
+                        // backgroundColor: "#149AC9"
+                        backgroundColor: "#1ac2c1",
+                        borderColor: "#1ac2c1",
+                    }}
+                    type="primary"
+                    onClick={onLeftClickHandler}>ᐊ
+                </Button>
             }
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -52,7 +62,14 @@ const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged}) => {
                 })
             }
             {portionCount > portionNumber &&
-                <button onClick={onRightClickHandler}>ᐅ</button>
+                <Button style={{
+                    // backgroundColor: "#149AC9"
+                    backgroundColor: "#1ac2c1",
+                    borderColor: "#1ac2c1",
+                }}
+                         type="primary"
+                         onClick={onRightClickHandler}>ᐅ
+                </Button>
             }
         </div>
 

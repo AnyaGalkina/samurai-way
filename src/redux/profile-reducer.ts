@@ -27,7 +27,7 @@ export type InitialStateType = {
 let initialState = {
     profile: null,
     posts: [
-        {id: v1(), likesCounter: 120, postText: "Hello! Happy to see you!", isLikeAdded: false},
+        {id: v1(), likesCounter: 120, postText: "Best morning starts with coffee ☕. Enjoy your day!", isLikeAdded: false},
         {id: v1(), likesCounter: 79, postText: "Good luck!", isLikeAdded: true},
         {id: v1(), likesCounter: 240, postText: "♡ What a wonderful day ♡", isLikeAdded: true},
     ],

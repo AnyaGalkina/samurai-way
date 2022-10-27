@@ -17,7 +17,7 @@ export const Profile: React.FC<PropsType> = ({savePhoto, isOwner, profilePage, s
     return (
         <div className={styles.descriptionBlock}>
             <ProfileInfo savePhoto={savePhoto} isOwner={isOwner} profile={profilePage.profile} status={status} updateUserStatus={updateUserStatus }/>
-            <MyPostsContainer/>
+            {isOwner && <MyPostsContainer/>}
         </div>
     );
 };

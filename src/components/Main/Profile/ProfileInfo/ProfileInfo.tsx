@@ -7,10 +7,6 @@ import {ProfileData} from "./ProfileData/ProfileData";
 import {ProfileDataForm} from "./ProfileData/ProfileDataForm/ProfileDataForm";
 import {CameraFilled} from "@ant-design/icons";
 import styles from "./ProfileInfo.module.css";
-import {Button} from "antd";
-// import {useDispatch} from "react-redux";
-// import {savePhoto} from "../../../../redux/profile-reducer";
-
 
 type PropsType = {
     profile: ProfileType | null;
@@ -49,12 +45,14 @@ const ProfileInfo: React.FC<PropsType> = ({savePhoto, isOwner, profile, status, 
                         <input hidden={true} id="file" type={"file"} onChange={onMainPhotoSelectedHandler}/>
                     </div>
                 }
-                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
+                <ProfileStatus status={status} updateUserStatus={updateUserStatus} isOwner={isOwner}/>
             </div>
-            {editMode
-                ? <ProfileDataForm profile={profile} setEditMode={setEditMode}/>
-                : <ProfileData profile={profile} isOwner={isOwner} setEditMode={setEditMode}/>
-            }
+            <div className={styles.profileDataContainer}>
+                {editMode
+                    ? <ProfileDataForm profile={profile} setEditMode={setEditMode}/>
+                    : <ProfileData profile={profile} isOwner={isOwner} setEditMode={setEditMode}/>
+                }
+            </div>
         </div>
     );
 };

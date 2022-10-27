@@ -4,7 +4,8 @@ import yesSign from "../../../../../assets/images/yesSign.png";
 import noSign from "../../../../../assets/images/noSign.png";
 import {ProfileContactsType, ProfileType} from "../../../../../redux/types";
 import {Contact} from "./Contact/Contact";
-import {Button} from "antd";
+import {Button, Divider} from "antd";
+import styles from "./ProfileData.module.css";
 
 type PropsType = {
     profile: ProfileType;
@@ -20,18 +21,9 @@ export const ProfileData = ({profile, isOwner, setEditMode}: PropsType) => {
     }
 
     return (
-        <div>
-            {isOwner &&
-                <Button
-                    style={{
-                        // backgroundColor: "#149AC9"
-                        backgroundColor: "#1ac2c1",
-                        borderColor: "#1ac2c1",
-                    }}
-                    type="primary"
-                    onClick={onEditClickHandler}>Edit profile
-                </Button>}
+        <div className={styles.profileDataContainer}>
             <h2>{profile.fullName}</h2>
+            <Divider/>
 
             <h3>About Me:</h3>
             <p>{profile.aboutMe}</p>
@@ -40,19 +32,27 @@ export const ProfileData = ({profile, isOwner, setEditMode}: PropsType) => {
             <p>{profile.lookingForAJobDescription}</p>
 
             <h3>Looking for a job:
-                <span>
-                    <Avatar src={profile.lookingForAJob ? yesSign : noSign}/>
-                </span>
+                    <Avatar avaStyles={styles.lookForAJobImg} src={profile.lookingForAJob ? yesSign : noSign}/>
             </h3>
 
             <h3>Contacts:</h3>
-            <span>{Object.keys(profile.contacts).map((c, i) => {
-                return <Contact key={i}
-                                contactTitle={c}
-                                contactValue={profile.contacts[c as keyof ProfileContactsType]}
-                />
-            })}</span>
+            <span>{Object.keys(profile.contacts).map((c, i) =>
+                profile.contacts[c  as keyof ProfileContactsType]
+                    ? <Contact key={i} contactTitle={c} contactValue={profile.contacts[c as keyof ProfileContactsType]}/>
+                    : ""
+            )}</span>
 
+            {isOwner &&
+                <Button
+                    style={{
+                        // backgroundColor: "#149AC9"
+                        backgroundColor: "#ffb549",
+                        borderColor: "#ffb549",
+                        margin: "20px 0"
+                    }}
+                    type="primary"
+                    onClick={onEditClickHandler}>Edit profile
+                </Button>}
         </div>
     );
 };

@@ -4,14 +4,17 @@ import {FormDataType} from "../Login";
 import {Input} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators";
 import styles from "../../common/FormsControls/FormsControl.module.css";
+import {Button} from "antd";
 
 
 const maxLength = maxLengthCreator(50);
 const minLength = minLengthCreator(6);
 
-export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubmit,  error,
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({
+                                                                         handleSubmit, error,
                                                                          //@ts-ignore
-                                                                         captchaUrl}) => {
+                                                                         captchaUrl
+                                                                     }) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -32,7 +35,14 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({handleSubm
             {error && <div className={styles.formSummaryError}>ERROR: {error}</div>}
 
             <div>
-                <button>Submit</button>
+                <button
+                    style={{
+                        // backgroundColor: "#149AC9"
+                        backgroundColor: "#1ac2c1",
+                        borderColor: "#1ac2c1",
+                        color:"white"
+                    }}
+                >Submit</button>
             </div>
         </form>
     )

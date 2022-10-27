@@ -1,16 +1,24 @@
 .profileInfoContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .img {
     border-radius: 80%;
     border: 0px;
+    width: 300px;
 }
 
 
 .uploadPhoto {
     position: relative;
-    left: 250px;
-    bottom: 20px;
+    left: 79%;
+    bottom: 10%;
+    cursor: pointer;
+}
+.profileDataContainer{
+    min-width: 360px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

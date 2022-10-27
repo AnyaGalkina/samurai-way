@@ -1,0 +1,14 @@
+.userContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.userInfoBlock{
+    display: flex;
+    justify-content: left;
+}
+
+.userData{
+    margin-top: 5px;
+    margin-left: 45px;
+}

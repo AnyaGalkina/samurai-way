@@ -3,6 +3,8 @@ import {NavLink} from "react-router-dom";
 import Avatar from "../../../../common/Avatar/Avatar";
 import defaultUserAvatar from "../../../../../assets/images/defaultUserPhoto.jpg";
 import {UserType} from "../../../../../redux/types";
+import {Button} from "antd";
+import styles from "./Developers.module.css";
 
 type PropsType = {
     user: UserType;
@@ -14,36 +16,46 @@ type PropsType = {
 
 const User: React.FC<PropsType> = ({user, unfollow, follow, followingInProgress}) => {
     return (
-        <div>
-            <span>
-                <div>
-                    <NavLink to={"/profile/" + user.id}>
-                        <Avatar src={user.photos.small ? user.photos.small : defaultUserAvatar}/>
-                    </NavLink>
+        <div className={styles.userContainer}>
+            <div className={styles.userInfoBlock}>
+                <NavLink to={"/profile/" + user.id}>
+                    <Avatar src={user.photos.small ? user.photos.small : defaultUserAvatar}/>
+                </NavLink>
+                <div className={styles.userData}>
+                    <span>{user.name}</span>
+                    <span>{user.status}</span>
                 </div>
-                <div>
-                    {user.followed
-                        ? <button
-                            disabled={followingInProgress.some(id => user.id === id)}
-                            onClick={() => {
-                                unfollow(user.id)
-                            }}>unfollow</button>
-                        :
-                        <button
-                            disabled={followingInProgress.some(id => user.id === id)}
-                            onClick={() => {
-                                follow(user.id)
-                            }
-                            }>follow</button>
-                    }
-                        </div>
-                    </span>
-            <span>
-                <span>
-                    <div>{user.name}</div>
-                    <div>{user.status}</div>
-                </span>
-            </span>
+            </div>
+            <div>
+                {user.followed
+                    ? <Button
+                        style={{
+                            // backgroundColor: "#149AC9"
+                            backgroundColor: "#ffb549",
+                            borderColor: "#ffb549",
+                        }}
+                        type="primary"
+                        disabled={followingInProgress.some(id => user.id === id)}
+                        onClick={() => {
+                            unfollow(user.id)
+                        }}>unfollow
+                    </Button>
+                    :
+                    <Button
+                        style={{
+                            // backgroundColor: "#149AC9"
+                            backgroundColor: "#1ac2c1",
+                            borderColor: "#1ac2c1",
+                        }}
+                        type="primary"
+                        disabled={followingInProgress.some(id => user.id === id)}
+                        onClick={() => {
+                            follow(user.id)
+                        }
+                        }>follow
+                    </Button>
+                }
+            </div>
         </div>
     );
 };

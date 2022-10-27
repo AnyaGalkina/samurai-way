@@ -3,11 +3,12 @@ import styles from "./Avatar.module.css";
 
 type PropsType = {
     src: string;
+    avaStyles?: string
 }
 
-const Avatar: React.FC<PropsType> = (props) => {
+const Avatar: React.FC<PropsType> = ({src, avaStyles}) => {
     return (
-            <img src={props.src} alt='avatar' className={styles.avatar}></img>
+            <img src={src} alt='avatar' className={avaStyles || styles.avatar}></img>
     );
 };
 

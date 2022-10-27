@@ -3,8 +3,10 @@ import styles from "./Post.module.css";
 import Avatar from "../../../../common/Avatar/Avatar";
 import {HeartFilled, HeartTwoTone} from "@ant-design/icons";
 import {Button} from "antd";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {changeLikesCounter} from "../../../../../redux/profile-reducer";
+import defaultUserAvatar from "../../../../../assets/images/defaultUserPhoto.jpg";
+import {AppStateType} from "../../../../../redux/redux-store";
 
 
 type PropsType = {
@@ -16,15 +18,18 @@ type PropsType = {
 
 const Post: React.FC<PropsType> = ({postText, likesCounter, isLikeAdded, id}) => {
     const dispatch = useDispatch();
+    const photosLarge = useSelector<AppStateType,string>(state => state.profilePage.profile?.photos.large!);
 
     const addLikeHandler = () => {
         dispatch(changeLikesCounter(id, !isLikeAdded));
     }
 
     return (
-        <div className={styles.item}>
-            <Avatar src={"https://hw-media.herworld.com/public/girl-with-backpack.jpg"}/>
-            <div>{postText}</div>
+        <div className={styles.postItem}>
+            <div className={styles.postBody}>
+                <Avatar src={photosLarge ? photosLarge : defaultUserAvatar}/>
+                <div className={styles.postText}><span>{postText}</span></div>
+            </div>
             <div>
                     <span>
                         <Button type={"text"}

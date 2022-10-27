@@ -1,11 +1,10 @@
 import React from "react";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
-import NavBar from "./components/NavBar/NavBar";
 import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
 import Music from "./components/Main/Music";
-import News from "./components/Main/News";
+import News from "./components/Main/News/News";
 import ProfileContainer from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -17,22 +16,9 @@ import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
 import {ROUTES} from "./components/common/enums/routes";
 import "antd/dist/antd.css";
-import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    BugOutlined,
-    LaptopOutlined,
-    NotificationOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-} from "@ant-design/icons";
-import {Layout, Menu} from "antd";
+import {BugOutlined, LaptopOutlined, NotificationOutlined, UserOutlined,} from "@ant-design/icons";
+import {Breadcrumb, Layout, Menu} from "antd";
 import smLogo from "./assets/images/logo/sm-logo.png";
-
-import styles from "./components/NavBar/NavBar.module.css";
-// import SubMenu from "antd/lib/menu/SubMenu";
-// import Item from "antd/lib/space/Item";
 
 const {Header, Sider, Content} = Layout;
 const {SubMenu, Item} = Menu;
@@ -69,9 +55,13 @@ class App extends React.Component<OwnProps> {
         }
 
         return (
+
             <Layout>
                 <Sider trigger={null} collapsible collapsed={this.collapsed}>
-                    <div className="logo">
+            {/*<Layout className="site-layout-background" style={{ padding: '24px 0' }}>*/}
+            {/*    <Sider className="site-layout-background" width={200}>*/}
+
+                <div className="logo">
                         <img src={smLogo} alt={"logo"} style={{width: "200px", height: "80px"}}/>
                     </div>
                     <Menu
@@ -102,38 +92,44 @@ class App extends React.Component<OwnProps> {
                 </Sider>
                 <Layout className="site-layout">
                     <Header
-                        // className="site-layout-background"
-                        style={{padding: 0, backgroundColor:"#dfe4e6", height: "80px"}}>
-                        <HeaderContainer/>
+                        style={{padding: '0 50px', backgroundColor: "#dfe4e6", height: "80px"}}>
+                        <HeaderContainer />
                     </Header>
-                        {this.props.globalError
-                            && <div style={{textAlign:"center", backgroundColor:"red"}}>
+                    {this.props.globalError
+                        && <div style={{textAlign: "center", backgroundColor: "red"}}>
                             <span>{this.props.globalError}</span>
-                            <button onClick={() => {this.props.clearGlobalError();}}>X</button>
+                            <button onClick={() => {
+                                this.props.clearGlobalError();
+                            }}>X
+                            </button>
                         </div>}
-                    <Content className="site-layout-background"
-                             style={{margin: "24px 16px", padding: 24, minHeight: 280}}
+                    <Content
+                        style={{ padding: '0 50px'}}
                     >
-                        <Switch>
-                            <Route exact path={"/"}
-                                   render={() => <Redirect to={ROUTES.PROFILE}/>}
-                            />
-                            <Route path={ROUTES.PROFILE}
-                                   render={() => <ProfileContainer/>}
-                            />
-                            <Route path={ROUTES.DIALOGS}
-                                   render={() => <React.Suspense fallback={<Preloader/>}>
-                                       <DialogContainer/>
-                                   </React.Suspense>}
-                            />
-                            <Route path={ROUTES.NEWS} render={() => <News/>}/>
-                            <Route path={ROUTES.MUSIC} render={() => <Music/>}/>
-                            <Route exact path={ROUTES.SETTINGS} render={() => <Settings/>}/>
-                            <Route exact path={ROUTES.LOGIN} render={() => <Login/>}/>
-                            <Route path={ROUTES.USERS} render={() => <DevelopersContainer/>}/>
-                            <Route path={ROUTES.PAGE_NOT_FOUND} render={() => <div>404</div>}/>
-                            <Route path="/*" render={() => <Redirect to={ROUTES.PAGE_NOT_FOUND}/>}/>
-                        </Switch>
+                        <div className="site-layout-background"
+                             style={{margin: "24px 16px", padding: 24, minHeight: "90vh"}}
+                        >
+                            <Switch>
+                                <Route exact path={"/"}
+                                       render={() => <Redirect to={ROUTES.PROFILE}/>}
+                                />
+                                <Route path={ROUTES.PROFILE}
+                                       render={() => <ProfileContainer/>}
+                                />
+                                <Route path={ROUTES.DIALOGS}
+                                       render={() => <React.Suspense fallback={<Preloader/>}>
+                                           <DialogContainer/>
+                                       </React.Suspense>}
+                                />
+                                <Route path={ROUTES.NEWS} render={() => <News/>}/>
+                                <Route path={ROUTES.MUSIC} render={() => <Music/>}/>
+                                <Route exact path={ROUTES.SETTINGS} render={() => <Settings/>}/>
+                                <Route exact path={ROUTES.LOGIN} render={() => <Login/>}/>
+                                <Route path={ROUTES.USERS} render={() => <DevelopersContainer/>}/>
+                                <Route path={ROUTES.PAGE_NOT_FOUND} render={() => <div>404</div>}/>
+                                <Route path="/*" render={() => <Redirect to={ROUTES.PAGE_NOT_FOUND}/>}/>
+                            </Switch>
+                        </div>
                     </Content>
                 </Layout>
             </Layout>
