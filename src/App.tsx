@@ -3,7 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
 import Settings from "./components/Main/Settings";
-import Music from "./components/Main/Music";
+import Music from "./components/Main/Music/Music";
 import News from "./components/Main/News/News";
 import ProfileContainer from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
@@ -73,7 +73,7 @@ class App extends React.Component<OwnProps> {
                             <Item key="1"> <Link to={ROUTES.PROFILE}>Profile</Link></Item>
                             <Item key="2"> <NavLink to={ROUTES.DIALOGS}> Messages</NavLink></Item>
                             <Item key="3"> <NavLink to={ROUTES.MUSIC}> Music</NavLink></Item>
-                            <Item key="4"> <NavLink to={ROUTES.SETTINGS}> Settings</NavLink> </Item>
+                            {/*<Item key="4"> <NavLink to={ROUTES.SETTINGS}> Settings</NavLink> </Item>*/}
                         </SubMenu>
                         <SubMenu key="sub2" icon={<BugOutlined/>} title="Developers">
                             <Item key="5"> <Link to={ROUTES.USERS}>All</Link></Item>
@@ -84,7 +84,7 @@ class App extends React.Component<OwnProps> {
                             {/*<Item key='6'> <Link to="/chat"> Chat</Link> </Item>*/}
                         </SubMenu>
                         <SubMenu key="sub4" icon={<NotificationOutlined/>} title="News">
-                            <Item key="7"> <Link to={ROUTES.NEWS}> News</Link> </Item>
+                            <Item key="7"> <Link to={ROUTES.NEWS}>TechCrunch News</Link> </Item>
                         </SubMenu>
 
                     </Menu>
