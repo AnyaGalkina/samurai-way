@@ -14,7 +14,7 @@ import {connect} from "react-redux";
 import {clearGlobalError, initializeApp} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
-import {ROUTES} from "./components/common/enums/routes";
+import {ROUTES} from "./enums/routes";
 import "antd/dist/antd.css";
 import {BugOutlined, LaptopOutlined, NotificationOutlined, UserOutlined,} from "@ant-design/icons";
 import {Breadcrumb, Layout, Menu} from "antd";

@@ -4,6 +4,8 @@ import {profileAPI, UpdateProfileType} from "../api/profile-api";
 import {stopSubmit} from "redux-form";
 import {setGlobalError} from "./app-reducer";
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {RESULT_CODE} from "../enums/resultCode";
 
 export const ADD_POST = "PROFILE/ADD_POST";
 export const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
@@ -79,7 +81,7 @@ export const changeLikesCounter = (id: string, isLikeAdded: boolean) => {
 
 //Thunks
 
-export const getUserProfile = (userId: number) => async (dispatch: any) => {
+export const getUserProfile = (userId: number) => async (dispatch: Dispatch) => {
     try {
         let response = await profileAPI.getProfile(userId);
         dispatch(setUserProfile(response));
@@ -88,7 +90,7 @@ export const getUserProfile = (userId: number) => async (dispatch: any) => {
     }
 }
 
-export const getUserStatus = (userId: number) => async (dispatch: any) => {
+export const getUserStatus = (userId: number) => async (dispatch: Dispatch) => {
     try {
         let response = await profileAPI.getStatus(userId);
         dispatch(setUserStatus(response));
@@ -100,7 +102,7 @@ export const getUserStatus = (userId: number) => async (dispatch: any) => {
 export const updateUserStatus = (status: string) => async (dispatch: any) => {
     try {
         let response = await profileAPI.updateStatus(status);
-        if (response.resultCode === 0) {
+        if (response.resultCode === RESULT_CODE.SUCCESS)  {
             dispatch(setUserStatus(status));
         } else {
             dispatch(response.messages[0]);
@@ -110,10 +112,10 @@ export const updateUserStatus = (status: string) => async (dispatch: any) => {
     }
 }
 
-export const savePhoto = (photo: File) => async (dispatch: any) => {
+export const savePhoto = (photo: File) => async (dispatch: Dispatch) => {
     try {
         let response = await profileAPI.updatePhoto(photo);
-        if (response.resultCode === 0) {
+        if (response.resultCode === RESULT_CODE.SUCCESS) {
             dispatch(savePhotoSuccess(response.data.photos));
         }
     } catch (e: any) {
@@ -126,7 +128,7 @@ export const updateProfile = (profile: UpdateProfileType) => async (dispatch: an
         let response = await profileAPI.updateProfile(profile);
         let userId = getState().auth.userId
 
-        if (response.resultCode === 0) {
+        if (response.resultCode === RESULT_CODE.SUCCESS)  {
             userId && dispatch(getUserProfile(userId));
         } else {
             let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";

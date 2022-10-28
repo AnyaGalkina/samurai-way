@@ -3,6 +3,7 @@ import {authAPI} from "../api/auth-api";
 import {stopSubmit} from "redux-form";
 import {securityAPI} from "../api/security-api";
 import {setGlobalError} from "./app-reducer";
+import {RESULT_CODE} from "../enums/resultCode";
 
 const SET_USER_DATA = "AUTH/SET_USER_DATA";
 const GET_CAPTCHA_URL_SUCCESS = "AUTH/GET_CAPTCHA_URL_SUCCESS";
@@ -50,7 +51,7 @@ export const getAuthUserData = () => async (dispatch: any) => {
         dispatch(setToggleIsFetchingAuth(true));
         const response = await authAPI.getMe();
         let {id, email, login} = response.data;
-        if (response.resultCode === 0) {
+        if (response.resultCode === RESULT_CODE.SUCCESS)  {
             dispatch(setAuthUserData(id, email, login, true));
         }
         dispatch(setToggleIsFetchingAuth(false));
@@ -64,10 +65,10 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
         dispatch(setToggleIsFetchingAuth(true));
         const response = await authAPI.login(email, password, rememberMe, captchaUrl);
         dispatch(setToggleIsFetchingAuth(false));
-        if (response.resultCode === 0) {
+        if (response.resultCode === RESULT_CODE.SUCCESS) {
             dispatch(getAuthUserData());
         } else {
-            if (response.resultCode === 10) {
+            if (response.resultCode === RESULT_CODE.CAPTCHA)  {
                 dispatch(getCaptchaUrl());
             }
             let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
@@ -90,7 +91,7 @@ export const getCaptchaUrl = () => async (dispatch: any) => {
 export const logout = () => async (dispatch: any) => {
     try {
         const response = await authAPI.logout();
-        if (response.resultCode === 0) {
+        if (response.resultCode === RESULT_CODE.SUCCESS) {
             dispatch(setAuthUserData(null, null, null, false));
         }
     } catch (e: any) {
