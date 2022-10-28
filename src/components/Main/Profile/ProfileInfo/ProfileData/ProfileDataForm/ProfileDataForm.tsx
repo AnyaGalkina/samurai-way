@@ -72,7 +72,7 @@ export const ProfileDataForm = ({profile, setEditMode}: PropsType) => {
                 </div>)
             })}</span>
 
-            <Button
+            <button
                 style={{
                     // backgroundColor: "#149AC9"
                     backgroundColor: "#1ac2c1",
@@ -80,7 +80,7 @@ export const ProfileDataForm = ({profile, setEditMode}: PropsType) => {
                 }}
                 // type="primary"
                 //@ts-ignore
-                type={"submit"}>Save</Button>
+                type={"submit"}>Save</button>
         </form>
     );
 };

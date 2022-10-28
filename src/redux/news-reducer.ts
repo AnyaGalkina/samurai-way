@@ -1,5 +1,5 @@
 import {ActionType} from "./redux-store";
-import {ArticlesType, newsAPI, NewsParamsType} from "../api/news-api";
+import {ArticleType, newsAPI, NewsParamsType} from "../api/news-api";
 import {setGlobalError} from "./app-reducer";
 
 
@@ -291,7 +291,7 @@ const initialState = {
             "publishedAt": "2022-10-27T14:46:12Z",
             "content": "You might wish you were more passionate about your job. Or that you had the kind of job you could at least imagine being passionate about. Something that made you jump out of bed in the morning, exci… [+4015 chars]"
         }
-    ]as Array<ArticlesType>
+    ]as Array<ArticleType>
 }
 
 type InitialStateType = typeof initialState;
@@ -305,7 +305,7 @@ export const newsReducer = (state: InitialStateType = initialState, action: Acti
     }
 }
 
-export const setArticles = (articles: Array<ArticlesType>) => {
+export const setArticles = (articles: Array<ArticleType>) => {
     return ({type: "GET_TOP_NEWS", payload: {articles}} as const)
 }
 

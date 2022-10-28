@@ -1,13 +1,1 @@
-.newsBlock {
-    display: flex;
-    justify-content: space-between;
-}
 
-.img {
-    width: 269px;
-    height: 162px
-}
-
-.articleDetails{
-    margin: 20px 40px;
-}

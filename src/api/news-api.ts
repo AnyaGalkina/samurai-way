@@ -27,7 +27,7 @@ export type NewsParamsType = {
 export type NewsResType = {
     status: string,
     totalResults: string,
-    articles: Array<ArticlesType>
+    articles: Array<ArticleType>
 }
 // export type NewsResType = {
 // 	status: string,
@@ -36,7 +36,7 @@ export type NewsResType = {
 // 	articles: Array<ArticlesType>
 // }
 
-export type ArticlesType = {
+export type ArticleType = {
     source: {
         id: string;
         name: string
