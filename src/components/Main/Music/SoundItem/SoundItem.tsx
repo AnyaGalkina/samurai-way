@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "antd";
 import styles from "./SoundItem.module.css";
 import {PlayCircleOutlined, PauseCircleOutlined, PoweroffOutlined} from "@ant-design/icons";
@@ -13,6 +13,30 @@ type PropsType = {
 }
 
 export const SoundItem = ({sound}: PropsType) => {
+    const [soundStatus, setSoundStatus] = useState<soundStatusType>("off");
+    type soundStatusType = "play" | "pause" | "off";
+
+    const onPlayClickHandler = () => {
+        if (soundStatus === "pause") {
+            sound.src.play();
+            setSoundStatus("play");
+        } else {
+            Howler.stop();
+            sound.src.play();
+            setSoundStatus("play");
+        }
+    }
+
+    const onPauseClickHandler = () => {
+        setSoundStatus("pause");
+        sound.src.pause()
+    }
+
+    const onStopClickHandler = () => {
+        sound.src.stop()
+        setSoundStatus("off");
+    }
+
     return (
         <div className={styles.soundContainer}>
             <img alt={"album title"} src={sound.img} style={{width: "300px", height: " 300px"}}/>
@@ -23,24 +47,16 @@ export const SoundItem = ({sound}: PropsType) => {
                 </div>
             </div>
             <div>
-                <Button
-                    icon={<PlayCircleOutlined/>}
-                    onClick={() => {
-                        Howler.stop();
-                        sound.src.play();
-                    }}>
+                <Button icon={<PlayCircleOutlined/>}
+                        onClick={onPlayClickHandler}>
                 </Button>
-                {/*<Button icon={<PauseCircleOutlined/>}*/}
-                {/*        onClick={() => {*/}
-                {/*            sound.src.pause()*/}
-                {/*        }}>*/}
-                {/*    */}
-                {/*</Button>*/}
-                <Button
-                    icon={<PoweroffOutlined />}
-                    onClick={() => {
-                    sound.src.stop()
-                }}></Button>
+                <Button icon={<PauseCircleOutlined/>}
+                        onClick={onPauseClickHandler}>
+
+                </Button>
+                <Button icon={<PoweroffOutlined/>}
+                        onClick={onStopClickHandler}>
+                </Button>
             </div>
         </div>
     );
