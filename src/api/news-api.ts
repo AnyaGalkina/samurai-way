@@ -4,7 +4,7 @@ export const newsAPI = {
 
     getNews(currentPage: number) {
         // return axios.get(`%PUBLIC_URL%/${currentPage}`)
-        return axios.get(`samurai-way/${currentPage}.json`)
+        return axios.get(`/${currentPage}.json`);
     }
 
     // getNews(currentPage : number) {
@@ -24,12 +24,6 @@ export type NewsResType = {
     totalResults: string,
     articles: Array<ArticleType>
 }
-// export type NewsResType = {
-// 	status: string,
-// 	source: string,
-// 	sortBy: string,
-// 	articles: Array<ArticlesType>
-// }
 
 export type ArticleType = {
     source: {
