@@ -1,10 +1,12 @@
 import axios from "axios";
 
-export const instance = axios.create({ })
+export const instance = axios.create({})
 
 export const newsAPI = {
-    getNews(currentPage : number) {
-        return instance.get(`https://anyagalkina.github.io/samurai-way/static/media/${currentPage}`)
+
+    getNews(currentPage: number) {
+        // return instance.get(`https://anyagalkina.github.io/samurai-way/static/media/${currentPage}`)
+        return instance.get(`%PUBLIC_URL%/${currentPage}`)
     }
 
     // getNews(currentPage : number) {
