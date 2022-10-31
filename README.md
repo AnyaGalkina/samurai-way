@@ -6,7 +6,7 @@ Social Network for front-end developers
 - Follow real users
 - Easy to chat thanks to WebSocket connection 
 - Listen music at music library
-- Read the latest TechCrunch news and share them with one click
+- Read TechCrunch news and share them with one click
 
 ## Screenshots
 ![Project screenshot](/src/assets/images/screenshots/Screenshot-music.png)
