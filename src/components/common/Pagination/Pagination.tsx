@@ -7,11 +7,11 @@ import {Button} from "antd";
 
 type PropsType = {
     currentPage: number;
+    totalItemsCount: number;
     onPageChanged: (pageNumber: number) => void;
 }
 
-const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged}) => {
-    const totalItemsCount = useSelector<AppStateType, number>(state => state.usersPage.totalUsersCount);
+const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged, totalItemsCount}) => {
     const pageSize = useSelector<AppStateType, number>(state => state.usersPage.pageSize);
     const portionSize = useSelector<AppStateType, number>(state => state.usersPage.portionSize);
     const [portionNumber, setPortionNumber] = useState(1);
@@ -36,7 +36,6 @@ const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged}) => {
     for (let i = 1; i < pagesCount; i++) {
         pages.push(i);
     }
-    console.log(currentPage);
 
     return (
         <div style={{marginBottom:"50px"}}>

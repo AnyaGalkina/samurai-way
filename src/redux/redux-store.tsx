@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import dialogsReducer, {addMessage} from "./dialogs-reducer";
 import profileReducer, {
     addPost, changeLikesCounter, savePhotoSuccess,
@@ -18,7 +18,7 @@ import authReducer, {getCaptchaUrlSuccess, setAuthUserData, setToggleIsFetchingA
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 import {appReducer, clearGlobalError, setGlobalError, setInitializedSuccessAC} from "./app-reducer";
-import {newsReducer, setArticles} from "./news-reducer";
+import {newsReducer, setArticles, setNewsCurrentPage} from "./news-reducer";
 
 export type ActionType =
     ReturnType<typeof addPost>
@@ -40,6 +40,7 @@ export type ActionType =
     | ReturnType<typeof clearGlobalError>
     | ReturnType<typeof changeLikesCounter>
     | ReturnType<typeof setArticles>
+    | ReturnType<typeof setNewsCurrentPage>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;

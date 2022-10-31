@@ -1,28 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../redux/redux-store";
 import {ArticleType} from "../../../api/news-api";
 import {NewsItem} from "./NewsItem/NewsItem";
+import {getTopNews, setNewsCurrentPage} from "../../../redux/news-reducer";
+import Pagination from "../../common/Pagination/Pagination";
 
 const News = () => {
+    const currentPage = useSelector<AppStateType,number>(state => state.newsPage.currentPage)
     const dispatch = useDispatch();
     const articles = useSelector<AppStateType, Array<ArticleType>>(state => state.newsPage.articles);
 
-    // const params = {
-    //     source: "bbc-news",
-    //     sortBy: "top",
-    //     apiKey: "bc605f10d8ec43b4bb058ea789b7f3e8"
-    // apiKey: "4dbc17e007ab436fb66416009dfb59a8"
-    // }
+    const setNewsCurrentPageHandler = (page: number) => {
+        dispatch(setNewsCurrentPage(page));
+    }
 
-    // useEffect(() => {
-    //     dispatch(getTopNews(params))
-    // }, [])
-
+    useEffect(() => {
+        dispatch(getTopNews(currentPage));
+    }, [currentPage, dispatch])
 
     return (
         <div>
             <h1>Top TechCrunch news</h1>
+            <Pagination currentPage={currentPage} totalItemsCount={50} onPageChanged={setNewsCurrentPageHandler}/>
             {articles.map(a => {
                 return <NewsItem article={a}/>
             })}

@@ -1,9 +1,14 @@
 import {ActionType} from "./redux-store";
-import {ArticleType, newsAPI, NewsParamsType} from "../api/news-api";
+import {ArticleType, newsAPI} from "../api/news-api";
 import {setGlobalError} from "./app-reducer";
+
+const SET_NEWS_CURRENT_PAGE = "NEWS/SET_NEWS_CURRENT_PAGE";
+const GET_TOP_NEWS = "NEWS/GET_TOP_NEWS";
+
 
 
 const initialState = {
+    currentPage: 1,
     articles: [
         {
             "source": {
@@ -252,45 +257,6 @@ const initialState = {
             "publishedAt": "2022-10-27T15:45:04Z",
             "content": "Thoma Bravo and Sunstone Partners announced today that theyre acquiring customer insight platform UserTesting for $1.3 billion in an all-cash deal. The acquirers say they plan to combine it with User… [+2440 chars]"
         },
-        {
-            "source": {
-                "id": "techcrunch",
-                "name": "TechCrunch"
-            },
-            "author": "Jacquelyn Melinek",
-            "title": "Yuga Labs’ Nicole Muniz to talk about NFTs and Bored Apes at TC Sessions: Crypto",
-            "description": "As the NFT ecosystem continues to waver, superfans and blue-chip holders are still holding on strong.  The number of NFT sales is down almost 90% from the...",
-            "url": "https://techcrunch.com/2022/10/27/yuga-labs-nicole-muniz-to-talk-about-nfts-and-bored-apes-at-tc-sessions-crypto/",
-            "urlToImage": "https://media.zenfs.com/en/techcrunch_350/30412a20e6a8e54d72464986940cd865",
-            "publishedAt": "2022-10-27T15:30:56Z",
-            "content": "As the NFT ecosystem continues to waver, superfans and blue-chip holders are still holding on strong. But how can the digital asset sector reignite growth and appeal to new audiences? The number of N… [+3356 chars]"
-        },
-        {
-            "source": {
-                "id": "techcrunch",
-                "name": "TechCrunch"
-            },
-            "author": "Mary Ann Azevedo",
-            "title": "Uber alum rakes in $9.7M to curb finance-related fights between co-parents",
-            "description": "The daughter of divorced parents herself, Uber alum Jacklyn Rome founded Onward to help co-parents more easily manage their shared expenses.\nUber alum rakes in $9.7M to curb finance-related fights between co-parents by Mary Ann Azevedo originally published on…",
-            "url": "https://techcrunch.com/2022/10/27/uber-alum-raises-millions-for-fintech-app-aimed-at-helping-co-parents-bicker-less-over-finances/",
-            "urlToImage": "https://techcrunch.com/wp-content/uploads/2022/10/Onward-TechCrunch.jpg?resize=1200,675",
-            "publishedAt": "2022-10-27T15:02:54Z",
-            "content": "If youre a parent, one of the hardest things about getting divorced is still having to deal with your ex about financial matters regarding your children.\r\nAnd, according to a 2015 report, just 50.2% … [+4019 chars]"
-        },
-        {
-            "source": {
-                "id": "the-next-web",
-                "name": "The Next Web"
-            },
-            "author": "The Conversation",
-            "title": "Passionate about your job? Here’s why that might not be good for you",
-            "description": "You might wish you were more passionate about your job. Or that you had the kind of job you could at least imagine being passionate about. Something that made you jump out of bed in the morning, excited about a new day filled with fist pumps and joy. But psyc…",
-            "url": "https://thenextweb.com/news/passionate-about-your-job-heres-why-that-might-not-be-good-for-you",
-            "urlToImage": "https://img-cdn.tnwcdn.com/image/tnw?filter_last=1&fit=1280%2C640&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2022%2F02%2Foffice-apocalypse-1.jpeg&signature=e54ab1c82b7d2e73c1dd26c03d899038",
-            "publishedAt": "2022-10-27T14:46:12Z",
-            "content": "You might wish you were more passionate about your job. Or that you had the kind of job you could at least imagine being passionate about. Something that made you jump out of bed in the morning, exci… [+4015 chars]"
-        }
     ]as Array<ArticleType>
 }
 
@@ -298,21 +264,25 @@ type InitialStateType = typeof initialState;
 
 export const newsReducer = (state: InitialStateType = initialState, action: ActionType) => {
     switch (action.type) {
-        case "GET_TOP_NEWS":
-            return {...state, articles: action.payload.articles}
+        case SET_NEWS_CURRENT_PAGE:
+            return {...state, currentPage: action.payload.currentPage}
+        case GET_TOP_NEWS:
+            return {...state, ...action.payload}
         default:
             return state
     }
 }
 
 export const setArticles = (articles: Array<ArticleType>) => {
-    return ({type: "GET_TOP_NEWS", payload: {articles}} as const)
+    return ({type: GET_TOP_NEWS, payload: {articles}} as const)
 }
+export const setNewsCurrentPage = (currentPage: number) => {
+    return {type: SET_NEWS_CURRENT_PAGE, payload: {currentPage}} as const
+};
 
-
-export const getTopNews = (params: NewsParamsType) => async (dispatch: any) => {
+export const getTopNews = (currentPage: number) => async (dispatch: any) => {
     try {
-        const response = await newsAPI.getNews();
+        const response = await newsAPI.getNews(currentPage);
         dispatch(setArticles(response.data.articles));
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));

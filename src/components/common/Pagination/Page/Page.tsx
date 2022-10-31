@@ -9,7 +9,9 @@ type PropsType = {
 
 export const Page = ({page, currentPage, onPageChanged}: PropsType) => {
 
-    const onPageClickHandler = () => {onPageChanged(page)};
+    const onPageClickHandler = () => {
+        onPageChanged(page)
+    };
 
     return (
         <span
