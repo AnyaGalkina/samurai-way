@@ -1,0 +1,134 @@
+{
+  "articles": [
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Taylor Hatmaker",
+      "title": "Meta is in trouble",
+      "description": "Meta is in trouble Thursday, with shares plunging by 25%. The company is now worth almost a quarter of what it was last year.",
+      "url": "https://techcrunch.com/2022/10/27/meta-stock-yikes/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2022/10/meta-distorted-glitched.jpg?resize=1200,675",
+      "publishedAt": "2022-10-27T20:13:07Z",
+      "content": "A day after weighing in with its third quarter earnings report, Meta is flailing. The company formerly known as Facebook was in trouble Thursday after uninspiring numbers and an apparent lack of fait… [+2643 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Dominic-madori Davis",
+      "title": "How to raise funds when you aren’t in the Bay Area",
+      "description": "At this year's TechCrunch Disrupt, three investors shared tips on how startup founders can fundraise outside of major tech hubs.",
+      "url": "https://techcrunch.com/2022/10/27/how-to-raise-funds-when-you-arent-in-the-bay-area/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2022/10/FfdPECGUoAAjurI.jpg",
+      "publishedAt": "2022-10-27T20:00:32Z",
+      "content": "Perhaps sitting perched somewhere in sunny Miami, Florida, is a founder wondering the best ways to fundraise for a company when situated outside a traditional tech hub like the Bay Area.\r\nThey need n… [+799 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Anita Ramaswamy and Jacquelyn Melinek",
+      "title": "Apple doesn't want you trading NFTs on your phone (unless it makes them money)",
+      "description": "Apple is no stranger to asserting its dominance.  If you can’t join us in person in Miami, you can use the promo code REACT to get 25% off an annual...",
+      "url": "https://techcrunch.com/2022/10/27/apple-reddit-nfts-app-store-chain-reaction-podcast/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/IsRMImrNItwz1zbXFh8Z_w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/techcrunch_350/aed3f3b562e332e6576143046d89413c",
+      "publishedAt": "2022-10-27T19:09:19Z",
+      "content": "Apple is no stranger to asserting its dominance. That's exactly what the tech giant did this week when it announced new, stringent guidelines for NFT transactions in the iOS App Store, marking the fi… [+977 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Anita Ramaswamy and Jacquelyn Melinek",
+      "title": "Apple says, 'NFTs? Yes, fees'",
+      "description": "Last week, we recorded our news episode live onstage at TechCrunch Disrupt, in which we talked about the Aptos launch and shared our predictions for where we...",
+      "url": "https://techcrunch.com/2022/10/27/chain-reaction-apple-nfts-reddit-rishi-sunak-podcast-newsletter/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/72rqXoWnXWse78CIyJGbrQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/techcrunch_350/c7363a3e191ac13afeaf05fc8afe0d1b",
+      "publishedAt": "2022-10-27T19:00:12Z",
+      "content": "Image Credits: TechCrunch\r\nWelcome back to Chain Reaction.\r\nLast week, we recorded our news episode live onstage at TechCrunch Disrupt, in which we talked about the Aptos launch and shared our predic… [+4675 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Devin Coldewey",
+      "title": "Physical 'copies' of the new Call of Duty are just empty discs",
+      "description": "Cartridges and discs used to be how you got the latest games, but that's been changing as downloads have become more convenient and reliable. But some people prefer the sure thing: a physical copy, so they can play offline or with a bad connection. To",
+      "url": "https://techcrunch.com/2022/10/27/physical-copies-of-the-new-call-of-duty-are-just-empty-discs/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2022/10/cod-physical.jpg?resize=1200,678",
+      "publishedAt": "2022-10-27T18:58:35Z",
+      "content": "Cartridges and discs used to be how you got the latest games, but that’s been changing as downloads have become more convenient and reliable. But some people prefer the sure thing: a physical copy, s… [+3680 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Brian Heater",
+      "title": "Dawn of the tentacle",
+      "description": "Berkshire Grey, which ran aground a stock dip following a 2021 SPAC deal, is an example of a company that recently \"made some updates.\"  The $75M commitment ...",
+      "url": "https://techcrunch.com/2022/10/27/dawn-of-the-tentacle/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/C9R0Yd3idwKs8Zsre8BWzQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04NTQ-/https://media.zenfs.com/en/techcrunch_350/3579a9b504b8b297c64ceb90d386db0e",
+      "publishedAt": "2022-10-27T18:30:11Z",
+      "content": "Fair warning, its going to be a quick one from me today. I caught the thing again, roughly three months after the last time I caught the thing. They say, third times the charm, and I now recognize th… [+7618 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Natasha Lomas",
+      "title": "Google filing says EU's antitrust division is investigating Play Store practices",
+      "description": "A Google regulatory filing appears to have confirmed rumors in recent months that the European Union's competition division is looking into how it operates its smartphone app store, the Play Store. However TechCrunch understands that no formal EU inve",
+      "url": "https://techcrunch.com/2022/10/27/google-play-eu-antitrust/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2022/03/GettyImages-1235737290.jpeg",
+      "publishedAt": "2022-10-27T18:19:01Z",
+      "content": "A Google regulatory filing appears to have confirmed rumors in recent months that the European Union’s competition division is looking into how it operates its smartphone app store, the Play Store.\r\n… [+7248 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Lauren Forristal",
+      "title": "Snapchat reduces total payouts for Spotlight creators",
+      "description": "Snapchat has changed the way it pays creators through its Spotlight reward fund. Creators that use Snapchat’s TikTok clone, Spotlight, will now be paid millions per year, a source familiar with the matter told TechCrunch. This marks the second time Snapchat h…",
+      "url": "https://techcrunch.com/2022/10/27/snapchat-reduces-total-payouts-for-spotlight-creators/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2021/12/Snapchat-Spotlight.jpg?resize=1200,675",
+      "publishedAt": "2022-10-27T18:03:49Z",
+      "content": "Snapchat has changed the way it pays creators through its Spotlight reward fund. Creators that use Snapchats TikTok clone, Spotlight, will now be paid millions per year, a source familiar with the ma… [+1495 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Rebecca Bellan",
+      "title": "Uber to freeze fake rider account names, pilot front-facing video recording",
+      "description": "Uber is releasing a suite of new safety features geared towards the driver, including freezing fake rider account names and piloting a front-facing video recording tool to replace a driver’s dashcam. The safety features follow a feedback period from drivers t…",
+      "url": "https://techcrunch.com/2022/10/27/uber-to-freeze-fake-rider-account-names-pilot-front-facing-video-recording/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2016/01/uberx_driver2_color.jpg?resize=1200,799",
+      "publishedAt": "2022-10-27T18:00:53Z",
+      "content": "Uber is releasing a suite of new safety features geared towards the driver, including freezing fake rider account names and piloting a front-facing video recording tool to replace a driver’s dashcam.… [+2307 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Natasha Mascarenhas",
+      "title": "Clubhouse's Paul Davison on Twitter, the impact of hype and what happened",
+      "description": "Clubhouse CEO and co-founder Paul Davison came to TechCrunch Disrupt to talk about life after the hype and its most formidable competitor, Twitter. Clubhouse's Paul Davison on Twitter, the impact of hype and what happened by Natasha Mascarenhas origin",
+      "url": "https://techcrunch.com/2022/10/27/clubhouses-paul-davison-on-twitter-the-impact-of-hype-and-what-happened/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2022/10/GettyImages-1435085968.jpg?resize=1200,800",
+      "publishedAt": "2022-10-27T18:00:45Z",
+      "content": "For most venture-backed social companies, a period of hypergrowth seems like it would be the dream. It means the app broke through the noise of thousands of others, resonated with a mass market of pe… [+1477 chars]"
+    }
+  ]
+}

@@ -4,8 +4,12 @@ export const instance = axios.create({ })
 
 export const newsAPI = {
     getNews(currentPage : number) {
-        return instance.get<NewsResType>(`https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&pageSize=10&page=${currentPage}&apiKey=bc605f10d8ec43b4bb058ea789b7f3e8`)
+        return instance.get(`https://anyagalkina.github.io/samurai-way/static/media/${currentPage}`)
     }
+
+    // getNews(currentPage : number) {
+    //     return instance.get<NewsResType>(`https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&pageSize=10&page=${currentPage}&apiKey=bc605f10d8ec43b4bb058ea789b7f3e8`)
+    // }
 }
 
 export type NewsParamsType = {

@@ -1,0 +1,134 @@
+{
+  "articles": [
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Christine Hall and Haje Jan Kamps",
+      "title": "Daily Crunch: Blocking VLC player downloads violates Indian law, claims VideoLAN in legal challenge",
+      "description": "Good to have you with us again, as the TechCrunch train continues to rumble along the tracks.  Last to know: VideoLAN, maker of the popular media player VLC,...",
+      "url": "https://techcrunch.com/2022/10/04/daily-crunch-blocking-vlc-player-downloads-violates-indian-law-claims-videolan-in-legal-challenge/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/5OXBuw_M9tXICynWKOMoSQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MTA-/https://media.zenfs.com/en/techcrunch_350/f76006cf5f302f1d38ae8206b4065f50",
+      "publishedAt": "2022-10-04T22:05:24Z",
+      "content": "To get a roundup of TechCrunchs biggest and most important stories delivered to your inbox every day at 3 p.m. PDT,subscribe here.\r\nGood to have you with us again, as the TechCrunch train continues t… [+4567 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Rebecca Bellan",
+      "title": "Zipline's drones to deliver medicine in Salt Lake City area",
+      "description": "Zipline, a drone delivery and logistics company that got its start delivering medical supplies in Africa, has started dropping prescriptions and over-the...",
+      "url": "https://techcrunch.com/2022/10/04/ziplines-drones-to-deliver-medicine-in-salt-lake-city-area/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/8DwYdd0frcsTlzOkPUMvfg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDE-/https://media.zenfs.com/en/techcrunch_350/60246d00bbff655cc66182651f6365cc",
+      "publishedAt": "2022-10-04T16:07:57Z",
+      "content": "Zipline, a drone delivery and logistics company that got its start delivering medical supplies in Africa, has started dropping prescriptions and over-the-counter medications to homes in the Salt Lake… [+3349 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Walter Thompson",
+      "title": "TechCrunch+ roundup: Edtech market map, robotics fundraising, getting started with FinOps",
+      "description": "Cybersecurity startups, however, often experience long TTV, as enterprise customers often require several sales calls and a bespoke onboarding process.  To...",
+      "url": "https://techcrunch.com/2022/10/04/techcrunch-roundup-edtech-market-map-robotics-fundraising-getting-started-with-finops/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/C7S9fSsNi8aZMrjxvQ.IXw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://media.zenfs.com/en/techcrunch_350/22e0541cf35cafd4da867970e1a05fa8",
+      "publishedAt": "2022-10-04T17:25:32Z",
+      "content": "Some purchases provide near-instant time to value (TTV), like buying an umbrella on a rainy day, or hiring a glazier to replace a broken window.\r\nCybersecurity startups, however, often experience lon… [+3966 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Ron Miller",
+      "title": "Tealium’s new compliance tool helps ensure consumer data preferences get implemented",
+      "description": "Tealium launched back in 2011 and built one of the earliest customer data platforms (CDP) a couple of years later.  The company has concentrated on...",
+      "url": "https://techcrunch.com/2022/10/12/tealiums-new-compliance-tool-helps-ensure-consumer-data-preferences-get-implemented/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/axpbAbAgxsQEAhA.47gkxg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD05MDA-/https://media.zenfs.com/en/techcrunch_350/4832b8b89792e28611cb33ad9f8aba79",
+      "publishedAt": "2022-10-12T13:18:18Z",
+      "content": "Tealium launched back in 2011 and built one of the earliest customer data platforms (CDP) a couple of years later. The company has concentrated on collecting data in highly regulated industries, and … [+3263 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Ron Miller",
+      "title": "DataGrail announces automated risk assessment tool and $45M investment",
+      "description": "DataGrail has always focused on helping companies comply with the growing world of privacy regulation, building plug-ins to common data-heavy applications to...",
+      "url": "https://techcrunch.com/2022/10/12/datagrail-announces-automated-risk-assessment-tool-and-45m-investment/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/F4464MDUUKBZjD6De4QWPQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://media.zenfs.com/en/techcrunch_350/bc862429ba2d455e2682f4f9f56a6bbc",
+      "publishedAt": "2022-10-12T14:45:08Z",
+      "content": "DataGrail has always focused on helping companies comply with the growing world of privacy regulation, building plug-ins to common data-heavy applications to help automate data discovery and complian… [+3304 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Kyle Wiggers",
+      "title": "Humaans raises $15M to simplify HR tasks like onboarding",
+      "description": "The role of HR professionals grew in scope during the pandemic as companies were forced to navigate major workplace changes, like working from home...",
+      "url": "https://techcrunch.com/2022/10/04/humaans-raises-15m-to-simplify-hr-tasks-like-onboarding/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/Ntgoo.bRoBmPltQSrJFskA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://media.zenfs.com/en/techcrunch_350/d348117cb2f32d5466ef1454db35dae4",
+      "publishedAt": "2022-10-04T12:00:46Z",
+      "content": "The role of HR professionals grew in scope during the pandemic as companies were forced to navigate major workplace changes, like working from home. Unsurprisingly, those professionals have had some … [+4709 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Aria Alamalhodaei",
+      "title": "Moon set for November traffic jam as both ispace and NASA target launches",
+      "description": "If all goes to plan, Florida’s Space Coast could see two separate lunar missions take off in November.  Japanese startup ispace said Wednesday it is...",
+      "url": "https://techcrunch.com/2022/10/12/moon-set-for-november-traffic-jam-as-both-ispace-and-nasa-target-launches/",
+      "urlToImage": "https://s.yimg.com/uu/api/res/1.2/.D0FzvGHJwUa.Xf7qBlLeg--~B/aD02Njk7dz0xMTc2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/techcrunch_350/5ec369e34938439fd465f5f98fb01d8c",
+      "publishedAt": "2022-10-12T14:14:46Z",
+      "content": "If all goes to plan, Floridas Space Coast could see two separate lunar missions take off in November.\r\nJapanese startup ispace said Wednesday it is targeting a launch window of November 9-15 for its … [+2231 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Brian Heater",
+      "title": "The last mile",
+      "description": "Last week, Amazon confirmed reports that it has scaled back real-world piloting for its last-mile delivery robot, Scout.  During our limited field test for...",
+      "url": "https://techcrunch.com/2022/10/13/the-last-mile/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/0AjolqbMpkYinrJcf4oUaQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://media.zenfs.com/en/techcrunch_350/cb8b2fa93123913cdcd024e7e4dd7a26",
+      "publishedAt": "2022-10-13T18:30:09Z",
+      "content": "I dont love devoting the first several paragraphs of this newsletter to Amazon every week, but no one is making waves both good and bad in the robotics space quite like the little mom-and-pop booksel… [+7187 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Rebecca Bellan",
+      "title": "Foxconn pushes deeper into automotive with an electric pickup and crossover",
+      "description": "Foxconn, the Taiwanese manufacturing giant that makes Apple's iPhones, unveiled Tuesday two electric vehicle concepts at its third annual Hon Hai Tech Day as...",
+      "url": "https://techcrunch.com/2022/10/18/foxconn-pushes-deeper-into-automotive-with-an-electric-pickup-and-crossover/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/xyZaTeGEW2KPUvgv7hwFnA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD01NTE-/https://media.zenfs.com/en/techcrunch_350/888f0524b9573eeb78cf27a0cce25dc7",
+      "publishedAt": "2022-10-18T17:01:35Z",
+      "content": "Foxconn, the Taiwanese manufacturing giant that makes Apple's iPhones, unveiled Tuesday two electric vehicle concepts at its third annual Hon Hai Tech Day as the company tries to diversify its busine… [+3054 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Kyle Wiggers",
+      "title": "Deep Render believes AI holds the key to more efficient video compression",
+      "description": "Chri Besenbruch, CEO of Deep Render, sees many problems with the way video compression standards are developed today.  \"The codec development process is...",
+      "url": "https://techcrunch.com/2022/10/18/deep-render-believes-ai-holds-the-key-to-more-efficient-video-compression/",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/8LlhSDTqcScuLwbnwSrjAg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://media.zenfs.com/en/techcrunch_350/6e812e23f4d28d1cc95ddb5c7f5434a4",
+      "publishedAt": "2022-10-18T21:52:15Z",
+      "content": "Chri Besenbruch, CEO of Deep Render, sees many problems with the way video compression standards are developed today. He thinks they aren't advancing quickly enough, bemoans the fact that they're pla… [+3352 chars]"
+    }
+  ]
+}
