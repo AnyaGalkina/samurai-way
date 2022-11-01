@@ -16,8 +16,19 @@ import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
 import {ROUTES} from "./enums/routes";
 import "antd/dist/antd.css";
-import {BugOutlined, LaptopOutlined, NotificationOutlined, UserOutlined,} from "@ant-design/icons";
-import {Breadcrumb, Layout, Menu} from "antd";
+import {
+    BugOutlined,
+    RocketOutlined,
+    UsergroupAddOutlined,
+    LaptopOutlined,
+    NotificationOutlined,
+    UserOutlined,
+    AuditOutlined,
+    CommentOutlined,
+    CustomerServiceOutlined,
+
+} from "@ant-design/icons";
+import {Layout, Menu} from "antd";
 import smLogo from "./assets/images/logo/sm-logo.png";
 
 const {Header, Sider, Content} = Layout;
@@ -58,10 +69,10 @@ class App extends React.Component<OwnProps> {
 
             <Layout>
                 <Sider trigger={null} collapsible collapsed={this.collapsed}>
-            {/*<Layout className="site-layout-background" style={{ padding: '24px 0' }}>*/}
-            {/*    <Sider className="site-layout-background" width={200}>*/}
+                    {/*<Layout className="site-layout-background" style={{ padding: '24px 0' }}>*/}
+                    {/*    <Sider className="site-layout-background" width={200}>*/}
 
-                <div className="logo">
+                    <div className="logo">
                         <img src={smLogo} alt={"logo"} style={{width: "200px", height: "80px"}}/>
                     </div>
                     <Menu
@@ -70,21 +81,22 @@ class App extends React.Component<OwnProps> {
                         defaultSelectedKeys={["1"]}
                     >
                         <SubMenu key="sub1" icon={<UserOutlined/>} title="My Profile">
-                            <Item key="1"> <Link to={ROUTES.PROFILE}>Profile</Link></Item>
-                            <Item key="2"> <NavLink to={ROUTES.DIALOGS}> Messages</NavLink></Item>
-                            <Item key="3"> <NavLink to={ROUTES.MUSIC}> Music</NavLink></Item>
+                            <Item key="1" icon={<AuditOutlined/>}> <Link to={ROUTES.PROFILE}>Profile</Link></Item>
+                            <Item key="2" icon={<CommentOutlined/>}> <NavLink
+                                to={ROUTES.DIALOGS}> Messages</NavLink></Item>
+                            <Item key="3" icon={<CustomerServiceOutlined/>}> <NavLink to={ROUTES.MUSIC}> Music</NavLink></Item>
                             {/*<Item key="4"> <NavLink to={ROUTES.SETTINGS}> Settings</NavLink> </Item>*/}
                         </SubMenu>
                         <SubMenu key="sub2" icon={<BugOutlined/>} title="Developers">
-                            <Item key="5"> <Link to={ROUTES.USERS}>All</Link></Item>
+                            <Item key="5" icon={<UsergroupAddOutlined/>}> <Link to={ROUTES.USERS}>All</Link></Item>
                             {/* <Item> Followed </Item>
                   <Item> Unfollowed </Item> */}
                         </SubMenu>
-                        <SubMenu key="sub3" icon={<LaptopOutlined/>} title="Chat">
+                        <SubMenu key="sub3" icon={<CommentOutlined/>} title="Chat">
                             {/*<Item key='6'> <Link to="/chat"> Chat</Link> </Item>*/}
                         </SubMenu>
                         <SubMenu key="sub4" icon={<NotificationOutlined/>} title="News">
-                            <Item key="7"> <Link to={ROUTES.NEWS}>TechCrunch News</Link> </Item>
+                            <Item key="7" icon={<RocketOutlined/>}><Link to={ROUTES.NEWS}>TechCrunch News</Link> </Item>
                         </SubMenu>
 
                     </Menu>
@@ -92,8 +104,8 @@ class App extends React.Component<OwnProps> {
                 </Sider>
                 <Layout className="site-layout">
                     <Header
-                        style={{padding: '0 50px', backgroundColor: "#dfe4e6", height: "80px"}}>
-                        <HeaderContainer />
+                        style={{padding: "0 50px", backgroundColor: "#dfe4e6", height: "80px"}}>
+                        <HeaderContainer/>
                     </Header>
                     {this.props.globalError
                         && <div style={{textAlign: "center", backgroundColor: "red"}}>
@@ -104,7 +116,7 @@ class App extends React.Component<OwnProps> {
                             </button>
                         </div>}
                     <Content
-                        style={{ padding: '0 50px'}}
+                        style={{padding: "0 50px"}}
                     >
                         <div className="site-layout-background"
                              style={{margin: "24px 16px", padding: 24, minHeight: "90vh"}}
@@ -114,7 +126,8 @@ class App extends React.Component<OwnProps> {
                                        render={() => <Redirect to={ROUTES.PROFILE}/>}
                                 />
                                 <Route path={ROUTES.PROFILE}
-                                       render={() => <ProfileContainer/>}
+                                       render={() => <ProfileContainer/>
+                                       }
                                 />
                                 <Route path={ROUTES.DIALOGS}
                                        render={() => <React.Suspense fallback={<Preloader/>}>

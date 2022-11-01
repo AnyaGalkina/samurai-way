@@ -21,38 +21,52 @@ export const ProfileData = ({profile, isOwner, setEditMode}: PropsType) => {
     }
 
     return (
-        <div className={styles.profileDataContainer}>
-            <h2>{profile.fullName}</h2>
-            <Divider/>
+        <div>
+            <div className={styles.profileDataContainer}>
+                <h2 className={styles.name}>{profile.fullName}</h2>
+                <Divider/>
 
-            <h3>About Me:</h3>
-            <p>{profile.aboutMe}</p>
+                <h3>About Me:</h3>
+                <p>{profile.aboutMe}</p>
 
-            <h3>Looking for a job description:</h3>
-            <p>{profile.lookingForAJobDescription}</p>
+            </div>
 
-            <h3>Looking for a job:
+            <div className={styles.profileLookForDataContainer}>
+
+                <h3>Looking for a job description:</h3>
+                <p>{profile.lookingForAJobDescription}</p>
+
+                <h3>Looking for a job:
                     <Avatar avaStyles={styles.lookForAJobImg} src={profile.lookingForAJob ? yesSign : noSign}/>
-            </h3>
+                </h3>
+            </div>
 
-            <h3>Contacts:</h3>
-            <span>{Object.keys(profile.contacts).map((c, i) =>
-                profile.contacts[c  as keyof ProfileContactsType]
-                    ? <Contact key={i} contactTitle={c} contactValue={profile.contacts[c as keyof ProfileContactsType]}/>
-                    : ""
-            )}</span>
+            <div className={styles.profileContactsContainer}>
 
-            {isOwner &&
-                <Button
-                    style={{
-                        // backgroundColor: "#149AC9"
-                        backgroundColor: "#ffb549",
-                        borderColor: "#ffb549",
-                        margin: "20px 0"
-                    }}
-                    type="primary"
-                    onClick={onEditClickHandler}>Edit profile
-                </Button>}
+                <h3>Contacts:</h3>
+                <span>{Object.keys(profile.contacts).map((c, i) =>
+                    profile.contacts[c as keyof ProfileContactsType]
+                        ?
+                        <Contact key={i} contactTitle={c}
+                                 contactValue={profile.contacts[c as keyof ProfileContactsType]}/>
+                        : ""
+                )}</span>
+
+                {isOwner &&
+                    <Button
+                        style={{
+                            // backgroundColor: "#149AC9"
+                            // backgroundColor: "#ffb549",
+                            // borderColor: "#ffb549",
+                            backgroundColor: "#fff",
+                            color: "black",
+                            borderColor: "#fff",
+                            margin: "20px 0"
+                        }}
+                        type="primary"
+                        onClick={onEditClickHandler}>Edit profile
+                    </Button>}
+            </div>
         </div>
     );
 };

@@ -21,7 +21,7 @@ const Header: React.FC<PropsType> = ({logout, login, isAuth}) => {
             <div className={styles.loginBlock}>
                 {isAuth
                     ? <>
-                        <span style={{paddingRight: "17px"}}>{login}</span>
+                        {/*<span style={{paddingRight: "17px"}}>{login}</span>*/}
                         <Button
                             style={{
                                 // backgroundColor: "#149AC9"

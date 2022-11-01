@@ -1,6 +1,37 @@
 .profileDataContainer{
     /*background-color: #c9feff;*/
+    padding: 10px 15px;
+    /*min-width: 360px;*/
+    /*border-radius: 10px;*/
+    background-color: #fff;
+    /*background-color: #fff1d8;*/
+    /*background-color: #c9feff;*/
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.name{
+    text-align: center;
+}
+
+
+.profileLookForDataContainer{
+    /*background-color: #c9feff;*/
     padding: 15px;
+    /*min-width: 360px;*/
+    /*border-radius: 10px;*/
+
+    background-color: #fff1d8;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+.profileContactsContainer{
+    /*background-color: #c9feff;*/
+    padding: 15px;
+    /*min-width: 360px;*/
+    /*border-radius: 10px;*/
+    /*background-color: #fff;*/
+    /*background-color: #fff1d8;*/
+    background-color: #c9feff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
 .lookForAJobImg{

@@ -1,17 +1,17 @@
 import React, {ChangeEvent, useState} from "react";
 import {EditOutlined} from "@ant-design/icons";
-
+import {FaQuoteRight, FaQuoteLeft} from "react-icons/fa";
 
 type PropsType = {
     status: string | undefined;
-    updateUserStatus: ( status: string ) => any;
-    isOwner:boolean
+    updateUserStatus: (status: string) => any;
+    isOwner: boolean
 }
 
 const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus, isOwner}) => {
 
     const [editMode, setEditMode] = useState(false);
-    const [statusText, setStatusText] = useState(status === undefined ? "" : status );
+    const [statusText, setStatusText] = useState(status === undefined ? "" : status);
 
     const handleOnClickStatusChange = () => {
         isOwner && setEditMode(true);
@@ -28,8 +28,8 @@ const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus, isOwner})
 
     return (
         <>
-            { editMode ?
-                <div style={{color: "#001628"}}>
+            {editMode ?
+                <div>
                     <input
                         autoFocus
                         value={statusText}
@@ -38,8 +38,10 @@ const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus, isOwner})
                 </div>
                 :
                 <div>
-                    <b style={{color: "#001628", fontSize:"24px"}}>STATUS: </b>
-                    <span style={{color: "#001628", fontSize:"24px"}}  placeholder={"add status"} onClick={handleOnClickStatusChange}>{status || <EditOutlined />}</span>
+                    <FaQuoteLeft style={{color: "#001628", margin: "10px"}}/>
+                    <b><span style={{color: "#001628", fontSize: "20px", cursor: "pointer"}} placeholder={"add status"}
+                             onClick={handleOnClickStatusChange}>{status || <EditOutlined/>}</span></b>
+                    <FaQuoteRight style={{color: "#001628", margin: "10px"}}/>
                 </div>
             }
         </>

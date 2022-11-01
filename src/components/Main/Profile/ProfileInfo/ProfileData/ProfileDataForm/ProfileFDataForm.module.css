@@ -1,0 +1,15 @@
+.profileDataFormContainer {
+    padding: 15px;
+}
+
+.contactContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.lookForAJob{
+    display: flex;
+    justify-content: left;
+    margin-bottom: 10px;
+}

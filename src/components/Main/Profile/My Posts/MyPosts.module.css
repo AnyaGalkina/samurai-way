@@ -1,7 +1,31 @@
 .postsBlock {
-    padding-left: 30px;
+    margin-top: 30px;
+    /*padding-left: 30px;*/
+    display: flex;
+    justify-content: space-between;
 }
 
 .posts {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+    margin-left: 20px;
+}
+
+.addPost {
+    width: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+@media screen and (max-width: 980px) {
+    .postsBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .posts{
+        width: 300px;
+        margin-left: 0;
+    }
 }

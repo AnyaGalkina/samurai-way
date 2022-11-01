@@ -5,7 +5,8 @@
     margin: auto;
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-
+    font-family: 'DM Sans',
+    sans-serif;
     grid-template-areas:
       "header header"
       "nav main";

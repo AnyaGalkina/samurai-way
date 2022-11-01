@@ -34,17 +34,19 @@ const ProfileInfo: React.FC<PropsType> = ({savePhoto, isOwner, profile, status, 
     return (
         <div className={styles.profileInfoContainer}>
             <div className={styles.avatarContainer}>
-                <img className={styles.img}
-                     src={profile.photos.large ? profile.photos.large : defaultUserAvatar}
-                     alt={"avatar"}/>
-                {isOwner &&
-                    <div className={styles.uploadPhoto}>
-                        <label htmlFor="file">
-                            <CameraFilled style={{color: "grey", fontSize: "32px"}}/>
-                        </label>
-                        <input hidden={true} id="file" type={"file"} onChange={onMainPhotoSelectedHandler}/>
-                    </div>
-                }
+                <div>
+                    <img className={styles.img}
+                         src={profile.photos.large ? profile.photos.large : defaultUserAvatar}
+                         alt={"avatar"}/>
+                    {isOwner &&
+                        <div className={styles.uploadPhoto}>
+                            <label htmlFor="file">
+                                <CameraFilled style={{color: "grey", fontSize: "32px"}}/>
+                            </label>
+                            <input hidden={true} id="file" type={"file"} onChange={onMainPhotoSelectedHandler}/>
+                        </div>
+                    }
+                </div>
                 <ProfileStatus status={status} updateUserStatus={updateUserStatus} isOwner={isOwner}/>
             </div>
             <div className={styles.profileDataContainer}>

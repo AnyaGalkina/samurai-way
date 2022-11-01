@@ -4,13 +4,20 @@ import {useFormik} from "formik";
 import {updateProfile} from "../../../../../../redux/profile-reducer";
 import {useDispatch} from "react-redux";
 import {UpdateProfileType} from "../../../../../../api/profile-api";
-import {Button} from "antd";
+import styles from "./ProfileFDataForm.module.css";
+import {Checkbox, Input} from "antd";
 
 type PropsType = {
     profile: ProfileType;
     setEditMode: (editMode: boolean) => void;
 }
 
+const inputStyles = {width: "200px", marginBottom: "10px"}
+const buttonStyles = {
+    color: "#fff",
+    backgroundColor: "#1ac2c1",
+    borderColor: "#1ac2c1",
+}
 export const ProfileDataForm = ({profile, setEditMode}: PropsType) => {
     const dispatch = useDispatch();
 
@@ -31,57 +38,62 @@ export const ProfileDataForm = ({profile, setEditMode}: PropsType) => {
 
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <h2>Name: </h2>
-            <input name={"fullName"}
-                   type={"text"}
-                   value={formik.values.fullName}
-                   onChange={formik.handleChange}
-            />
+        <div className={styles.profileDataFormContainer}>
+            <form onSubmit={formik.handleSubmit}>
+                <h3>Nickname: </h3>
+                <Input name={"fullName"}
+                       type={"text"}
+                       value={formik.values.fullName}
+                       onChange={formik.handleChange}
+                       style={inputStyles}
+                />
 
-            <h3>About Me:</h3>
-            <input name={"aboutMe"}
-                   type={"text"}
-                   value={formik.values.aboutMe!}
-                   onChange={formik.handleChange}
-            />
+                <h3>About Me:</h3>
+                <Input name={"aboutMe"}
+                       type={"text"}
+                       value={formik.values.aboutMe!}
+                       onChange={formik.handleChange}
+                       style={inputStyles}
+                />
+                <h3>Looking for a job description:</h3>
+                <Input name={"lookingForAJobDescription"}
+                       type={"text"}
+                       value={formik.values.lookingForAJobDescription}
+                       onChange={formik.handleChange}
+                       style={inputStyles}
+                />
 
-            <h3>Looking for a job description:</h3>
-            <input name={"lookingForAJobDescription"}
-                   type={"text"}
-                   value={formik.values.lookingForAJobDescription}
-                   onChange={formik.handleChange}
-            />
-
-            <h3>Looking for a job:</h3>
-            <input name={"lookingForAJob"}
-                   type={"checkbox"}
-                   checked={formik.values.lookingForAJob}
-                   onChange={formik.handleChange}
-            />
-
-            <h3>Contacts:</h3>
-            <span>{Object.keys(profile.contacts).map((key, i) => {
-                return (<div key={i}>
-                    <b>{key}</b>
-                    <input name={"contacts." + key}
-                           type={"text"}
-                           value={formik.values.contacts[key as keyof ProfileContactsType]!}
-                           onChange={formik.handleChange}
+                <div className={styles.lookForAJob}>
+                    <h3>Looking for a job:</h3>
+                    <Checkbox name={"lookingForAJob"}
+                              type={"checkbox"}
+                              checked={formik.values.lookingForAJob}
+                              onChange={formik.handleChange}
+                              style={{marginLeft:"20px"}}
                     />
-                </div>)
-            })}</span>
+                </div>
 
-            <button
-                style={{
-                    // backgroundColor: "#149AC9"
-                    backgroundColor: "#1ac2c1",
-                    borderColor: "#1ac2c1",
-                }}
-                // type="primary"
-                //@ts-ignore
-                type={"submit"}>Save</button>
-        </form>
+                <h3 style={{textAlign: "center"}}>Contacts:</h3>
+                <span>{Object.keys(profile.contacts).map((key, i) => {
+                    return (<div key={i} className={styles.contactContainer}>
+                        <b>{key}</b>
+                        <Input name={"contacts." + key}
+                               type={"text"}
+                               value={formik.values.contacts[key as keyof ProfileContactsType]!}
+                               onChange={formik.handleChange}
+                               style={{width: "200px"}}
+                        />
+                    </div>)
+                })}</span>
+
+                <button
+                    style={buttonStyles}
+                    // type="primary"
+                    //@ts-ignore
+                    type={"submit"}>Save
+                </button>
+            </form>
+        </div>
     );
 };
 
