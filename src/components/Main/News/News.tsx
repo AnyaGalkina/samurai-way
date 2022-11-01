@@ -5,9 +5,10 @@ import {ArticleType} from "../../../api/news-api";
 import {NewsItem} from "./NewsItem/NewsItem";
 import {getTopNews, setNewsCurrentPage} from "../../../redux/news-reducer";
 import Pagination from "../../common/Pagination/Pagination";
+import {Title} from "../../common/Title/Title";
 
 const News = () => {
-    const currentPage = useSelector<AppStateType,number>(state => state.newsPage.currentPage)
+    const currentPage = useSelector<AppStateType, number>(state => state.newsPage.currentPage)
     const dispatch = useDispatch();
     const articles = useSelector<AppStateType, Array<ArticleType>>(state => state.newsPage.articles);
 
@@ -21,7 +22,7 @@ const News = () => {
 
     return (
         <div>
-            <h1>Top TechCrunch news</h1>
+            <Title title={"Top TechCrunch news"}/>
             <Pagination currentPage={currentPage} totalItemsCount={50} onPageChanged={setNewsCurrentPageHandler}/>
             {articles.map(a => {
                 return <NewsItem article={a}/>

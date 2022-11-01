@@ -21,6 +21,7 @@ import hipHop from "../../../assets/images/musicImg/hipHop.png";
 import robot from "../../../assets/images/musicImg/robot.png";
 import styles from "./Music.module.css";
 import {SoundItem, SoundsType} from "./SoundItem/SoundItem";
+import {Title} from "../../common/Title/Title";
 
 const Music = () => {
 
@@ -59,7 +60,7 @@ const Music = () => {
 
     return (
         <div>
-            <h1>♪♪♪♪♪♪ Music</h1>
+            <Title title={"♪♪♪ Music ♪♪♪"}/>
             <div className={styles.soundsContainer}>
                 {sounds.map(s => {
                     return <SoundItem sound={s}/>
