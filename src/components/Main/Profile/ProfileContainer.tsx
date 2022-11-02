@@ -48,7 +48,7 @@ class ProfileContainer extends React.Component<OwnPropsType> {
         if (!userId && this.props.authorizedUserId) {
             userId = this.props.authorizedUserId;
         }
-
+        console.log(userId, this.props.authorizedUserId)
         this.props.getUserProfile(+userId);
         setTimeout(() => {
             this.props.getUserStatus(+userId);
@@ -68,7 +68,7 @@ class ProfileContainer extends React.Component<OwnPropsType> {
     render() {
         return (
             <Profile
-                isOwner={!this.props.match.params.userId}
+                isOwner={+this.props.match.params.userId === this.props.authorizedUserId}
                 status={this.props.status}
                 profilePage={this.props.profilePage}
                 updateUserStatus={this.props.updateUserStatus}
