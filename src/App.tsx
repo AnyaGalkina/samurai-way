@@ -9,8 +9,7 @@ import ProfileContainer from "./components/Main/Profile/ProfileContainer";
 import {DevelopersContainer} from "./components/Main/Users/DevelopersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import {compose} from "redux";
-import {connect, useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {clearGlobalError, initializeApp} from "./redux/app-reducer";
 import {AppStateType} from "./redux/redux-store";
 import Preloader from "./components/common/Preloader/Preloader";
@@ -29,33 +28,15 @@ import {
     CustomerServiceOutlined,
 
 } from "@ant-design/icons";
-import {Button, Layout, Menu} from "antd";
+import {Layout, Menu} from "antd";
 import smLogo from "./assets/images/logo/sm-logo.png";
 
 const {Header, Sider, Content} = Layout;
 const {SubMenu, Item} = Menu;
 
-type MapStateToPropsType = {
-    initialized: boolean;
-    globalError: string
-};
-type MapDispatchToPropsType = {
-    initializeApp: () => void;
-    clearGlobalError: () => void
-}
-type OwnProps = MapStateToPropsType & MapDispatchToPropsType;
 
 const DialogContainer = React.lazy(() => import("./components/Main/Dialog/DialogContainer"))
 
-// class App extends React.Component<OwnProps> {
-//
-// collapsed = false
-//
-// setCollapsed(newCollapsed: boolean) {
-//     this.collapsed = newCollapsed
-// }
-
-// class App extends React.Component<any> {
 
 const App = () => {
     const dispatch = useDispatch();
@@ -63,22 +44,12 @@ const App = () => {
     const initialized = useSelector<AppStateType, boolean>(state => state.app.initialized);
     const globalError = useSelector<AppStateType, string>(state => state.app.globalError);
 
-    const [collapsed, setCollapsed] = useState(false);
-    // componentDidMount()
-    // {
-    //     this.props.initializeApp();
-    // }
+    const [collapsed, setCollapsed] = useState(true);
 
 
     useEffect(() => {
         dispatch(initializeApp());
-    }, [])
-    //
-    // render()
-    // {
-    //     if (!this.props.initialized) {
-    //         return (<Preloader/>)
-    //     }
+    }, [dispatch])
 
     return (
         <>
@@ -88,25 +59,20 @@ const App = () => {
                     : <Layout>
                         <></>
                         <Sider trigger={null} collapsible collapsed={collapsed}
-                               // onClick={() => setCollapsed(!collapsed)}
                         >
-                            {/*<Layout className="site-layout-background" style={{ padding: '24px 0' }}>*/}
-                            {/*    <Sider className="site-layout-background" width={200}>*/}
-
                             <div className="logo">
                                 <img src={smLogo} alt={"logo"} style={{width: "200px", height: "80px"}}/>
-                            </div>
-                            <div>
-                                <Button
-                                    // icon={ collapsed ? MenuUnfoldOutlined : MenuFoldOutlined}
-                                        onClick={() => setCollapsed(!collapsed)}
-                                ></Button>
                             </div>
                             <Menu
                                 theme="dark"
                                 mode="inline"
                                 defaultSelectedKeys={["1"]}
                             >
+                                <div style={{paddingLeft: "10px"}} onClick={() => setCollapsed(!collapsed)} >
+
+                                    {collapsed ? <MenuUnfoldOutlined style={{marginLeft:"15px", padding: "10px 30px 0 5px", fontSize:"20px"}}/>
+                                        : <MenuFoldOutlined style={{marginLeft:"15px", padding: "10px 30px 0 5px", fontSize:"20px"}}/>}
+                                </div>
                                 <SubMenu key="sub1" icon={<UserOutlined/>} title="My Profile">
                                     <Item key="1" icon={<AuditOutlined/>}> <Link
                                         to={`/profile/${userId}`}>Profile</Link></Item>
@@ -153,11 +119,12 @@ const App = () => {
                                 >
                                     <Switch>
                                         <Route exact path={"/"}
-                                               render={() => <Redirect to={ROUTES.PROFILE}/>}
+                                               render={() => <Redirect to={`/profile/${userId}`}/>}
                                         />
-                                        <Route path={ROUTES.PROFILE}
-                                               render={() => <ProfileContainer/>
-                                               }
+                                        <Route
+                                            path={ROUTES.PROFILE}
+                                            render={() => <ProfileContainer/>
+                                            }
                                         />
                                         <Route path={ROUTES.DIALOGS}
                                                render={() => <React.Suspense fallback={<Preloader/>}>
@@ -182,9 +149,4 @@ const App = () => {
 }
 
 
-const MapStateToProps = (state: AppStateType): MapStateToPropsType => ({
-    initialized: state.app.initialized,
-    globalError: state.app.globalError
-});
-
-export default compose(connect(MapStateToProps, {initializeApp, clearGlobalError}))(App);
+export default App;

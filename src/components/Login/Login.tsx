@@ -14,7 +14,8 @@ export type FormDataType = {
 
 type MapStateToPropsType = {
     isAuth: boolean;
-    captchaUrl: string | null
+    captchaUrl: string | null;
+    userId: number | null
 }
 
 type  MapDispatchToPropsType = {
@@ -25,7 +26,8 @@ type  MapDispatchToPropsType = {
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         isAuth: state.auth.isAuth,
-        captchaUrl: state.auth.captchaUrl
+        captchaUrl: state.auth.captchaUrl,
+        userId: state.auth.userId,
     }
 }
 
@@ -41,12 +43,17 @@ const Login: React.FC<OwnProps> = (props) => {
     }
 
     if(props.isAuth) {
-        return <Redirect to={'/profile'} />
+        return <Redirect to={`/profile/${props.userId}`} />
     }
 
     return (
         <div>
             <h3>LOGIN</h3>
+            <div>
+                Use the following data to login.
+                <p style={{margin:0}}>Login:anna.blackbird1@gmail.com</p>
+                <p>Password: Free12345</p>
+            </div>
             <LoginReduxForm onSubmit={onSubmit}
                 //@ts-ignore
                             captchaUrl={props.captchaUrl}/>
