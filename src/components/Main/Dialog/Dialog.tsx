@@ -14,7 +14,7 @@ const Dialog: React.FC<DialogPropsType> = (props) => {
     let messageList = props.dialogsPage.messages.map(m => <Message key={m.id} messageBody={m.messageBody}/>)
 
     return (
-        <div className={styles.dialogs}>
+        <div className={styles.dialogsContainer}>
             <div className={styles.dialogsItems}>
                 {dialogList}
             </div>

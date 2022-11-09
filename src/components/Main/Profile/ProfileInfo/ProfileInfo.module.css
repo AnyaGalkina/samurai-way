@@ -1,6 +1,7 @@
 .profileInfoContainer {
     display: flex;
     justify-content: space-between;
+    padding: 0 60px;
 }
 
 .img {
@@ -43,5 +44,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0;
+    }
+
+    .avatarContainer{
+        width: 300px;
+    }
+    .img {
+        width: 220px;
+    }
+    .profileDataContainer{
+        min-width: 300px;
     }
 }

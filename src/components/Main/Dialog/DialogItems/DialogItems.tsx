@@ -12,7 +12,7 @@ const DialogItems = (props: PropsType) => {
     return (
         <div>
             <Avatar src={"https://hw-media.herworld.com/public/girl-with-backpack.jpg"}/>
-            <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
+            <NavLink className={styles.userName} to={`/dialogs/${props.id}`}>{props.name}</NavLink>
         </div>
     );
 };

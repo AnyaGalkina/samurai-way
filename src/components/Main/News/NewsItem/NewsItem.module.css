@@ -1,6 +1,7 @@
 .newsBlock {
     display: flex;
     justify-content: space-between;
+    padding: 0 20px 0 0;
 }
 
 .img {
@@ -10,4 +11,14 @@
 
 .articleDetails {
     margin: 20px 40px;
+}
+
+@media screen and (max-width: 980px) {
+    .newsBlock {
+        flex-direction: column;
+        padding: 0;
+    }
+    .articleDetails {
+        margin: 20px 0 0;
+    }
 }

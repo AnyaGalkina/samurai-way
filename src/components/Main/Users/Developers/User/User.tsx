@@ -4,7 +4,7 @@ import Avatar from "../../../../common/Avatar/Avatar";
 import defaultUserAvatar from "../../../../../assets/images/defaultUserPhoto.jpg";
 import {UserType} from "../../../../../redux/types";
 import {Button} from "antd";
-import styles from "./Developers.module.css";
+import styles from "./Users.module.css";
 
 type PropsType = {
     user: UserType;
@@ -23,14 +23,13 @@ const User: React.FC<PropsType> = ({user, unfollow, follow, followingInProgress}
                 </NavLink>
                 <div className={styles.userData}>
                     <span>{user.name}</span>
-                    <span>{user.status}</span>
+                    <p>{user.status}</p>
                 </div>
             </div>
             <div>
                 {user.followed
                     ? <Button
                         style={{
-                            // backgroundColor: "#149AC9"
                             backgroundColor: "#ffb549",
                             borderColor: "#ffb549",
                         }}
@@ -43,7 +42,6 @@ const User: React.FC<PropsType> = ({user, unfollow, follow, followingInProgress}
                     :
                     <Button
                         style={{
-                            // backgroundColor: "#149AC9"
                             backgroundColor: "#1ac2c1",
                             borderColor: "#1ac2c1",
                         }}
