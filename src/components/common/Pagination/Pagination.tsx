@@ -42,7 +42,6 @@ const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged, totalItems
             {portionNumber > 1 &&
                 <Button
                     style={{
-                        // backgroundColor: "#149AC9"
                         backgroundColor: "#1ac2c1",
                         borderColor: "#1ac2c1",
                     }}
@@ -62,7 +61,6 @@ const Pagination: React.FC<PropsType> = ({currentPage, onPageChanged, totalItems
             }
             {portionCount > portionNumber &&
                 <Button style={{
-                    // backgroundColor: "#149AC9"
                     backgroundColor: "#1ac2c1",
                     borderColor: "#1ac2c1",
                 }}
