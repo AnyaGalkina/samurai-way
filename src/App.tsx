@@ -30,6 +30,7 @@ import {
 } from "@ant-design/icons";
 import {Layout, Menu} from "antd";
 import smLogo from "./assets/images/logo/sm-logo.png";
+import {ContentApp} from "./components/Content/ContetntApp";
 
 const {Header, Sider, Content} = Layout;
 const {SubMenu, Item} = Menu;
@@ -58,7 +59,16 @@ const App = () => {
                     ? <Preloader/>
                     : <Layout>
                         <></>
-                        <Sider trigger={null} collapsible collapsed={collapsed}
+                        <Sider
+                            // trigger={null} collapsible collapsed={collapsed}
+                               breakpoint="lg"
+                               collapsedWidth="50"
+                               onBreakpoint={broken => {
+                                   console.log(broken);
+                               }}
+                               onCollapse={(collapsed, type) => {
+                                   console.log(collapsed, type);
+                               }}
                         >
                             <div className="logo">
                                 <img src={smLogo} alt={"logo"} style={{width: "200px", height: "80px"}}/>
@@ -68,11 +78,13 @@ const App = () => {
                                 mode="inline"
                                 defaultSelectedKeys={["1"]}
                             >
-                                <div style={{paddingLeft: "10px"}} onClick={() => setCollapsed(!collapsed)} >
+                                {/*<div style={{paddingLeft: "10px"}} onClick={() => setCollapsed(!collapsed)}>*/}
 
-                                    {collapsed ? <MenuUnfoldOutlined style={{marginLeft:"15px", padding: "10px 30px 0 5px", fontSize:"20px"}}/>
-                                        : <MenuFoldOutlined style={{marginLeft:"15px", padding: "10px 30px 0 5px", fontSize:"20px"}}/>}
-                                </div>
+                                {/*    {collapsed ? <MenuUnfoldOutlined*/}
+                                {/*            style={{marginLeft: "15px", padding: "10px 30px 0 5px", fontSize: "20px"}}/>*/}
+                                {/*        : <MenuFoldOutlined*/}
+                                {/*            style={{marginLeft: "15px", padding: "10px 30px 0 5px", fontSize: "20px"}}/>}*/}
+                                {/*</div>*/}
                                 <SubMenu key="sub1" icon={<UserOutlined/>} title="My Profile">
                                     <Item key="1" icon={<AuditOutlined/>}> <Link
                                         to={`/profile/${userId}`}>Profile</Link></Item>
@@ -111,36 +123,7 @@ const App = () => {
                                     }}>X
                                     </button>
                                 </div>}
-                            <Content
-                                style={{padding: "0 50px"}}
-                            >
-                                <div className="site-layout-background"
-                                     style={{margin: "24px 16px", padding: 24, minHeight: "90vh"}}
-                                >
-                                    <Switch>
-                                        <Route exact path={"/"}
-                                               render={() => <Redirect to={`/profile/${userId}`}/>}
-                                        />
-                                        <Route
-                                            path={ROUTES.PROFILE}
-                                            render={() => <ProfileContainer/>
-                                            }
-                                        />
-                                        <Route path={ROUTES.DIALOGS}
-                                               render={() => <React.Suspense fallback={<Preloader/>}>
-                                                   <DialogContainer/>
-                                               </React.Suspense>}
-                                        />
-                                        <Route path={ROUTES.NEWS} render={() => <News/>}/>
-                                        <Route path={ROUTES.MUSIC} render={() => <Music/>}/>
-                                        <Route exact path={ROUTES.SETTINGS} render={() => <Settings/>}/>
-                                        <Route exact path={ROUTES.LOGIN} render={() => <Login/>}/>
-                                        <Route path={ROUTES.USERS} render={() => <DevelopersContainer/>}/>
-                                        <Route path={ROUTES.PAGE_NOT_FOUND} render={() => <div>404</div>}/>
-                                        <Route path="/*" render={() => <Redirect to={ROUTES.PAGE_NOT_FOUND}/>}/>
-                                    </Switch>
-                                </div>
-                            </Content>
+                            <ContentApp userId={userId}/>
                         </Layout>
                     </Layout>
             }
