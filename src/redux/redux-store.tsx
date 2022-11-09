@@ -7,13 +7,13 @@ import profileReducer, {
 } from "./profile-reducer";
 import usersReducer, {
     followSuccess,
-    setCurrentPage,
+    setCurrentPage, setFilters,
     setToggleIsFetching,
     setTotalUsersCount,
     setUsers,
     toggleFollowingProgress,
     unfollowSuccess
-} from "./users-reducer";
+} from './users-reducer';
 import authReducer, {getCaptchaUrlSuccess, setAuthUserData, setToggleIsFetchingAuth} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
@@ -42,6 +42,7 @@ export type ActionType =
     | ReturnType<typeof setArticles>
     | ReturnType<typeof setNewsCurrentPage>
     | ReturnType<typeof setAppStatus>
+    | ReturnType<typeof setFilters>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;
