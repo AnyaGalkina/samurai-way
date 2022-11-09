@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/samurai-way/static/css/main.571fccc7.css",
-    "main.js": "/samurai-way/static/js/main.f34960c4.js",
+    "main.js": "/samurai-way/static/js/main.320b84fe.js",
     "static/media/the-winter-fall-by-prabajithk-122683.mp3": "/samurai-way/static/media/the-winter-fall-by-prabajithk-122683.d297793b07754506d249.mp3",
     "static/media/the-sunshine-123546.mp3": "/samurai-way/static/media/the-sunshine-123546.dd494875c41fc1510036.mp3",
     "static/media/purrple-cat-pillars-of-creation.mp3": "/samurai-way/static/media/purrple-cat-pillars-of-creation.12924c8fbe474aedab29.mp3",
@@ -20,10 +20,10 @@
     "static/media/defaultUserPhoto.jpg": "/samurai-way/static/media/defaultUserPhoto.db7f11a2a7073b3c13a1.jpg",
     "index.html": "/samurai-way/index.html",
     "main.571fccc7.css.map": "/samurai-way/static/css/main.571fccc7.css.map",
-    "main.f34960c4.js.map": "/samurai-way/static/js/main.f34960c4.js.map"
+    "main.320b84fe.js.map": "/samurai-way/static/js/main.320b84fe.js.map"
   },
   "entrypoints": [
     "static/css/main.571fccc7.css",
-    "static/js/main.f34960c4.js"
+    "static/js/main.320b84fe.js"
   ]
 }
