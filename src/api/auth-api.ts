@@ -15,7 +15,7 @@ export const authAPI = {
             return response.data
         })
     },
-    login(email: string, password: string, rememberMe?: boolean, captcha?: string) {
+    login(email: string, password: string, rememberMe?: boolean, captcha?: string | null) {
         return instance.post<LoginPostReqType, AxiosResponse<CommonResType<UserIdReqType>>>("/auth/login",
             {email, password, rememberMe, captcha})
             .then(response => {

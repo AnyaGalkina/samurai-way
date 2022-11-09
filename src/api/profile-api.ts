@@ -58,7 +58,7 @@ export type CommonResType<T = {}> = {
     data: T;
 }
 
-type ResGetProfileType = {
+export type ResGetProfileType = {
     aboutMe: string;
     contacts: ProfileContactsType;
     lookingForAJob: boolean;

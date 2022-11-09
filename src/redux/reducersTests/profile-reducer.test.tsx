@@ -72,7 +72,6 @@ test("profile should be set", () => {
             small: "https://social-network.samuraijs.com/",
             large: null,
         },
-
     };
 
     let newState = profileReducer(state, setUserProfile(newUserProfile));

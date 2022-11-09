@@ -60,7 +60,7 @@ export const getAuthUserData = () => async (dispatch: any) => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captchaUrl?: string) => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captchaUrl?: string | null) => async (dispatch: any) => {
     try {
         dispatch(setToggleIsFetchingAuth(true));
         const response = await authAPI.login(email, password, rememberMe, captchaUrl);

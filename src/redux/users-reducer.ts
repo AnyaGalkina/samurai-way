@@ -4,6 +4,7 @@ import {usersAPI} from "../api/user-api";
 import {setGlobalError} from "./app-reducer";
 import {Dispatch} from "redux";
 import {RESULT_CODE} from "../enums/resultCode";
+import {CommonResType} from "../api/profile-api";
 
 const FOLLOW = "USERS/FOLLOW";
 const UNFOLLOW = "USERS/UNFOLLOW";
@@ -91,7 +92,7 @@ export const getUsers = (currentPage: number, pageSize: number) => async (dispat
 }
 
 const followUnfollowFlow = async (dispatch: Dispatch, userId: number,
-                                  apiMethod: any,
+                                  apiMethod: (userId: number) => Promise<CommonResType>,
                                   actionCreator: (userId: number) => ReturnType<typeof followSuccess> | ReturnType<typeof unfollowSuccess> ) => {
     try {
         dispatch(toggleFollowingProgress(true, userId));

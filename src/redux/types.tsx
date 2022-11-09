@@ -15,15 +15,13 @@ export type PhotosType = {
 };
 
 export type ProfileType = {
-    aboutMe?: string |null;
-    userId: number | null;
+    aboutMe: string;
+    contacts: ProfileContactsType;
     lookingForAJob: boolean;
     lookingForAJobDescription: string;
     fullName: string;
-    contacts: ProfileContactsType;
+    userId: number;
     photos: PhotosType;
-    userStatus?: string;
-    updateUserStatus?: boolean;
 };
 
 
