@@ -1,8 +1,8 @@
 import {ActionType, AppStateType} from "./redux-store";
 import {PhotosType, ProfileType} from "./types";
-import {profileAPI, UpdateProfileType} from "../api/profile-api";
+import {profileAPI, ResGetProfileType, UpdateProfileType} from "../api/profile-api";
 import {stopSubmit} from "redux-form";
-import {setGlobalError} from "./app-reducer";
+import {setAppStatus, setGlobalError} from "./app-reducer";
 import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {RESULT_CODE} from "../enums/resultCode";
@@ -29,7 +29,12 @@ export type InitialStateType = {
 let initialState = {
     profile: null,
     posts: [
-        {id: v1(), likesCounter: 120, postText: "Best morning starts with coffee ☕. Enjoy your day!", isLikeAdded: false},
+        {
+            id: v1(),
+            likesCounter: 120,
+            postText: "The best morning starts with coffee ☕. Enjoy your day!",
+            isLikeAdded: false
+        },
         {id: v1(), likesCounter: 79, postText: "Good luck!", isLikeAdded: true},
         {id: v1(), likesCounter: 240, postText: "♡ What a wonderful day ♡", isLikeAdded: true},
     ],
@@ -47,11 +52,14 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionTy
                 profile: {...state.profile, photos: action.payload.photos} as ProfileType
             };
         case CHANGE_COUNT:
-            return {...state,
-                    posts: state.posts.map(p => p.id === action.payload.id
-                        ? {...p, isLikeAdded: action.payload.isLikeAdded,
-                            likesCounter:  action.payload.isLikeAdded ? (p.likesCounter+1) : (p.likesCounter-1) }
-                        : p)
+            return {
+                ...state,
+                posts: state.posts.map(p => p.id === action.payload.id
+                    ? {
+                        ...p, isLikeAdded: action.payload.isLikeAdded,
+                        likesCounter: action.payload.isLikeAdded ? (p.likesCounter + 1) : (p.likesCounter - 1)
+                    }
+                    : p)
             }
 
         case SET_USER_PROFILE:
@@ -68,7 +76,7 @@ export const addPost = (postText: string) => {
 export const setUserProfile = (profile: ProfileType) => {
     return ({type: SET_USER_PROFILE, payload: {profile}} as const);
 };
-export const setUserStatus = (userStatus: string) => {
+export const setUserStatus = (userStatus: string= 'status') => {
     return ({type: UPDATE_USER_STATUS, payload: {userStatus}} as const)
 };
 export const savePhotoSuccess = (photos: PhotosType) => {
@@ -83,52 +91,65 @@ export const changeLikesCounter = (id: string, isLikeAdded: boolean) => {
 
 export const getUserProfile = (userId: number) => async (dispatch: Dispatch) => {
     try {
+        dispatch(setAppStatus("loading"));
         let response = await profileAPI.getProfile(userId);
         dispatch(setUserProfile(response));
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
+    } finally {
+        dispatch(setAppStatus("idle"));
     }
 }
 
 export const getUserStatus = (userId: number) => async (dispatch: Dispatch) => {
     try {
+        dispatch(setAppStatus("loading"));
         let response = await profileAPI.getStatus(userId);
         dispatch(setUserStatus(response));
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
+    } finally {
+        dispatch(setAppStatus("idle"));
     }
 }
 
 export const updateUserStatus = (status: string) => async (dispatch: any) => {
     try {
+        dispatch(setAppStatus("loading"));
         let response = await profileAPI.updateStatus(status);
-        if (response.resultCode === RESULT_CODE.SUCCESS)  {
+        if (response.resultCode === RESULT_CODE.SUCCESS) {
             dispatch(setUserStatus(status));
         } else {
             dispatch(response.messages[0]);
         }
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
+    } finally {
+        dispatch(setAppStatus("idle"));
     }
 }
 
 export const savePhoto = (photo: File) => async (dispatch: Dispatch) => {
     try {
+        dispatch(setAppStatus("loading"));
         let response = await profileAPI.updatePhoto(photo);
         if (response.resultCode === RESULT_CODE.SUCCESS) {
             dispatch(savePhotoSuccess(response.data.photos));
         }
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
+    } finally {
+        dispatch(setAppStatus("idle"));
     }
 }
 
 export const updateProfile = (profile: UpdateProfileType) => async (dispatch: any, getState: () => AppStateType) => {
     try {
+        dispatch(setAppStatus("loading"));
         let response = await profileAPI.updateProfile(profile);
         let userId = getState().auth.userId
 
-        if (response.resultCode === RESULT_CODE.SUCCESS)  {
+        if (response.resultCode === RESULT_CODE.SUCCESS) {
             userId && dispatch(getUserProfile(userId));
         } else {
             let errorMessage = response.messages.length > 0 ? response.messages[0] : "some error";
@@ -136,6 +157,8 @@ export const updateProfile = (profile: UpdateProfileType) => async (dispatch: an
         }
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
+    } finally {
+        dispatch(setAppStatus("idle"));
     }
 }
 

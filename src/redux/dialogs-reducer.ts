@@ -22,10 +22,7 @@ let initialState = {
             {id: 4, messageBody: "Be happy!"}
         ] as Array<MessageType>,
         dialogItems: [
-            {id: 1, name: "Andrey"},
             {id: 2, name: "Lena"},
-            {id: 3, name: "Sveta"},
-            {id: 4, name: "Olga"},
         ] as Array<DialogItemType>,
     };
 

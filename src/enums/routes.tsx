@@ -1,6 +1,6 @@
 export enum ROUTES {
     DIALOGS = "/dialogs",
-    PROFILE = "/profile/:userId?",
+    PROFILE = "/profile/:userId",
     NEWS = "/news",
     MUSIC = "/music",
     SETTINGS = "/settings",

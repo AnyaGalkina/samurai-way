@@ -17,7 +17,7 @@ import usersReducer, {
 import authReducer, {getCaptchaUrlSuccess, setAuthUserData, setToggleIsFetchingAuth} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
-import {appReducer, clearGlobalError, setGlobalError, setInitializedSuccessAC} from "./app-reducer";
+import {appReducer, clearGlobalError, setAppStatus, setGlobalError, setInitializedSuccessAC} from "./app-reducer";
 import {newsReducer, setArticles, setNewsCurrentPage} from "./news-reducer";
 
 export type ActionType =
@@ -41,6 +41,7 @@ export type ActionType =
     | ReturnType<typeof changeLikesCounter>
     | ReturnType<typeof setArticles>
     | ReturnType<typeof setNewsCurrentPage>
+    | ReturnType<typeof setAppStatus>
     | ReturnType<typeof toggleFollowingProgress>;
 
 type RootReducersType = typeof rootReducers;
