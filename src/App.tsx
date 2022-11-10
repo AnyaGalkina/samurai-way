@@ -36,7 +36,8 @@ const {Header, Sider, Content} = Layout;
 const {SubMenu, Item} = Menu;
 
 
-const DialogContainer = React.lazy(() => import("./components/Main/Dialog/DialogContainer"))
+export const DialogContainer = React.lazy(() => import("./components/Main/Dialog/DialogContainer"))
+export const ChatPage = React.lazy(() => import("./components/Main/Chat/Chat"));
 
 
 const App = () => {
@@ -100,7 +101,7 @@ const App = () => {
                   <Item> Unfollowed </Item> */}
                                 </SubMenu>
                                 <SubMenu key="sub3" icon={<CommentOutlined/>} title="Chat">
-                                    {/*<Item key='6'> <Link to="/chat"> Chat</Link> </Item>*/}
+                                    <Item key='6'  icon={<CommentOutlined/>}> <Link to={ROUTES.CHAT}>Chat</Link> </Item>
                                 </SubMenu>
                                 <SubMenu key="sub4" icon={<NotificationOutlined/>} title="News">
                                     <Item key="7" icon={<RocketOutlined/>}><Link to={ROUTES.NEWS}>TechCrunch News</Link>
