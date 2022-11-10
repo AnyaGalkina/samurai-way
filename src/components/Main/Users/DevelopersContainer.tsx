@@ -40,6 +40,7 @@ class UsersContainer extends React.Component<MapStateToPropsType & MapDispatchTo
                         onPageChanged={this.onPageChanged}
                         onFiltersChanged={this.onFiltersChanged}
                         users={this.props.users}
+                        filters={this.props.filters}
                         currentPage={this.props.currentPage}
                         follow={this.props.follow}
                         unfollow={this.props.unfollow}
