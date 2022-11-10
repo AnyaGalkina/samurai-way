@@ -13,7 +13,9 @@
 }
 
 .postText{
+    width: 220px;
     margin: 20px 10px;
+    /*word-break: break-all;*/
 }
 
 .postItem img {
@@ -27,5 +29,9 @@ margin: 10px;
     .postItem {
         padding-left: 0;
         min-width: 300px;
+    }
+    .postText{
+        width: 180px;
+        margin: 20px 10px;
     }
 }
