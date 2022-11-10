@@ -26,26 +26,24 @@ You will see the **Website tracking** checkbox. Click on **Prevent cross-site tr
 To get a local copy up and running follow these simple example steps.
 - Clone the repo
 - Use `yarn install` to install modules.
-- Use `yarn start`to start project.
+- Use `yarn start` to start project.
 
 ## Technologies Used
 
-- **antd** 
-- **axios**
-- **formik**
-- **gh-pages**
-- **howler**
-- **jest**
-- **react** and **@types/react**
-- **react-dom** and **@types/react-dom**
-- **react-redux** and **@types/react-redux**
-- **react-router-dom** and **@types/react-router-dom**
-- **react-scripts** 
-- **react-test-renderer** and **@types/react-test-renderer**
-- **redux**
-- **redux-form** and **@types/redux-form**
-- **redux-thunk**
-- **reselect**
-- **typescript** 
-- **uuid** and **@types/uuid**
-- **websocket**
+- **Ant Design** 
+- **Axios**
+- **Formik**
+- **GH-pages**
+- **Howler**
+- **Jest**
+- **React** and **@types/react**
+- **React-dom** and **@types/react-dom**
+- **React-redux** and **@types/react-redux**
+- **React-router-dom** and **@types/react-router-dom**
+- **React-scripts** 
+- **Redux**
+- **Redux-thunk**
+- **Reselect**
+- **Typescript** 
+- **Uuid** and **@types/uuid**
+- **Websocket**

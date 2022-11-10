@@ -1,6 +1,6 @@
 import {ActionType, AppStateType} from "./redux-store";
 import {PhotosType, ProfileType} from "./types";
-import {profileAPI, ResGetProfileType, UpdateProfileType} from "../api/profile-api";
+import {profileAPI, UpdateProfileType} from "../api/profile-api";
 import {stopSubmit} from "redux-form";
 import {setAppStatus, setGlobalError} from "./app-reducer";
 import {v1} from "uuid";
@@ -106,6 +106,7 @@ export const getUserStatus = (userId: number) => async (dispatch: Dispatch) => {
         dispatch(setAppStatus("loading"));
         let response = await profileAPI.getStatus(userId);
         dispatch(setUserStatus(response));
+
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
     } finally {
@@ -120,7 +121,7 @@ export const updateUserStatus = (status: string) => async (dispatch: any) => {
         if (response.resultCode === RESULT_CODE.SUCCESS) {
             dispatch(setUserStatus(status));
         } else {
-            dispatch(response.messages[0]);
+            dispatch(setGlobalError(response.messages[0]));
         }
     } catch (e: any) {
         dispatch(setGlobalError("Some error occurred"));
