@@ -8,12 +8,20 @@ Social Network for front-end developers
 - Listen music at music library
 - Read TechCrunch news and share them with one click
 
+## If you have some issue with login in Safari
+Click the **Safari** menu, you will see the **Preferences** item - click on it. Then click the **Privacy** item to see privacy related options.
+On the Privacy Preferences tab, you will see the **Website tracking** checkbox. Click on **Prevent cross-site tracking**.
+
 ## Screenshots
 ![Project screenshot](/src/assets/images/screenshots/Screenshot-music.png)
 
 ![Project screenshot](/src/assets/images/screenshots/Screenshot-profile.png)
 
 ![Project screenshot](/src/assets/images/screenshots/Screenshot-news.png)
+
+## Start the project
+Use **yarn install** to install modules.
+Use **yarn start** to start project.
 
 ## Technologies Used
 
