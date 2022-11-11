@@ -2,9 +2,10 @@ import {instance} from "../Login/auth-api";
 import {AxiosResponse} from "axios";
 import {CommonResType} from "../Profile/profile-api";
 import {UserType} from "../../redux/types";
+import {Nullable} from '../../common/types';
 
 export const usersAPI = {
-    getUsers(currentPage: number = 1, pageSize: number = 10, term: string, friend: null | boolean) {
+    getUsers(currentPage: number = 1, pageSize: number = 10, term: string, friend: Nullable<boolean>) {
         return instance.get<GetUsersReqType, AxiosResponse<ResGetUsersType>>(`/users?page=${currentPage}&count=${pageSize}&term=${term}`+(friend === null  ? "" : `&friend=${friend}`))
             .then(response => {
                     return response.data

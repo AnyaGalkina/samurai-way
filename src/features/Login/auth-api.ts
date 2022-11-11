@@ -1,6 +1,7 @@
 import axios, {AxiosResponse} from "axios";
 import {CommonResType} from "../Profile/profile-api";
 import {UserIdReqType} from "../Users/user-api";
+import {Nullable} from '../../common/types';
 
 export const instance = axios.create({
         withCredentials: true,
@@ -15,7 +16,7 @@ export const authAPI = {
             return response.data
         })
     },
-    login(email: string, password: string, rememberMe?: boolean, captcha?: string | null) {
+    login(email: string, password: string, rememberMe?: boolean, captcha?: Nullable<string>) {
         return instance.post<LoginPostReqType, AxiosResponse<CommonResType<UserIdReqType>>>("/auth/login",
             {email, password, rememberMe, captcha})
             .then(response => {

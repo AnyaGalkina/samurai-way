@@ -4,6 +4,7 @@ import {stopSubmit} from "redux-form";
 import {securityAPI} from "./security-api";
 import {setGlobalError} from "../../app/app-reducer";
 import {RESULT_CODE} from "../../common/enums/resultCode";
+import {Nullable} from '../../common/types';
 
 const SET_USER_DATA = "AUTH/SET_USER_DATA";
 const GET_CAPTCHA_URL_SUCCESS = "AUTH/GET_CAPTCHA_URL_SUCCESS";
@@ -13,12 +14,12 @@ const SET_TOGGLE_IS_FETCHING = "AUTH/SET_TOGGLE_IS_FETCHING/auth-reducer.ts";
 export type InitialStateType = typeof initialState;
 
 let initialState = {
-    userId: null as number | null,
-    email: null as string | null,
-    login: null as string | null,
+    userId: null as Nullable<number>,
+    email: null as Nullable<string>,
+    login: null as Nullable<string>,
     isAuth: false,
     isFetching: true,
-    captchaUrl: null as string | null,
+    captchaUrl: null as Nullable<string>,
 }
 
 const authReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
@@ -34,7 +35,7 @@ const authReducer = (state: InitialStateType = initialState, action: ActionType)
     }
 }
 
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => {
+export const setAuthUserData = (userId: Nullable<number>, email: Nullable<string>, login: Nullable<string>, isAuth: boolean) => {
     return {type: SET_USER_DATA, payload: {userId, email, login, isAuth}} as const
 };
 
@@ -61,7 +62,7 @@ export const getAuthUserData = () => async (dispatch: any) => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean, captchaUrl?: string | null) => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captchaUrl?: Nullable<string>) => async (dispatch: any) => {
     try {
         dispatch(setToggleIsFetchingAuth(true));
         const response = await authAPI.login(email, password, rememberMe, captchaUrl);

@@ -3,9 +3,7 @@ import axios from "axios";
 export const newsAPI = {
 
     getNews(currentPage: number) {
-        // return axios.get(`%PUBLIC_URL%/${currentPage}`)
         return axios.get(`https://anyagalkina.github.io/samurai-way/${currentPage}.json`);
-        // return axios.get(process.env.REACT_APP_BASE_URL+ '/${currentPage}.json');
     }
 
     // getNews(currentPage : number) {

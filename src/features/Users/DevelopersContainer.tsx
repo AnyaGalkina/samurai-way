@@ -6,7 +6,7 @@ import Developers from "./Developers/Developers";
 import Preloader from "../../common/components/Preloader/Preloader";
 import {UserType} from "../../redux/types";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../components/hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../common/hoc/withAuthRedirect";
 import {
     getCurrentPage, getFilters,
     getFollowingInProgress,

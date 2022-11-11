@@ -5,6 +5,7 @@ import {setGlobalError} from '../../app/app-reducer';
 import {Dispatch} from 'redux';
 import {RESULT_CODE} from '../../common/enums/resultCode';
 import {CommonResType} from '../Profile/profile-api';
+import {Nullable} from '../../common/types';
 
 const FOLLOW = 'USERS/FOLLOW';
 const UNFOLLOW = 'USERS/UNFOLLOW';
@@ -31,7 +32,7 @@ let initialState = {
     isFetching: false,
     filters: {
         term: '',
-        friend: null as null | boolean,
+        friend: null as Nullable<boolean>,
     } as FiltersType,
     followingInProgress: [] as Array<number>
 }

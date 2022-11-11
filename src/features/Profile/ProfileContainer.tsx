@@ -10,7 +10,7 @@ import {
     updateUserStatus
 } from "./profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {withAuthRedirect} from "../../components/hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../common/hoc/withAuthRedirect";
 import {compose} from "redux";
 
 type MapStateToPropsType = {
