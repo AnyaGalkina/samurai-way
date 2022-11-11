@@ -1,0 +1,38 @@
+.postItem {
+    padding-left: 30px;
+    min-width: 450px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    margin-top: 10px;
+}
+
+.postBody {
+    display: flex;
+    justify-content: left;
+}
+
+.postText {
+    width: 260px;
+    margin: 20px 10px;
+    /*word-break: break-all;*/
+}
+
+.postItem img {
+    margin: 10px;
+    /*    width: 60px;*/
+    /*    height: 50px;*/
+    /*    border-radius: 80%;*/
+}
+
+@media screen and (max-width: 980px) {
+    .postItem {
+        padding-left: 0;
+        min-width: 300px;
+    }
+
+    .postText {
+        width: 180px;
+        margin: 20px 10px;
+    }
+}
