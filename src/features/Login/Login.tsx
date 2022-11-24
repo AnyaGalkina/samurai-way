@@ -43,10 +43,12 @@ const Login: React.FC<OwnProps> = (props) => {
                 <p>Password: <b>Free12345</b></p>
             </div>
             <div className={styles.warningBlock}>
-                <ExclamationCircleOutlined style={{color: 'orange', paddingRight: '10px'}}/>
-                If you have some issue with log in using Safari, please follow instructions:
-                {/*<div style={{paddingRight:'20px'}}>Safari -{'>'} Preferences -{'>'} Privacy -{'>'} Website tracking -{'>'} untick Prevent cross-site*/}
-                {/*    tracking</div>*/}
+                <div className={styles.warningText}>
+                    <ExclamationCircleOutlined style={{color: 'orange', paddingRight: '10px'}}/>
+                    <div>
+                        If you have some issue with log in using Safari, please follow instructions:
+                    </div>
+                </div>
                 <div style={{paddingLeft: '25px'}}>
                     Click the Safari menu, you will see the Preferences item - click on it. Then click the Privacy item
                     to see privacy related options. You will see the Website tracking checkbox. Click on Prevent
