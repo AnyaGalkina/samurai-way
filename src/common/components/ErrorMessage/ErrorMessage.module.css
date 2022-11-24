@@ -1,0 +1,15 @@
+.errorBlock {
+    text-align: center;
+    background-color: rgba(255, 131, 183, 0.75);
+    color: white;
+    font-weight: bold;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    margin-left: 30px;
+    color: #fb0066;
+}

@@ -3,7 +3,7 @@ import './App.css';
 import {Link, NavLink} from 'react-router-dom';
 import HeaderContainer from '../common/components/Header/HeaderContainer';
 import {useDispatch, useSelector} from 'react-redux';
-import {clearGlobalError, initializeApp} from './app-reducer';
+import {initializeApp} from './app-reducer';
 import {AppStateType} from './redux-store';
 import Preloader from '../common/components/Preloader/Preloader';
 import {ROUTES} from '../common/enums/routes';
@@ -17,11 +17,11 @@ import {
     AuditOutlined,
     CommentOutlined,
     CustomerServiceOutlined,
-
 } from '@ant-design/icons';
 import {Layout, Menu} from 'antd';
 import smLogo from '../assets/images/logo/sm-logo.png';
 import {ContentApp} from '../common/components/Content/ContetntApp';
+import {ErrorMessage} from '../common/components/ErrorMessage/ErrorMessage';
 
 const {Header, Sider} = Layout;
 const {SubMenu, Item} = Menu;
@@ -96,14 +96,7 @@ const App = () => {
                                 style={{padding: '0 50px', backgroundColor: '#dfe4e6', height: '80px'}}>
                                 <HeaderContainer/>
                             </Header>
-                            {globalError
-                                && <div style={{textAlign: 'center', backgroundColor: 'red'}}>
-                                    <span>{globalError}</span>
-                                    <button onClick={() => {
-                                        dispatch(clearGlobalError());
-                                    }}>X
-                                    </button>
-                                </div>}
+                            {globalError && <ErrorMessage />}
                             <ContentApp userId={userId}/>
                         </Layout>
                     </Layout>
