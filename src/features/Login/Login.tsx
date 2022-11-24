@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {login, logout} from './auth-reducer';
 import {Redirect} from 'react-router-dom';
 import {ExclamationCircleOutlined} from '@ant-design/icons';
+import styles from './Login.module.css';
 
 type MapStateToPropsType = {
     isAuth: boolean;
@@ -41,12 +42,12 @@ const Login: React.FC<OwnProps> = (props) => {
                 <p style={{margin: 0}}>Log in: <b>anna.blackbird1@gmail.com</b></p>
                 <p>Password: <b>Free12345</b></p>
             </div>
-            <div>
+            <div className={styles.warningBlock}>
                 <ExclamationCircleOutlined style={{color: 'orange', paddingRight: '10px'}}/>
                 If you have some issue with log in using Safari, please follow instructions:
                 {/*<div style={{paddingRight:'20px'}}>Safari -{'>'} Preferences -{'>'} Privacy -{'>'} Website tracking -{'>'} untick Prevent cross-site*/}
                 {/*    tracking</div>*/}
-                <div style={{paddingLeft: '25px', paddingBottom: "30px"}}>
+                <div style={{paddingLeft: '25px'}}>
                     Click the Safari menu, you will see the Preferences item - click on it. Then click the Privacy item
                     to see privacy related options. You will see the Website tracking checkbox. Click on Prevent
                     cross-site tracking.
