@@ -1,7 +1,11 @@
 {
   "files": {
-    "main.css": "/samurai-way/static/css/main.8913da55.css",
-    "main.js": "/samurai-way/static/js/main.d8e6613c.js",
+    "main.css": "/samurai-way/static/css/main.06486268.css",
+    "main.js": "/samurai-way/static/js/main.8cd2fce1.js",
+    "static/css/5.14fb654d.chunk.css": "/samurai-way/static/css/5.14fb654d.chunk.css",
+    "static/js/5.5cf6db97.chunk.js": "/samurai-way/static/js/5.5cf6db97.chunk.js",
+    "static/css/249.53c52010.chunk.css": "/samurai-way/static/css/249.53c52010.chunk.css",
+    "static/js/249.d351fdd7.chunk.js": "/samurai-way/static/js/249.d351fdd7.chunk.js",
     "static/media/the-winter-fall-by-prabajithk-122683.mp3": "/samurai-way/static/media/the-winter-fall-by-prabajithk-122683.d297793b07754506d249.mp3",
     "static/media/the-sunshine-123546.mp3": "/samurai-way/static/media/the-sunshine-123546.dd494875c41fc1510036.mp3",
     "static/media/purrple-cat-pillars-of-creation.mp3": "/samurai-way/static/media/purrple-cat-pillars-of-creation.12924c8fbe474aedab29.mp3",
@@ -19,11 +23,15 @@
     "static/media/noSign.png": "/samurai-way/static/media/noSign.f217588308057b9472b7.png",
     "static/media/defaultUserPhoto.jpg": "/samurai-way/static/media/defaultUserPhoto.db7f11a2a7073b3c13a1.jpg",
     "index.html": "/samurai-way/index.html",
-    "main.8913da55.css.map": "/samurai-way/static/css/main.8913da55.css.map",
-    "main.d8e6613c.js.map": "/samurai-way/static/js/main.d8e6613c.js.map"
+    "main.06486268.css.map": "/samurai-way/static/css/main.06486268.css.map",
+    "main.8cd2fce1.js.map": "/samurai-way/static/js/main.8cd2fce1.js.map",
+    "5.14fb654d.chunk.css.map": "/samurai-way/static/css/5.14fb654d.chunk.css.map",
+    "5.5cf6db97.chunk.js.map": "/samurai-way/static/js/5.5cf6db97.chunk.js.map",
+    "249.53c52010.chunk.css.map": "/samurai-way/static/css/249.53c52010.chunk.css.map",
+    "249.d351fdd7.chunk.js.map": "/samurai-way/static/js/249.d351fdd7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8913da55.css",
-    "static/js/main.d8e6613c.js"
+    "static/css/main.06486268.css",
+    "static/js/main.8cd2fce1.js"
   ]
 }
