@@ -3,26 +3,27 @@ import {AddMessageForm} from './AddMessageForm/AddMessageForm';
 import {ChatMessages} from './ChatMessages/ChatMessages';
 import {useDispatch} from 'react-redux';
 import {startMessagesListerning, stopMessagesListerning} from './chat-reducer';
+import {io} from 'socket.io-client';
 
-//
-// export type ChatMessageType = {
-//     photo: string;
-//     userName: string;
-//     message: string;
-//     userId: number
-// }
+const socket = io("https://social-network.samuraijs.com/api/1.0");
 
 const Chat = () => {
     const dispatch = useDispatch();
-    // const status = useSelector((state: AppStateType) => state.chatPage.status);
+
 
     useEffect(() => {
-        debugger
         dispatch(startMessagesListerning());
         return () => {
             dispatch(stopMessagesListerning());
         }
     }, []);
+
+
+    // useEffect(() => {
+    //
+    //     // wss://social-network.samuraijs.com/handlers/ChatHandler.ashx
+    // }, []);
+
 
     return (
         <div>

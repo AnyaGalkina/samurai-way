@@ -19,10 +19,12 @@ export const ChatMessages = ({}: PropsType) => {
     }
 
     useEffect(() => {
-        if (autoScrollIsActive) {
+        debugger
+        // if (autoScrollIsActive) {
+        //     messagesAnchorRef.current?.scrollIntoView({ behavior: 'smooth' })
             messagesAnchorRef.current?.scrollIntoView({ behavior: 'smooth' })
-        }
-    }, [messages])
+        // }
+    }, [messages]);
 
     return (
         <div>
