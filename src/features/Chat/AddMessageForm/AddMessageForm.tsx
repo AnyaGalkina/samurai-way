@@ -7,8 +7,6 @@ import {io} from 'socket.io-client';
 
 type PropsType = {}
 
-const socket = io("https://social-network.samuraijs.com/api/1.0");
-
 
 export const AddMessageForm = ({}: PropsType) => {
     const dispatch = useDispatch();
@@ -24,7 +22,6 @@ export const AddMessageForm = ({}: PropsType) => {
         if (!message) {
             return;
         }
-        // socket.emit('client-message-sent', message )
         dispatch(sendMessage(message));
         setMessage("");
     }
