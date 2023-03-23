@@ -30,16 +30,6 @@ export const DialogTextArea = ({addMessage}: PropsType) => {
                            value={currentValue}
                            onChangeHandler={onChangeHandler}
             />
-            {/*<div>*/}
-            {/*    <Button*/}
-            {/*        style={{*/}
-            {/*            // backgroundColor: "#149AC9"*/}
-            {/*            backgroundColor: "#1ac2c1",*/}
-            {/*            borderColor: "#1ac2c1",*/}
-            {/*        }}*/}
-            {/*        type="primary"*/}
-            {/*        onClick={onAddMessageClickHandler} disabled={limit<0}>Add message</Button>*/}
-            {/*</div>*/}
         </div>
     );
 };

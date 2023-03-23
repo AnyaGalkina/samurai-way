@@ -1,5 +1,6 @@
 .chatMessageContainer{
     padding: 0 60px 0 0 ;
+    word-wrap: break-word;
 }
 
 .name{

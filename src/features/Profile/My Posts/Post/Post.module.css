@@ -5,6 +5,7 @@
     background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     margin-top: 10px;
+
 }
 
 .postBody {
@@ -15,14 +16,11 @@
 .postText {
     width: 260px;
     margin: 20px 10px;
-    /*word-break: break-all;*/
+    word-wrap: break-word;
 }
 
 .postItem img {
     margin: 10px;
-    /*    width: 60px;*/
-    /*    height: 50px;*/
-    /*    border-radius: 80%;*/
 }
 
 @media screen and (max-width: 980px) {

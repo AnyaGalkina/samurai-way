@@ -17,10 +17,6 @@ export const NewsItem = ({article}: PropsType) => {
         message.success("Copied");
     };
 
-    // const cancel = (e: React.MouseEvent<HTMLElement>) => {
-    //     console.log("");
-    // };
-
     return (
         <div>
             <h2>{article.title}</h2>
