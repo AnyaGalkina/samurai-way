@@ -40,11 +40,15 @@ export const Search = ({onFiltersChanged}: PropsType) => {
                     value={formik.values.friend}
                     defaultValue="All"
                     style={{width: 120}}
+                    // aria-roledescription={'Users filter'}
+                    // aria-label={'Users filter'}
 
                     options={[
-                        {value: 'null', label: 'All'},
+                        {value: 'null', label: 'All',
+                            // ariaChecked: 'true'
+                        },
                         {value: 'true', label: 'Only followed'},
-                        {value: 'false', label: 'Only unfollowed',}]}
+                        {value: 'false', label: 'Only unfollowed'}]}
                 />
                 <button type={'submit'}><SearchOutlined/></button>
             </form>

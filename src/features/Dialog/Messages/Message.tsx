@@ -6,7 +6,7 @@ type PropsType = {
 const Message: React.FC<PropsType> = (props) => {
 
     return (
-        <div>
+        <div style={{width: '290px', wordWrap: 'break-word'}}>
             {props.messageBody}
         </div>
     );

@@ -37,7 +37,8 @@ const ProfileStatus: React.FC<PropsType> = ({status, updateUserStatus, isOwner})
                         onBlur={handleOnBlurSetStatus}></input>
                 </div>
                 :
-                <div>
+                // @ts-ignore
+                <div style={{ wordWrap:' break-word', width: '340px'}}>
                     <FaQuoteLeft style={{color: "#001628", margin: "10px"}}/>
                     <b><span style={{color: "#001628", fontSize: "20px", cursor: "pointer"}} placeholder={"add status"}
                              onClick={handleOnClickStatusChange}>{status || <EditOutlined/>}</span></b>

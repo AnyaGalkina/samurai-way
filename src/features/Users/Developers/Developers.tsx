@@ -3,7 +3,7 @@ import {UserType} from "../../../redux/types";
 import Pagination from "../../../common/components/Pagination/Pagination";
 import User from "./User/User";
 import {Divider} from "antd";
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {AppStateType} from "../../../app/redux-store";
 import {Search} from '../Search/Search';
 import {FiltersType} from '../users-reducer';

@@ -52,12 +52,6 @@ const Music = () => {
         {author: "DayFox", title: "The Sunshine", src: soundHappy, img: advanture},
         {author: "Music Unlimited", title: "Happy acoustic", src: soundAcoustic, img: space},
     ]
-
-
-    // Change global volume.
-    // Howler.volume(0.5);
-    // Howler.mute(0.5);
-
     return (
         <div>
             <Title title={"♪♪♪ Music ♪♪♪"}/>
