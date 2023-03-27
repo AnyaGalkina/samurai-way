@@ -11,9 +11,11 @@ Social Network for front-end developers
 ## Screenshots
 ![Project screenshot](/src/assets/images/screenshots/Screenshot-music.png)
 
+![Project screenshot](/src/assets/images/screenshots/Screenshot-news.png)
+
 ![Project screenshot](/src/assets/images/screenshots/Screenshot-profile.png)
 
-![Project screenshot](/src/assets/images/screenshots/Screenshot-news.png)
+
 
 ### If you have some issue with login in Safari
 
